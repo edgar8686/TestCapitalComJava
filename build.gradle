@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'project-report'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    // testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.8.3'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.3.2'
+    implementation 'com.codeborne:selenide:6.12.4'
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'ch.qos.logback:logback-core:1.4.5'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.6'
+    testImplementation 'ch.qos.logback:logback-classic:1.4.5'
+    testImplementation 'org.testng:testng:7.7.1'
+}
+
+test {
+    useTestNG()
+}
