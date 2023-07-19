@@ -1,8 +1,10 @@
 package settings;
 
+import com.beust.jcommander.Parameter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;

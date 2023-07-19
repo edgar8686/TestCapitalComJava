@@ -1,6 +1,7 @@
 package org.example.elements;
 
 import org.example.abstractClass.AbstractPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,8 +26,6 @@ public class SmokeMain extends AbstractPage {
     private WebElement email;
     @FindBy(xpath = "//button[contains(@class,'button-cleared small s_cancel')]//*[name()='svg']")
     private WebElement closeWindow;
-    //@FindBy(className = "cc-logo hideXs")
-    //private WebElement mainPage;
 
     public SmokeMain(WebDriver driver) {
         super(driver);
@@ -66,7 +65,7 @@ public class SmokeMain extends AbstractPage {
         }
     }
 
-    public SmokeMain fluentWaitLocators(WebElement webElement) {
+    public void fluentWaitLocators(WebElement webElement) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(Duration.ofSeconds(20))
                 .pollingEvery(Duration.ofSeconds(2))
@@ -74,7 +73,6 @@ public class SmokeMain extends AbstractPage {
         wait.until(driver -> {
             return webElement;
         });
-        return this;
     }
 
     public SmokeMain closeLogInForm() {
@@ -82,11 +80,5 @@ public class SmokeMain extends AbstractPage {
         closeWindow.click();
         return this;
     }
-   /* public  SmokeMain goBackMainPage() {
-        fluentWaitLocators(mainPage);
-        mainPage.click();
-        return this;
-    }
-    */
 
 }

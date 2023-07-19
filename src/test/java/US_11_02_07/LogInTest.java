@@ -19,7 +19,7 @@ public class LogInTest extends AbstractTest {
     @Owner("Edgar Nurmagomedov")
     @Feature("US_11_02_07")
     @DisplayName("LogIn test")
-    @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
+    @CsvFileSource(files = "src/test/resources/Test.csv", numLinesToSkip = 1)
     void LogIn(String languages, String countries) {
         SmokeMain smokeMain = new SmokeMain(getDriver());
 
@@ -40,8 +40,6 @@ public class LogInTest extends AbstractTest {
         Assertions.assertTrue(locators.getLinkForgotPassword().isDisplayed());
         Assertions.assertTrue(locators.getCheckBox().isDisplayed());
 
-        //smokeMain.closeLogInForm();
-       // smokeMain.goBackMainPage();
     }
 
 }
