@@ -6,6 +6,8 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
 
 name: Java CI with Gradle
+env: 
+println "Commit SHA: " + System.getenv("GITHUB_SHA")
 
 on:
   push:
