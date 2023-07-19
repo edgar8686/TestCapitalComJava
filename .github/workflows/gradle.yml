@@ -14,7 +14,7 @@ on:
     - automation_web_project
     
 jobs:
-  build:
+   tests:
 
     runs-on: ubuntu-latest
 
@@ -25,14 +25,40 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+        
     - name: Validate Gradle wrapper
       uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
+      
     - name: Make gradlew executable
       run: chmod +x ./gradlew
-    - name: Build with Gradle and Generate Allure Report
-      run: ./gradlew clean test allureReport
-    - name: Upload Allure Report to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      
+    - name: Build with Gradle
+      uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build/reports/allure-report
+          arguments: build
+          
+    - name: Get Allure history
+      uses: actions/checkout@v2
+      if: always()
+      continue-on-error: true
+      with:
+       ref: gh-pages
+       path: gh-pages
+       
+    - name: Test marketplace action
+      uses: simple-elf/allure-report-action@master
+      if: always()
+      id: allure-report
+      with:
+         allure_results: build/allure-results
+         gh_pages: gh-pages
+         allure_report: allure-report
+         allure_history: allure-history
+         
+    - name: Deploy report to Github Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: allure-history   
