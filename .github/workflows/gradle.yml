@@ -37,7 +37,7 @@ jobs:
           arguments: build
           
     - name: Debag
-      run: Run with --stacktrace option to get the stack trace.
+      run: Run with --stacktrace option to get the stack trace
           
     - name: Get Allure history
       uses: actions/checkout@v2
