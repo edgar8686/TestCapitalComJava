@@ -65,6 +65,16 @@ jobs:
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: allure-history 
         
+    - name: Set GitHub Status
+      uses: Sibz/github-status-action@v1
+      with:
+        context: "Test report"
+        state: "success"
+        owner: "edgar8686"
+        repo: "TestCapitalComJava"
+        sha: ${{ github.sha }}
+        target_url: "simple-elf.github.io/github-allure-history/9"
+        
     - name: Post the link to the report
       if: always()
       uses: Sibz/github-status-action@v1
