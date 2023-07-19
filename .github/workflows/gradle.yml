@@ -7,10 +7,7 @@
 
 name: Java CI with Gradle
 
-on:
-  push:
-    branches: 
-    - master
+on: workflow_dispatch
     
 jobs:
    tests:
@@ -41,6 +38,14 @@ jobs:
     - name: Run tests with Gradle
       if: always()
       run: ./gradlew test
+      
+    - name: 3. Upload artifact "allure-results"
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-results
+        path: build/allure-results/
+        retention-days: 10
       
           
     - name: Get Allure history
