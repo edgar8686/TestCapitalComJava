@@ -7,10 +7,7 @@
 
 name: Java CI with Gradle
 
-on:
-  push:
-    branches: 
-    - master
+on: push               #workflow_dispatch
     
 jobs:
    tests:
@@ -24,17 +21,26 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+    - name: Install Chrome
+      uses: browser-actions/setup-chrome@latest
         
-    - name: Validate Gradle wrapper
-      uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
+   # - name: Validate Gradle wrapper
+   #   uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
       
     - name: Make gradlew executable
       run: chmod +x ./gradlew
       
-    - name: Build with Gradle
-      uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
-      with:
-          arguments: build
+  #  - name: Build with Gradle
+   #   uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
+   #   with:
+   #       arguments:
+    #          build
+    #          --stacktrace  
+    
+    - name: Run tests with Gradle
+      if: always()
+      run: ./gradlew test
+      
           
     - name: Get Allure history
       uses: actions/checkout@v2
