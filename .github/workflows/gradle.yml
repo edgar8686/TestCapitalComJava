@@ -35,6 +35,11 @@ jobs:
       uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
       with:
           arguments: build
+    - name: Debug Environment
+      run : |
+          echo "Current directory: $(pwd)"
+          echo "Java version: $(java -version)"
+          echo "Gradle version: $(./gradlew --version)"
           
     - name: Get Allure history
       uses: actions/checkout@v2
