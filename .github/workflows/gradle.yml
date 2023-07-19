@@ -34,10 +34,10 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
       with:
-          arguments: build
-          
-    - name: Debag
-      run: Run with --stacktrace option to get the stack trace
+          arguments:
+              build
+              --stacktrace   # Add the --stacktrace option here
+      
           
     - name: Get Allure history
       uses: actions/checkout@v2
