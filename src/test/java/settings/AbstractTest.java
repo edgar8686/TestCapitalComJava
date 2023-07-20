@@ -33,7 +33,8 @@ public abstract class AbstractTest {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        //options.addArguments("--headless");
+        options.addArguments("--headless");
+        options.setHeadless(true);
         //options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
