@@ -6,7 +6,7 @@ on: workflow_dispatch
 jobs:
    tests:
     name: Bild enviroment and testing
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -23,8 +23,8 @@ jobs:
    # - name: Validate Gradle wrapper
    #   uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
       
-   # - name: Make gradlew executable
-   #   run: chmod +x ./gradlew
+    - name: Make gradlew executable
+      run: chmod +x ./gradlew
       
   #  - name: Build with Gradle
    #   uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
