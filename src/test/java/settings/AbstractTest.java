@@ -32,12 +32,12 @@ public abstract class AbstractTest {
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
         //options.addArguments("--headless");
-        //options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
+        options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
-        //options.addArguments("--lang=en");
+        options.addArguments("--lang=en");
         driver = new ChromeDriver(options);
-        driver.manage().window().fullscreen();
+        //driver.manage().window().fullscreen();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
