@@ -1,6 +1,6 @@
 package settings;
 
-import com.beust.jcommander.Parameter;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.*;
@@ -19,12 +19,12 @@ public abstract class AbstractTest {
     static void init() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.setPlatformName("Windows 10");
+        //options.setPlatformName("Windows 10");
         options.setBrowserVersion("114");
         //options.addArguments("--incognito");
         //options.addArguments("--headless");
         options.addArguments("start-maximized");
-        options.addArguments("--remote-allow-origins=*");
+        //options.addArguments("--remote-allow-origins=*");
         options.addArguments("--lang=en");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
