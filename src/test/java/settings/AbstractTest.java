@@ -8,6 +8,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 
 import java.util.concurrent.TimeUnit;
@@ -17,23 +19,18 @@ public abstract class AbstractTest {
 
     @BeforeAll
     static void init() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
+        WebDriverManager.firefoxdriver().setup();
+        FirefoxOptions options = new FirefoxOptions();
         //options.setPlatformName("Windows 10");
-        options.setBrowserVersion("114");
+        //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
         //options.addArguments("--headless");
         options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         options.addArguments("--lang=en");
-        driver = new ChromeDriver(options);
+        driver = new FirefoxDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
-
-    // @BeforeEach
-    // void goTo() {
-    //  driver.get("https://capital.com/");
-    //}
 
     @AfterAll
     static void close() {
