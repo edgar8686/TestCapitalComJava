@@ -12,6 +12,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.Dimension;
 
 
 import java.awt.*;
@@ -22,9 +23,10 @@ public abstract class AbstractTest {
 
     @BeforeAll
     static void init() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int screenWidth = (int) screenSize.getWidth();
-        int screenHeight = (int) screenSize.getHeight();
+        // Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //int screenWidth = (int) screenSize.getWidth();
+        //int screenHeight = (int) screenSize.getHeight();
+        Dimension windowSize = new Dimension(1536, 864);
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -32,13 +34,14 @@ public abstract class AbstractTest {
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
         //options.addArguments("--headless");
-        options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
+        //options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         options.addArguments("--lang=en");
         driver = new ChromeDriver(options);
         //driver.manage().window().fullscreen();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().window().setSize(windowSize);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
     @AfterAll
