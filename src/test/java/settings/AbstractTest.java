@@ -8,6 +8,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
@@ -19,8 +21,8 @@ public abstract class AbstractTest {
 
     @BeforeAll
     static void init() {
-        WebDriverManager.firefoxdriver().setup();
-        FirefoxOptions options = new FirefoxOptions();
+        WebDriverManager.edgedriver().setup();
+        EdgeOptions options = new EdgeOptions();
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
@@ -28,7 +30,7 @@ public abstract class AbstractTest {
         options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         options.addArguments("--lang=en");
-        driver = new FirefoxDriver(options);
+        driver = new EdgeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
