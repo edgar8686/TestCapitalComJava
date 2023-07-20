@@ -26,17 +26,18 @@ public abstract class AbstractTest {
         int screenWidth = (int) screenSize.getWidth();
         int screenHeight = (int) screenSize.getHeight();
 
-        WebDriverManager.edgedriver().setup();
-        EdgeOptions options = new EdgeOptions();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
         //options.addArguments("--headless");
-        options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
+        //options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--lang=en");
-        driver = new EdgeDriver(options);
+        //options.addArguments("--lang=en");
+        driver = new ChromeDriver(options);
+        driver.manage().window().fullscreen();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
