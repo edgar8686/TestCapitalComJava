@@ -44,36 +44,41 @@ jobs:
       uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
       with:
         arguments: build
-      
-          
-    - name: Get Allure history
-      uses: actions/checkout@v2
+  
+   generate_report:
+      name: II. Generate & Deploy Allure report
+      runs-on: ubuntu-latest
       if: always()
-      continue-on-error: true
-      with:
-       ref: gh-pages
-       path: gh-pages
+      needs: [ tests ]
+      steps:
+        - name: Get Allure history
+          uses: actions/checkout@v2
+          if: always()
+          continue-on-error: true
+          with:
+           ref: gh-pages
+           path: gh-pages
        
-    - name: Test marketplace action
-      uses: simple-elf/allure-report-action@master
-      if: always()
-      id: allure-report
-      with:
-         allure_results: allure-results
-         allure_history: allure-history
-         allure_report: allure-report
-         gh_pages: gh-pages
-         ref: gh-pages
-         path: gh-pages
-         keep_reports: 30
+        - name: Test marketplace action
+          uses: simple-elf/allure-report-action@master
+          if: always()
+          id: allure-report
+          with:
+            allure_results: allure-results
+            allure_history: allure-history
+            allure_report: allure-report
+            gh_pages: gh-pages
+            ref: gh-pages
+            path: gh-pages
+            keep_reports: 30
          
-    - name: Deploy report to Github Pages
-      if: always()
-      uses: peaceiris/actions-gh-pages@v2
-      env:
-        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: allure-history 
+        - name: Deploy report to Github Pages
+          if: always()
+          uses: peaceiris/actions-gh-pages@v2
+          env:
+           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           PUBLISH_BRANCH: gh-pages
+           PUBLISH_DIR: allure-history 
       
         
       
