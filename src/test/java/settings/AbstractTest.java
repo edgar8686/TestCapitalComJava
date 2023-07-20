@@ -14,6 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 
+import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractTest {
@@ -21,16 +22,21 @@ public abstract class AbstractTest {
 
     @BeforeAll
     static void init() {
-        WebDriverManager.edgedriver().setup();
-        EdgeOptions options = new EdgeOptions();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int screenWidth = (int) screenSize.getWidth();
+        int screenHeight = (int) screenSize.getHeight();
+
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
         //options.addArguments("--headless");
-        options.addArguments("start-maximized");
+        options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
+        //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         options.addArguments("--lang=en");
-        driver = new EdgeDriver(options);
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
