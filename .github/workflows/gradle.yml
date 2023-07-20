@@ -12,7 +12,7 @@ on: push               #workflow_dispatch
 jobs:
    tests:
 
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -21,8 +21,9 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-    - name: Install Chrome
-      uses: browser-actions/setup-chrome@latest
+        
+   # - name: Install Chrome
+    #  uses: browser-actions/setup-chrome@latest
         
    # - name: Validate Gradle wrapper
    #   uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
