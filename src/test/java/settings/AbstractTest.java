@@ -26,7 +26,7 @@ public abstract class AbstractTest {
         // Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         //int screenWidth = (int) screenSize.getWidth();
         //int screenHeight = (int) screenSize.getHeight();
-        Dimension windowSize = new Dimension(1536, 864);
+        Dimension windowSize = new Dimension(1280, 720);
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
