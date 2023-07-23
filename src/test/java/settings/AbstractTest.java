@@ -23,9 +23,6 @@ public abstract class AbstractTest {
 
     @BeforeAll
     static void init() {
-        // Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        //int screenWidth = (int) screenSize.getWidth();
-        //int screenHeight = (int) screenSize.getHeight();
         Dimension windowSize = new Dimension(1280, 720);
 
         WebDriverManager.chromedriver().setup();
@@ -33,8 +30,8 @@ public abstract class AbstractTest {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        options.addArguments("--headless");
-        options.setHeadless(true);
+        //options.addArguments("--headless");
+        //options.setHeadless(true);
         //options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
