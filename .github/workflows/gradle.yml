@@ -30,8 +30,8 @@ jobs:
     #  with:
     #    arguments: build --stacktrace
     
-    - name: Run tests with Gradle
-      run: ./gradlew test
+   # - name: Run tests with Gradle
+    #  run: ./gradlew test
     - name: Test with Gradle
       run: ./gradlew test --stacktrace
   
