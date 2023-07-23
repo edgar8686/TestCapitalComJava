@@ -26,17 +26,17 @@ public abstract class AbstractTest {
         Dimension windowSize = new Dimension(1280, 720);
 
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
+        FirefoxOptions options = new FirefoxOptions();
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        //options.addArguments("--headless");
-        //options.setHeadless(true);
+        options.addArguments("--headless");
+        options.setHeadless(true);
         //options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         options.addArguments("--lang=en");
-        driver = new ChromeDriver(options);
+        driver = new FirefoxDriver(options);
         //driver.manage().window().fullscreen();
         driver.manage().window().setSize(windowSize);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
