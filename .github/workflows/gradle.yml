@@ -17,6 +17,15 @@ jobs:
         distribution: 'adopt'
         architecture: x64
         cache: gradle
+    - name: Set up Chrome browser
+      uses: browser-actions/setup-chrome@v1
+      with:
+        options: |
+            --disable-dev-shm-usage
+            --ignore-ssl-errors=yes
+            --ignore-certificate-errors
+            --no-sandbox
+            --headless
     #- name: Install Chrome
     #  uses: browser-actions/setup-chrome@latest
       
