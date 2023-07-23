@@ -39,7 +39,7 @@ public abstract class AbstractTest {
         driver = new FirefoxDriver(options);
         //driver.manage().window().fullscreen();
         driver.manage().window().setSize(windowSize);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterAll
