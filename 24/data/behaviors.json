@@ -1,1 +1,0 @@
-{"uid":"b1a8273437954620fa374b796ffaacdd","children":[{"name":"LogInTest","uid":"49caf69ff38040a7","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"broken","time":{"start":1689795415902,"stop":1689795415903,"duration":1},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":[]}],"name":"behaviors"}
