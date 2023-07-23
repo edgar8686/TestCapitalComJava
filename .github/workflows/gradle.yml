@@ -32,7 +32,7 @@ jobs:
   
    generate_report:
       name: II. Generate & Deploy Allure report
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
       if: always()
       needs: [ tests ]
       steps:
