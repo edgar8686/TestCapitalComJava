@@ -6,7 +6,7 @@ on: workflow_dispatch
 jobs:
    tests:
     name: Bild enviroment and testing
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v3
