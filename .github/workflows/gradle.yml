@@ -21,8 +21,6 @@ jobs:
       uses: browser-actions/setup-chrome@v1
       with:
         options: |
-            --ignore-ssl-errors=yes
-            --ignore-certificate-error
             --headless
     #- name: Install Chrome
     #  uses: browser-actions/setup-chrome@latest
