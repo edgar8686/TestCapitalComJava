@@ -92,6 +92,13 @@ jobs:
            PUBLISH_BRANCH: gh-pages
            PUBLISH_DIR: ./allure-history 
            commit_message: ${{ github.event.head_commit.message }}
+           
+        - name: 5. Archive code coverage results
+          if: always()
+          uses: actions/upload-artifact@v3
+          with:
+            name: allure_report
+            path: allure_report/
       
         
       
