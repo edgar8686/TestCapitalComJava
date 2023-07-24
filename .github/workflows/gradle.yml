@@ -39,6 +39,15 @@ jobs:
     
     - name: Run tests with Gradle
       run: ./gradlew test
+      
+      
+    - name: 3. Upload artifact "allure-results"
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-results
+        path: build/allure-results/
+        retention-days: 10
 
   
    generate_report:
