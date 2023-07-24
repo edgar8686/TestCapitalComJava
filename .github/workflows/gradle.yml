@@ -48,7 +48,7 @@ jobs:
       needs: [ tests ]
       steps:
         - name: Get Allure history
-          uses: actions/checkout@v4
+          uses: actions/checkout@v3
           if: always()
           continue-on-error: true
           with:
@@ -70,11 +70,11 @@ jobs:
          
         - name: Deploy report to Github Pages
           if: always()
-          uses: peaceiris/actions-gh-pages@v2
+          uses: peaceiris/actions-gh-pages@v3
           env:
            PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
            PUBLISH_BRANCH: gh-pages
-           PUBLISH_DIR: allure-history 
+           PUBLISH_DIR: ./allure-history 
       
         
       
