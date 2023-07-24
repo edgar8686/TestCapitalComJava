@@ -21,10 +21,8 @@ jobs:
       uses: browser-actions/setup-chrome@v1
       with:
         options: |
-            --disable-dev-shm-usage
             --ignore-ssl-errors=yes
-            --ignore-certificate-errors
-            --no-sandbox
+            --ignore-certificate-error
             --headless
     #- name: Install Chrome
     #  uses: browser-actions/setup-chrome@latest
