@@ -16,6 +16,7 @@ import org.openqa.selenium.Dimension;
 
 
 import java.awt.*;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractTest {
@@ -31,7 +32,7 @@ public abstract class AbstractTest {
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
         options.addArguments("--headless");
-        options.setHeadless(true);
+        options.setHeadless(Boolean.TRUE);
         //options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
@@ -39,7 +40,7 @@ public abstract class AbstractTest {
         driver = new ChromeDriver(options);
         //driver.manage().window().fullscreen();
         driver.manage().window().setSize(windowSize);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterAll
