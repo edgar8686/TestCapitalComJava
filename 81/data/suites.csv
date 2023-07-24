@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Jul 24 19:13:10 GMT 2023","Mon Jul 24 19:13:44 GMT 2023","34647","","US_11_02_07.LogInTest","","US_11_02_07.LogInTest","LogIn","LogIn test [1] es, ?country=es",""
