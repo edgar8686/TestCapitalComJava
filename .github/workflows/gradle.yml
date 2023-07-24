@@ -38,7 +38,7 @@ jobs:
     #    arguments: build --stacktrace
     
     - name: Run tests with Gradle
-      run: ./gradlew test --info
+      run: ./gradlew test 
       
       
     - name: Upload artifact "allure-results"
