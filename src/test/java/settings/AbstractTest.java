@@ -26,7 +26,7 @@ public abstract class AbstractTest {
         Dimension windowSize = new Dimension(1280, 720);
 
         WebDriverManager.chromedriver().setup();
-        FirefoxOptions options = new FirefoxOptions();
+        ChromeOptions options = new ChromeOptions();
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
@@ -36,7 +36,7 @@ public abstract class AbstractTest {
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         options.addArguments("--lang=en");
-        driver = new FirefoxDriver(options);
+        driver = new ChromeDriver(options);
         //driver.manage().window().fullscreen();
         driver.manage().window().setSize(windowSize);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
