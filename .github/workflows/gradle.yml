@@ -17,6 +17,9 @@ jobs:
         distribution: 'adopt'
         architecture: x64
         cache: gradle
+    - name: Set up Chrome browser
+      uses: browser-actions/setup-chrome@v1
+  
     #- name: Install Chrome
     #  uses: browser-actions/setup-chrome@latest
       
