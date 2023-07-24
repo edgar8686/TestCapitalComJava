@@ -19,9 +19,7 @@ jobs:
         cache: gradle
     - name: Set up Chrome browser
       uses: browser-actions/setup-chrome@v1
-      with:
-        options: |
-            --headless
+  
     #- name: Install Chrome
     #  uses: browser-actions/setup-chrome@latest
       
