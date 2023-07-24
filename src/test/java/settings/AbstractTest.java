@@ -33,7 +33,6 @@ public abstract class AbstractTest {
         //options.addArguments("--incognito");
         options.addArguments("--headless");
         options.setHeadless(true);
-        //options.addArguments("--window-size=" + screenWidth + "," + screenHeight);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         options.addArguments("--lang=en");

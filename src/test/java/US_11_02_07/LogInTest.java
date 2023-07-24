@@ -18,8 +18,8 @@ public class LogInTest extends AbstractTest {
     @ParameterizedTest
     @Owner("Edgar Nurmagomedov")
     @Feature("US_11_02_07")
-    @DisplayName("LogIn test")
-    @CsvFileSource(files = "src/test/resources/Test.csv", numLinesToSkip = 1)
+    @DisplayName("LogIn test (UnReg)")
+    @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void LogIn(String languages, String countries) {
         SmokeMain smokeMain = new SmokeMain(getDriver());
 
