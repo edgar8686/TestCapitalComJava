@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Tue Jul 25 18:19:30 GMT 2023","Tue Jul 25 18:19:43 GMT 2023","12837","","US_11_02_07.LogInTest","","US_11_02_07.LogInTest","LogIn","TC_11-02-07 (UnReg) [1] ar, ?country=ae","Check: Header -> button [Log In]"
