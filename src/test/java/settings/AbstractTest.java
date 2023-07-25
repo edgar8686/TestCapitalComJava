@@ -24,7 +24,7 @@ public abstract class AbstractTest {
 
     @BeforeAll
     static void init() {
-        Dimension windowSize = new Dimension(1280, 720);
+        Dimension windowSize = new Dimension(1600, 1000);
 
         WebDriverManager.edgedriver().setup();
         EdgeOptions options = new EdgeOptions();
