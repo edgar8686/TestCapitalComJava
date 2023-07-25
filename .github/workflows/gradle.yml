@@ -26,6 +26,12 @@ jobs:
   
     #- name: Install Chrome
     #  uses: browser-actions/setup-chrome@latest
+    
+   # - name: Install Microsoft Edge
+    #  uses: browser-actions/setup-msedge@latest
+    
+    #- name: Install Mozilla Firefox
+    #  uses: browser-actions/setup-firefox@latest
       
     #- name: Make gradlew executable
     #  run: chmod +x ./gradlew  
