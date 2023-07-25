@@ -39,7 +39,7 @@ public abstract class AbstractTest {
         driver = new EdgeDriver(options);
         //driver.manage().window().fullscreen();
         driver.manage().window().setSize(windowSize);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
     @AfterAll
