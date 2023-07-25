@@ -24,10 +24,10 @@ public abstract class AbstractTest {
 
     @BeforeAll
     static void init() {
-        Dimension windowSize = new Dimension(1600, 1000);
+        Dimension windowSize = new Dimension(1280, 720);
 
-        WebDriverManager.edgedriver().setup();
-        EdgeOptions options = new EdgeOptions();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
@@ -36,7 +36,7 @@ public abstract class AbstractTest {
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         options.addArguments("--lang=en");
-        driver = new EdgeDriver(options);
+        driver = new ChromeDriver(options);
         //driver.manage().window().fullscreen();
         driver.manage().window().setSize(windowSize);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

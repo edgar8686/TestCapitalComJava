@@ -19,7 +19,7 @@ public class LogInTest extends AbstractTest {
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")
     @Feature("US_11-02-07_ETF_trading")
     @Story("TestETFTrading")
-    @Description("Check: Header -> button [Log In]")
+    @Description("Check: Education > Menu Item [ETF trading] > Test button [Log in]")
     @DisplayName("TC_11-02-07 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void LogIn(String languages, String countries) {
