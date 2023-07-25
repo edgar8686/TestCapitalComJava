@@ -1,7 +1,6 @@
 package US_11_02_07;
 
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import org.example.elements.Locators;
 import org.example.elements.SmokeMain;
 import org.junit.jupiter.api.Assertions;
@@ -17,8 +16,11 @@ public class LogInTest extends AbstractTest {
 
     @ParameterizedTest
     @Owner("Edgar Nurmagomedov")
-    @Feature("US_11_02_07")
-    @DisplayName("LogIn test (UnReg)")
+    @Epic("tests.US_11_Education.11-02-07_ETF_trading")
+    @Feature("US_11-02-07_ETF_trading")
+    @Story("TestETFTrading")
+    @Description("Check: Header -> button [Log In]")
+    @DisplayName("TC_11-02-07 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void LogIn(String languages, String countries) {
         SmokeMain smokeMain = new SmokeMain(getDriver());
