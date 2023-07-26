@@ -41,7 +41,7 @@ public class SmokeMain extends AbstractPage {
             etfTrading.click();
             return this;
         } catch (NoSuchElementException e) {
-            throw new TestSkippedException("Test Skipped");
+            throw new TestSkippedException("Test Skipped: ETF trading not found");
         }
     }
 
