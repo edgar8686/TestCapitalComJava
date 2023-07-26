@@ -24,7 +24,7 @@ public abstract class AbstractTest {
 
     @BeforeAll
     static void init() {
-        Dimension windowSize = new Dimension(1700, 1000);
+        Dimension windowSize = new Dimension(1280, 720);
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
