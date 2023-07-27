@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Thu Jul 27 19:10:50 GMT 2023","Thu Jul 27 19:11:19 GMT 2023","29178","","US_11_02_07.LogInTest","","US_11_02_07.LogInTest","LogIn","TC_11-02-07_01 (UnReg) [1] en, ?country=gb","Check: Education > Menu Item [ETF trading] > Test button [Log in]"
