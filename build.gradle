@@ -40,4 +40,6 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperty 'browser', System.getProperty('browser', 'chrome')
+
 }

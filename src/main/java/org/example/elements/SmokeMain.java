@@ -41,7 +41,7 @@ public class SmokeMain extends AbstractPage {
             etfTrading.click();
             return this;
         } catch (NoSuchElementException e) {
-            throw new TestSkippedException("Test Skipped: ETF trading not found");
+            throw new TestSkippedException("Test Skipped: ETF trading not found. For tests on 'fr' language the page \"Education->ETF trading\" doesn't exist on production");
         }
     }
 
@@ -59,13 +59,14 @@ public class SmokeMain extends AbstractPage {
         try {
             if (signUpForm.isDisplayed() && email.isDisplayed() && getDriver() != null) {
                 closeWindow.click();
+                System.out.println("The SignUp form is closed");
             }
         } catch (NoSuchElementException e) {
             System.out.println("SignUp form don't surfaced");
         }
     }
 
-    public void fluentWaitLocators(WebElement webElement) {
+    public WebElement fluentWaitLocators(WebElement webElement) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(Duration.ofSeconds(20))
                 .pollingEvery(Duration.ofSeconds(2))
@@ -73,6 +74,7 @@ public class SmokeMain extends AbstractPage {
         wait.until(driver -> {
             return webElement;
         });
+        return webElement;
     }
 
     public SmokeMain closeLogInForm() {
