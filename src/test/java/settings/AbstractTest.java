@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractTest {
     private static WebDriver driver;
-    static final Dimension windowSize = new Dimension(1480, 920);
+    static final Dimension windowSize = new Dimension(1720, 1000);
 
     @BeforeAll
     static void init() throws MalformedURLException {
