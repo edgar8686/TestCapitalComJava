@@ -17,7 +17,6 @@ import settings.TestListener;
 public class LogInTest extends Settings {
 
     @ParameterizedTest
-    @Disabled
     @Owner("Edgar Nurmagomedov")
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")
     @Feature("US_11-02-07_ETF_trading")
