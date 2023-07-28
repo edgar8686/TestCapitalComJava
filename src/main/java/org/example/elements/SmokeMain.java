@@ -1,5 +1,7 @@
 package org.example.elements;
 
+import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 import org.example.abstractClass.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -7,11 +9,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.opentest4j.TestSkippedException;
 
 import java.time.Duration;
+
+import static com.codeborne.selenide.Configuration.browser;
 
 public class SmokeMain extends AbstractPage {
     @FindBy(css = ".cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
@@ -41,7 +46,8 @@ public class SmokeMain extends AbstractPage {
             etfTrading.click();
             return this;
         } catch (NoSuchElementException e) {
-            throw new TestSkippedException("Test Skipped: ETF trading not found. For tests on 'fr' language the page \"Education->ETF trading\" doesn't exist on production");
+            logException(e);
+            throw new TestSkippedException("Test Skipped: ETF trading not found. For tests on language the page Education->ETF trading doesn't exist on production");
         }
     }
 
@@ -71,16 +77,20 @@ public class SmokeMain extends AbstractPage {
                 .withTimeout(Duration.ofSeconds(20))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(java.util.NoSuchElementException.class);
-        wait.until(driver -> {
-            return webElement;
-        });
-        return webElement;
+        //wait.until(driver -> {
+        // return webElement;
+        //});
+        return wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public SmokeMain closeLogInForm() {
         fluentWaitLocators(closeWindow);
         closeWindow.click();
         return this;
+    }
+    @Step("logException")
+    public void logException(Exception e) {
+        Allure.addAttachment("Exception Details", e.toString());
     }
 
 }

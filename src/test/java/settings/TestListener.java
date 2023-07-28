@@ -1,7 +1,6 @@
 package settings;
 
 import io.qameta.allure.Allure;
-import org.junit.jupiter.api.extension.Extension;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.OutputType;
@@ -12,7 +11,7 @@ import java.util.Optional;
 public class TestListener implements TestWatcher {
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
-        Allure.getLifecycle().addAttachment("screenshot", "image/png", "png", ((TakesScreenshot) AbstractTest.getDriver()).getScreenshotAs(OutputType.BYTES));
+        Allure.getLifecycle().addAttachment("screenshot", "image/png", "png", ((TakesScreenshot) Settings.getDriver()).getScreenshotAs(OutputType.BYTES));
         System.out.println("Test failed");
     }
 

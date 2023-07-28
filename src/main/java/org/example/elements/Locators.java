@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class Locators extends AbstractPage {
-    //LogIn Trade
+    //LogIn Trade buttons
     @FindBy(css = "#wg_loginBtn")
     private WebElement logIn;
     @FindBy(css = ".cc-header__btn.js_signup.js-analyticsVisible.js-analyticsClick")
@@ -28,6 +28,51 @@ public class Locators extends AbstractPage {
     @FindBy(css = "label[class='checkbox'] span")
     private WebElement checkBox;
     //-------------------------------------------------------
+    //Check TradeForm
+    @FindBy(css = "div[class='form-container-small-header s-between'] div[class='h1']")
+    private WebElement nameSignUp;
+    @FindBy(css = "div[class='form-container-small-header s-between'] a[class='l_btn_signup'][href='#']")
+    private WebElement linkLogin;
+    @FindBy(css = "input[name='ff01']")
+    private WebElement inputSignUpEmail;
+    @FindBy(css = "input[name='ff11']")
+    private WebElement inputSignUpPassword;
+    @FindBy(css = "button[class='btn btn--md btn--wide s2_btn disabled hasPointer']")
+    private WebElement buttonSignUpContinue;
+    @FindBy(css = "a[href='/terms-and-policies']")
+    private WebElement linkPrivate;
+
+    public WebElement getLogIn() {
+        return logIn;
+    }
+
+    public WebElement getTrade() {
+        return trade;
+    }
+
+    public WebElement getNameSignUp() {
+        return nameSignUp;
+    }
+
+    public WebElement getLinkLogin() {
+        return linkLogin;
+    }
+
+    public WebElement getInputSignUpEmail() {
+        return inputSignUpEmail;
+    }
+
+    public WebElement getInputSignUpPassword() {
+        return inputSignUpPassword;
+    }
+
+    public WebElement getButtonSignUpContinue() {
+        return buttonSignUpContinue;
+    }
+
+    public WebElement getLinkPrivate() {
+        return linkPrivate;
+    }
 
     public Locators(WebDriver driver) {
         super(driver);
