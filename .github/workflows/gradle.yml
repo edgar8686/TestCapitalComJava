@@ -44,7 +44,7 @@ jobs:
     #    arguments: build --stacktrace
     
     - name: Run tests with Gradle
-      run: ./gradlew test -Dbrowser=edge --info
+      run: ./gradlew test -Dbrowser=firefox --info
       
       
     - name: Upload artifact "allure-results"
