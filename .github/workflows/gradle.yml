@@ -31,7 +31,7 @@ jobs:
     #  uses: browser-actions/setup-msedge@latest
     
     #- name: Install Mozilla Firefox
-    #  uses: browser-actions/setup-firefox@latest
+     # uses: browser-actions/setup-firefox@latest
       
     #- name: Make gradlew executable
     #  run: chmod +x ./gradlew  
@@ -44,7 +44,7 @@ jobs:
     #    arguments: build --stacktrace
     
     - name: Run tests with Gradle
-      run: ./gradlew test -Dbrowser=firefox --info
+      run: ./gradlew test -Dbrowser=chrome --info
       
       
     - name: Upload artifact "allure-results"
@@ -86,8 +86,6 @@ jobs:
             allure_history: allure-history
             allure_report: allure-report
             gh_pages: gh-pages
-            #ref: gh-pages
-            #path: gh-pages
             keep_reports: 30
          
         - name: 4. Deploy report to Github Pages
