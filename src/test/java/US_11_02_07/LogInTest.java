@@ -1,15 +1,13 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.elements.Locators;
-import org.example.elements.SmokeMain;
+import org.example.elements.LocatorsCheck;
+import org.example.elements.EducatedMove;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.opentest4j.AssertionFailedError;
 import settings.Settings;
 import settings.TestListener;
 
@@ -26,7 +24,7 @@ public class LogInTest extends Settings {
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void logIn(String languages, String countries) {
         try {
-            SmokeMain smokeMain = new SmokeMain(getDriver());
+            EducatedMove smokeMain = new EducatedMove(getDriver());
 
             precondition(languages, countries);
 
@@ -35,7 +33,7 @@ public class LogInTest extends Settings {
             smokeMain.clickETFTrading();
             smokeMain.checkWindow();
 
-            Locators locators = new Locators(getDriver())
+            LocatorsCheck locators = new LocatorsCheck(getDriver())
                     .logInClick();
 
             Assertions.assertTrue(locators.getNameLogIn().isDisplayed());

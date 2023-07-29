@@ -1,8 +1,8 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.elements.Locators;
-import org.example.elements.SmokeMain;
+import org.example.elements.LocatorsCheck;
+import org.example.elements.EducatedMove;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +23,7 @@ public class TradeTest extends Settings {
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void trade(String languages, String countries) {
         try {
-            SmokeMain smoke = new SmokeMain(getDriver());
+            EducatedMove smoke = new EducatedMove(getDriver());
             precondition(languages, countries);
 
             smoke.acceptAllCookies();
@@ -31,7 +31,7 @@ public class TradeTest extends Settings {
             smoke.clickETFTrading();
             smoke.checkWindow();
 
-            Locators locators = new Locators(getDriver())
+            LocatorsCheck locators = new LocatorsCheck(getDriver())
                     .tradeClick();
 
             Assertions.assertTrue(locators.getNameSignUp().isDisplayed());

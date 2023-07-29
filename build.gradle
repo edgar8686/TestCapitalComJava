@@ -41,5 +41,7 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperty 'browser', System.getProperty('browser', 'chrome')
+    // Количество потоков для параллельного выполнения тестов
+    // maxParallelForks = 3
 
 }

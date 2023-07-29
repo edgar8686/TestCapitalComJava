@@ -25,6 +25,24 @@ public abstract class Settings {
     @BeforeAll
     static void init() throws MalformedURLException {
 
+
+       /* @ParameterizedTest(name = "Test in browser: {0}")
+        @MethodSource("browserProvider")
+        public void crossBrowserTest(String browser) throws MalformedURLException {
+            // Настройки для WebDriver
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName(browser);
+
+            // URL Selenoid сервера
+            URL selenoidUrl = new URL("http://localhost:4444/wd/hub");
+
+            // Инициализация WebDriver
+            WebDriver driver = new RemoteWebDriver(selenoidUrl, capabilities);
+        }
+    }
+
+        */
+
         WebDriverManager.chromedriver().setup();
         ChromeOptions optionsChrome = new ChromeOptions();
         //options.setPlatformName("Windows 10");
@@ -89,6 +107,7 @@ public abstract class Settings {
     static void close() {
         if (driver != null) {
             driver.manage().deleteAllCookies();
+            System.out.println("Cookies deleted");
             driver.close();
             System.out.println("The browser is closed");
             driver.quit();

@@ -3,7 +3,6 @@ package org.example.elements;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.example.abstractClass.AbstractPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,9 +15,7 @@ import org.opentest4j.TestSkippedException;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Configuration.browser;
-
-public class SmokeMain extends AbstractPage {
+public class EducatedMove extends AbstractPage {
     @FindBy(css = ".cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
     private WebElement educated;
     @FindBy(xpath = "//a[contains(@data-type,'nav_id243')]")
@@ -32,11 +29,11 @@ public class SmokeMain extends AbstractPage {
     @FindBy(xpath = "//button[contains(@class,'button-cleared small s_cancel')]//*[name()='svg']")
     private WebElement closeWindow;
 
-    public SmokeMain(WebDriver driver) {
+    public EducatedMove(WebDriver driver) {
         super(driver);
     }
 
-    public SmokeMain clickETFTrading() {
+    public EducatedMove clickETFTrading() {
         try {
             fluentWaitLocators(educated);
             new Actions(getDriver())
@@ -83,7 +80,7 @@ public class SmokeMain extends AbstractPage {
         return wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
-    public SmokeMain closeLogInForm() {
+    public EducatedMove closeLogInForm() {
         fluentWaitLocators(closeWindow);
         closeWindow.click();
         return this;

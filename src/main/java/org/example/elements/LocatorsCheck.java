@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Locators extends AbstractPage {
+public class LocatorsCheck extends AbstractPage {
     //LogIn Trade buttons
     @FindBy(css = "#wg_loginBtn")
     private WebElement logIn;
@@ -74,19 +74,19 @@ public class Locators extends AbstractPage {
         return linkPrivate;
     }
 
-    public Locators(WebDriver driver) {
+    public LocatorsCheck(WebDriver driver) {
         super(driver);
     }
 
-    public Locators logInClick() {
-        new SmokeMain(getDriver())
+    public LocatorsCheck logInClick() {
+        new EducatedMove(getDriver())
                 .fluentWaitLocators(logIn);
         logIn.click();
         return this;
     }
 
-    public Locators tradeClick() {
-        new SmokeMain(getDriver())
+    public LocatorsCheck tradeClick() {
+        new EducatedMove(getDriver())
                 .fluentWaitLocators(trade);
         trade.click();
         return this;
