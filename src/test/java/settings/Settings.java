@@ -20,7 +20,7 @@ import java.time.Duration;
 
 public abstract class Settings {
     private static WebDriver driver;
-    static final Dimension windowSize = new Dimension(1280, 720);
+    static final Dimension windowSize = new Dimension(1720, 1000);
 
     @BeforeAll
     static void init() throws MalformedURLException {
