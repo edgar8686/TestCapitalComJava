@@ -1,0 +1,1 @@
+[{"uid":"d22ca269b1815f6e","name":"TC_11-02-07_01 (NoReg) [1] it, ?country=it","time":{"start":1690739469847,"stop":1690739481267,"duration":11420},"status":"broken","severity":"normal"},{"uid":"7ab5dbffed0db0b4","name":"TC_11-02-07_02 (NoReg) [1] it, ?country=it","time":{"start":1690739483140,"stop":1690739490146,"duration":7006},"status":"broken","severity":"normal"}]
