@@ -20,7 +20,7 @@ import java.time.Duration;
 
 public abstract class Settings {
     private static WebDriver driver;
-    static final Dimension windowSize = new Dimension(1720, 1000);
+    static final Dimension windowSize = new Dimension(1280, 720);
 
     @BeforeAll
     static void init() throws MalformedURLException {
@@ -30,8 +30,8 @@ public abstract class Settings {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsChrome.addArguments("--headless");
-        optionsChrome.setHeadless(true);
+        //optionsChrome.addArguments("--headless");
+       // optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -42,8 +42,8 @@ public abstract class Settings {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsFirefox.addArguments("--headless");
-        optionsFirefox.setHeadless(true);
+        //optionsFirefox.addArguments("--headless");
+        //optionsFirefox.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsFirefox.addArguments("--lang=en");
@@ -53,8 +53,8 @@ public abstract class Settings {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsEdge.addArguments("--headless");
-        optionsEdge.setHeadless(true);
+        //optionsEdge.addArguments("--headless");
+        //optionsEdge.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsEdge.addArguments("--lang=en");

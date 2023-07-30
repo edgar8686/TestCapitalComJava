@@ -1,13 +1,10 @@
-package settings;
+package org.example.utils;
 
-import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.api.extension.ParameterContext;
-import org.junit.jupiter.api.extension.ParameterResolver;
 
 import java.util.stream.Stream;
 
 public class CrossBrowserTest {
-    // Массив с поддерживаемыми браузерами
+    /*  // Массив с поддерживаемыми браузерами
     private static final String[] browsers = {"chrome", "firefox", "edge"};
 
     // Метод для предоставления параметров с браузерами
