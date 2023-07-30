@@ -49,4 +49,20 @@ public class CrossBrowserTest {
         driver.manage().addCookie(cookie);
     }
    */
+     /* @ParameterizedTest(name = "Test in browser: {0}")
+        @MethodSource("browserProvider")
+        public void crossBrowserTest(String browser) throws MalformedURLException {
+            // Настройки для WebDriver
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName(browser);
+
+            // URL Selenoid сервера
+            URL selenoidUrl = new URL("http://localhost:4444/wd/hub");
+
+            // Инициализация WebDriver
+            WebDriver driver = new RemoteWebDriver(selenoidUrl, capabilities);
+        }
+    }
+
+      */
 }

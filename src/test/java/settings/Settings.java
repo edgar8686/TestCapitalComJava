@@ -25,24 +25,6 @@ public abstract class Settings {
     @BeforeAll
     static void init() throws MalformedURLException {
 
-
-       /* @ParameterizedTest(name = "Test in browser: {0}")
-        @MethodSource("browserProvider")
-        public void crossBrowserTest(String browser) throws MalformedURLException {
-            // Настройки для WebDriver
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setBrowserName(browser);
-
-            // URL Selenoid сервера
-            URL selenoidUrl = new URL("http://localhost:4444/wd/hub");
-
-            // Инициализация WebDriver
-            WebDriver driver = new RemoteWebDriver(selenoidUrl, capabilities);
-        }
-    }
-
-        */
-
         WebDriverManager.chromedriver().setup();
         ChromeOptions optionsChrome = new ChromeOptions();
         //options.setPlatformName("Windows 10");
