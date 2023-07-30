@@ -3,6 +3,7 @@ package org.example.elements;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.example.abstractClass.AbstractPage;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,7 +21,7 @@ public class EducatedMove extends AbstractPage {
     private WebElement educated;
     @FindBy(xpath = "//a[contains(@data-type,'nav_id243')]")
     private WebElement etfTrading;
-    @FindBy(id = "onetrust-accept-btn-handler")
+    @FindBy(css = "#onetrust-accept-btn-handler")
     private WebElement cookie;
     @FindBy(css = "div[class='form-container-small-header s-between'] div[class='h1']")
     private WebElement signUpForm;
@@ -46,6 +47,7 @@ public class EducatedMove extends AbstractPage {
             logException(e);
             throw new TestSkippedException("Test Skipped: ETF trading not found. For tests on language the page Education->ETF trading doesn't exist on production");
         }
+
     }
 
     public void acceptAllCookies() {
@@ -55,6 +57,8 @@ public class EducatedMove extends AbstractPage {
             }
         } catch (NoSuchElementException e) {
             System.out.println("All cookies have been accepted");
+        } catch (ElementClickInterceptedException a) {
+            System.out.println("Не найден");
         }
     }
 
@@ -85,6 +89,7 @@ public class EducatedMove extends AbstractPage {
         closeWindow.click();
         return this;
     }
+
     @Step("logException")
     public void logException(Exception e) {
         Allure.addAttachment("Exception Details", e.toString());
