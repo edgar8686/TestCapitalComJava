@@ -20,7 +20,7 @@ public class EducatedMove extends AbstractPage {
     private WebElement educated;
     @FindBy(xpath = "//a[contains(@data-type,'nav_id243')]")
     private WebElement etfTrading;
-    @FindBy(css = "#onetrust-accept-btn-handler")
+    @FindBy(id = "onetrust-accept-btn-handler")
     private WebElement cookie;
     @FindBy(css = "div[class='form-container-small-header s-between'] div[class='h1']")
     private WebElement signUpForm;
