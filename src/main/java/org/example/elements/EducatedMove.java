@@ -16,7 +16,7 @@ import org.opentest4j.TestSkippedException;
 import java.time.Duration;
 
 public class EducatedMove extends AbstractPage {
-    @FindBy(css = ".cc-nav__link.cc-nav__link--lvl1.js-analyticsClick[data-type='nav_id96']")
+    @FindBy(css = "a[data-type='nav_id96']")
     private WebElement educated;
     @FindBy(xpath = "//a[contains(@data-type,'nav_id243')]")
     private WebElement etfTrading;
