@@ -80,7 +80,6 @@ public abstract class Settings {
                 throw new IllegalArgumentException("Invalid browser name: " + browser);
         }
 
-
         driver.manage().window().setSize(windowSize);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
