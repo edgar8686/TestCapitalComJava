@@ -50,12 +50,11 @@ public class EducatedMove extends AbstractPage {
 
     }
 
-    public void acceptAllCookies() throws InterruptedException{
+    public void acceptAllCookies() {
         try {
-            Thread.sleep(10000);
-            if (cookie.isDisplayed() && getDriver() != null) {
-                cookie.click();
-            }
+            fluentWaitLocators(cookie);
+            cookie.click();
+
         } catch (NoSuchElementException e) {
             System.out.println("All cookies have been accepted");
         } catch (ElementClickInterceptedException a) {
