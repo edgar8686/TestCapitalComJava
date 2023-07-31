@@ -21,7 +21,7 @@ public class TradeTest extends Settings {
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Trade]")
     @DisplayName("TC_11-02-07_02 (NoReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void trade(String languages, String countries) {
+    void trade(String languages, String countries) throws InterruptedException {
         try {
             EducatedMove smoke = new EducatedMove(getDriver());
             precondition(languages, countries);
