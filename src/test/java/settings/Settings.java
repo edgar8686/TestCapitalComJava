@@ -109,9 +109,4 @@ public abstract class Settings {
             getDriver().get("https://capital.com/" + languages + countries);
         }
     }
-
-    @Step("logException")
-    public static void logException(Exception e) {
-        Allure.addAttachment("Exception Details", e.toString());
-    }
 }

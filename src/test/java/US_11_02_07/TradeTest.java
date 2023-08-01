@@ -22,28 +22,24 @@ public class TradeTest extends Settings {
     @DisplayName("TC_11-02-07_02 (NoReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void trade(String languages, String countries) {
-        try {
-            EducatedMove smoke = new EducatedMove(getDriver());
-            precondition(languages, countries);
 
-            smoke.acceptAllCookies();
-            smoke.checkWindow();
-            smoke.clickETFTrading();
-            smoke.checkWindow();
+        EducatedMove smoke = new EducatedMove(getDriver());
+        precondition(languages, countries);
 
-            LocatorsCheck locators = new LocatorsCheck(getDriver())
-                    .tradeClick();
+        smoke.acceptAllCookies();
+        smoke.checkWindow();
+        smoke.clickETFTrading();
+        smoke.checkWindow();
 
-            Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
-            Assertions.assertTrue(locators.getLinkLogin().isDisplayed());
-            Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed());
-            Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed());
-            Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed());
-            Assertions.assertTrue(locators.getLinkPrivate().isDisplayed());
+        LocatorsCheck locators = new LocatorsCheck(getDriver())
+                .tradeClick();
 
-        } catch (Exception e) {
-            logException(e);
-            throw e;
-        }
+        Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
+        Assertions.assertTrue(locators.getLinkLogin().isDisplayed());
+        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed());
+        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed());
+        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed());
+        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed());
+
     }
 }

@@ -44,7 +44,6 @@ public class EducatedMove extends AbstractPage {
             etfTrading.click();
             return this;
         } catch (NoSuchElementException e) {
-            logException(e);
             throw new TestSkippedException("Test Skipped: ETF trading not found. For tests on language the page Education->ETF trading doesn't exist on production");
         }
 
@@ -53,8 +52,10 @@ public class EducatedMove extends AbstractPage {
     public void acceptAllCookies() {
         try {
             fluentWaitLocators(cookie);
-            cookie.click();
-
+            if (cookie.isDisplayed()) {
+                cookie.click();
+                System.out.println("All cookies accepted");
+            }
         } catch (NoSuchElementException e) {
             System.out.println("All cookies have been accepted");
         } catch (ElementClickInterceptedException a) {
@@ -64,10 +65,11 @@ public class EducatedMove extends AbstractPage {
 
     public void checkWindow() {
         try {
-            if (signUpForm.isDisplayed() && email.isDisplayed() && getDriver() != null) {
+            fluentWaitLocators(closeWindow);
+            if(closeWindow.isDisplayed()) {
                 closeWindow.click();
-                System.out.println("The SignUp form is closed");
             }
+            System.out.println("The SignUp form is closed");
         } catch (NoSuchElementException e) {
             System.out.println("SignUp form don't surfaced");
         }
@@ -88,11 +90,6 @@ public class EducatedMove extends AbstractPage {
         fluentWaitLocators(closeWindow);
         closeWindow.click();
         return this;
-    }
-
-    @Step("logException")
-    public void logException(Exception e) {
-        Allure.addAttachment("Exception Details", e.toString());
     }
 
 }
