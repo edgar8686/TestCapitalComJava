@@ -3,10 +3,7 @@ package org.example.elements;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.example.abstractClass.AbstractPage;
-import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -56,20 +53,19 @@ public class EducatedMove extends AbstractPage {
                 cookie.click();
                 System.out.println("All cookies accepted");
             }
+        } catch (TimeoutException a) {
+            System.out.println("All cookies have been accepted");
         } catch (NoSuchElementException e) {
             System.out.println("All cookies have been accepted");
-        } catch (ElementClickInterceptedException a) {
-            System.out.println("Не найден");
         }
     }
 
     public void checkWindow() {
         try {
-            fluentWaitLocators(closeWindow);
-            if(closeWindow.isDisplayed()) {
+            if (closeWindow.isDisplayed()) {
                 closeWindow.click();
+                System.out.println("The SignUp form is closed");
             }
-            System.out.println("The SignUp form is closed");
         } catch (NoSuchElementException e) {
             System.out.println("SignUp form don't surfaced");
         }
@@ -85,6 +81,16 @@ public class EducatedMove extends AbstractPage {
         //});
         return wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
+
+    public void authorization() {
+        LocatorsCheck check = new LocatorsCheck(getDriver());
+        fluentWaitLocators(check.getTrade());
+        check.getTrade().click();
+        check.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
+        check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
+        check.getButtonSignUpContinueIncluded().click();
+    }
+
 
     public EducatedMove closeLogInForm() {
         fluentWaitLocators(closeWindow);

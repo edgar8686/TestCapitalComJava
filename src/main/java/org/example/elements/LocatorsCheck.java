@@ -37,10 +37,18 @@ public class LocatorsCheck extends AbstractPage {
     private WebElement inputSignUpEmail;
     @FindBy(css = "input[name='ff11']")
     private WebElement inputSignUpPassword;
+    @FindBy(css = "button[class='btn btn--md btn--wide s2_btn']")
+    private WebElement buttonSignUpContinueIncluded;
+
+    public WebElement getButtonSignUpContinueIncluded() {
+        return buttonSignUpContinueIncluded;
+    }
+
     @FindBy(css = "button[class='btn btn--md btn--wide s2_btn disabled hasPointer']")
     private WebElement buttonSignUpContinue;
-    @FindBy(css = "a[href='/terms-and-policies']")
+    @FindBy(css = "a[href$='/terms-and-policies'][target='_blank']")
     private WebElement linkPrivate;
+    //-----------------------------------------------------------------------------------
 
     public WebElement getLogIn() {
         return logIn;
