@@ -4,7 +4,10 @@ package settings;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
+import org.example.elements.EducatedMove;
+import org.example.elements.LocatorsCheck;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,9 +20,11 @@ import org.openqa.selenium.Dimension;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
+import java.util.Set;
 
 public abstract class Settings {
     private static WebDriver driver;
+    Set<Cookie> cookies;
     static final Dimension windowSize = new Dimension(1800, 800);
 
     @BeforeAll
@@ -102,11 +107,39 @@ public abstract class Settings {
 
     @Step
     public void precondition(String languages, String countries) {
-
         if (languages.equalsIgnoreCase("en")) {
             getDriver().get("https://capital.com/" + countries);
         } else {
             getDriver().get("https://capital.com/" + languages + countries);
         }
+    }
+
+    @Step
+    public void authorization() {
+        EducatedMove move = new EducatedMove(getDriver());
+        LocatorsCheck check = new LocatorsCheck(getDriver());
+        move.fluentWaitLocators(check.getTrade());
+        check.getTrade().click();
+        check.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
+        check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
+        check.getButtonSignUpContinueIncluded().click();
+        cookies = driver.manage().getCookies();
+    }
+
+    public void driverClose() {
+        driver.close();
+    }
+
+    @Step
+    public void unAuthorizationStart(String languages, String countries) {
+        if (languages.equalsIgnoreCase("en")) {
+            getDriver().get("https://capital.com/" + countries);
+        } else {
+            getDriver().get("https://capital.com/" + languages + countries);
+        }
+        for (Cookie cookie : cookies) {
+            driver.manage().addCookie(cookie);
+        }
+        driver.navigate().refresh();
     }
 }

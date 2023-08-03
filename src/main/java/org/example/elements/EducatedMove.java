@@ -82,16 +82,6 @@ public class EducatedMove extends AbstractPage {
         return wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
-    public void authorization() {
-        LocatorsCheck check = new LocatorsCheck(getDriver());
-        fluentWaitLocators(check.getTrade());
-        check.getTrade().click();
-        check.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
-        check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
-        check.getButtonSignUpContinueIncluded().click();
-    }
-
-
     public EducatedMove closeLogInForm() {
         fluentWaitLocators(closeWindow);
         closeWindow.click();

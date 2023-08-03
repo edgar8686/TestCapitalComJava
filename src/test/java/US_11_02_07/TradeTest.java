@@ -59,7 +59,9 @@ public class TradeTest extends Settings {
 
         smoke.acceptAllCookies();
         smoke.checkWindow();
-        smoke.authorization();
+        authorization();
+        driverClose();
+        unAuthorizationStart(languages, countries);
         smoke.clickETFTrading();
         smoke.checkWindow();
 
