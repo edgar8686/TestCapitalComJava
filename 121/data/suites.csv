@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Fri Aug 04 18:33:11 GMT 2023","Fri Aug 04 18:33:17 GMT 2023","6423","","US_11_02_07.TradeTest","","US_11_02_07.TradeTest","tradeUnAuth","TC_11-02-07_02 (UnAuth) [1] es, ?country=es","Check: Education > Menu Item [ETF trading] > Test button [Trade]"
+"broken","Fri Aug 04 18:33:02 GMT 2023","Fri Aug 04 18:33:10 GMT 2023","8155","","US_11_02_07.TradeTest","","US_11_02_07.TradeTest","tradeUnReg","TC_11-02-07_02 (UnReg) [1] es, ?country=es","Check: Education > Menu Item [ETF trading] > Test button [Trade]"
+"passed","Fri Aug 04 18:32:25 GMT 2023","Fri Aug 04 18:32:59 GMT 2023","33855","","US_11_02_07.LogInTest","","US_11_02_07.LogInTest","logIn","TC_11-02-07_01 (UnReg) [1] es, ?country=es","Check: Education > Menu Item [ETF trading] > Test button [Log in]"
