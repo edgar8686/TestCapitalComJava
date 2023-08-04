@@ -5,7 +5,7 @@ on: workflow_dispatch
     
 jobs:
    tests:
-    name: Bild enviroment and testing
+    name: I. Bild enviroment and testing
     runs-on: windows-latest
 
     steps:
@@ -21,30 +21,42 @@ jobs:
         distribution: 'adopt'
         architecture: x64
         cache: gradle
-   # - name: Set up Chrome browser
-    #  uses: browser-actions/setup-chrome@v1
-  
-    #- name: Install Chrome
-    #  uses: browser-actions/setup-chrome@latest
-    
-   # - name: Install Microsoft Edge
-    #  uses: browser-actions/setup-msedge@latest
-    
-    #- name: Install Mozilla Firefox
-     # uses: browser-actions/setup-firefox@latest
+
+    #- name: Set up Docker
+    #  run: |
+    #    choco install docker-desktop -y
+    #    if: runner.os == 'Windows'
+
+   # - name: Start Docker Service
+    #  run: |
+     #   Start-Service -Name Docker
+      #  Set-Service -Name Docker -StartupType 'Automatic'
+       # if: runner.os == 'Windows'
+
+   # - name: Wait for Docker to start
+    #  run: |
+     #   Start-Sleep 15
+      #  if: runner.os == 'Windows'
+
+    #- name: Start Selenoid
+     # run: |
+      #  docker run -d --name selenoid 
+       #     -p 4444:4444 
+        #    -v /var/run/docker.sock:/var/run/docker.sock
+         #   -v $GITHUB_WORKSPACE/browsers.json:/etc/selenoid/browsers.json  
+          #  aerokube/selenoid:latest-release
+       # if: runner.os == 'Windows'
       
     #- name: Make gradlew executable
     #  run: chmod +x ./gradlew  
     
-   # - name: Validate Gradle wrapper
-    #  uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
-   # - name: Build with Gradle
-   #   uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
-    #  with:
-    #    arguments: build --stacktrace
-    
     - name: Run tests with Gradle
       run: ./gradlew test -Dbrowser=chrome --info
+
+   # - name: Stop Selenoid
+    #  run: |
+     #   docker stop selenoid
+      #  if: runner.os == 'Windows'
       
       
     - name: Upload artifact "allure-results"
@@ -57,7 +69,7 @@ jobs:
 
   
    generate_report:
-      name: Generate & Deploy Allure report
+      name: II. Generate & Deploy Allure report
       runs-on: ubuntu-latest
       if: always()
       needs: [ tests ]
