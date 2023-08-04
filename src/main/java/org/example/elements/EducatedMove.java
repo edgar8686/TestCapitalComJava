@@ -26,6 +26,22 @@ public class EducatedMove extends AbstractPage {
     private WebElement email;
     @FindBy(xpath = "//button[contains(@class,'button-cleared small s_cancel')]//*[name()='svg']")
     private WebElement closeWindow;
+    @FindBy(css = ".iconex-arrow-down-mini.icon-square.arrow-down")
+    private WebElement buttonLive;
+    @FindBy(css = "div[data-qa='logout']")
+    private WebElement logout;
+
+    public WebElement getEducated() {
+        return educated;
+    }
+
+    public WebElement getButtonLive() {
+        return buttonLive;
+    }
+
+    public WebElement getLogout() {
+        return logout;
+    }
 
     public EducatedMove(WebDriver driver) {
         super(driver);

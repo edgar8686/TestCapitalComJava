@@ -43,8 +43,8 @@ public class TradeTest extends Settings {
         Assertions.assertTrue(locators.getLinkPrivate().isDisplayed());
 
     }
+
     @ParameterizedTest
-    @Disabled
     @Owner("Edgar Nurmagomedov")
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")
     @Feature("US_11-02-07_ETF_trading")
@@ -52,7 +52,7 @@ public class TradeTest extends Settings {
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Trade]")
     @DisplayName("TC_11-02-07_02 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void tradeUnAuth(String languages, String countries) {
+    void tradeUnAuth(String languages, String countries) throws Exception {
 
         EducatedMove smoke = new EducatedMove(getDriver());
         precondition(languages, countries);
@@ -60,10 +60,9 @@ public class TradeTest extends Settings {
         smoke.acceptAllCookies();
         smoke.checkWindow();
         authorization();
-        driverClose();
-        unAuthorizationStart(languages, countries);
-        smoke.clickETFTrading();
+
         smoke.checkWindow();
+        smoke.clickETFTrading();
 
         LocatorsCheck locators = new LocatorsCheck(getDriver())
                 .tradeClick();

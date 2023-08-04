@@ -20,7 +20,7 @@ public class LogInTest extends Settings {
     @Feature("US_11-02-07_ETF_trading")
     @Story("TestETFTrading")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Log in]")
-    @DisplayName("TC_11-02-07_01 (NoReg)")
+    @DisplayName("TC_11-02-07_01 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void logIn(String languages, String countries) {
         EducatedMove smokeMain = new EducatedMove(getDriver());

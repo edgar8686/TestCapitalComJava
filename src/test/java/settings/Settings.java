@@ -19,11 +19,13 @@ import org.openqa.selenium.Dimension;
 
 
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.Set;
 
 public abstract class Settings {
     private static WebDriver driver;
+    private static WebDriver driver2;
     Set<Cookie> cookies;
     static final Dimension windowSize = new Dimension(1800, 800);
 
@@ -35,8 +37,8 @@ public abstract class Settings {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsChrome.addArguments("--headless");
-        optionsChrome.setHeadless(true);
+        //optionsChrome.addArguments("--headless");
+        //optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -108,38 +110,35 @@ public abstract class Settings {
     @Step
     public void precondition(String languages, String countries) {
         if (languages.equalsIgnoreCase("en")) {
-            getDriver().get("https://capital.com/" + countries);
+            getDriver().navigate().to("https://capital.com/" + countries);
         } else {
-            getDriver().get("https://capital.com/" + languages + countries);
+            getDriver().navigate().to("https://capital.com/" + languages + countries);
         }
     }
 
     @Step
-    public void authorization() {
+    public void authorization() throws InterruptedException {
         EducatedMove move = new EducatedMove(getDriver());
         LocatorsCheck check = new LocatorsCheck(getDriver());
         move.fluentWaitLocators(check.getTrade());
         check.getTrade().click();
+        Thread.sleep(2000);
         check.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
+        Thread.sleep(2000);
         check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
+        move.fluentWaitLocators(check.getButtonSignUpContinueIncluded());
         check.getButtonSignUpContinueIncluded().click();
-        cookies = driver.manage().getCookies();
-    }
-
-    public void driverClose() {
-        driver.close();
+        Thread.sleep(10000);
+        move.fluentWaitLocators(move.getButtonLive());
+        move.getButtonLive().click();
+        move.getLogout().click();
     }
 
     @Step
     public void unAuthorizationStart(String languages, String countries) {
-        if (languages.equalsIgnoreCase("en")) {
-            getDriver().get("https://capital.com/" + countries);
-        } else {
-            getDriver().get("https://capital.com/" + languages + countries);
-        }
         for (Cookie cookie : cookies) {
-            driver.manage().addCookie(cookie);
+            driver2.manage().addCookie(cookie);
         }
-        driver.navigate().refresh();
+        driver2.navigate().refresh();
     }
 }
