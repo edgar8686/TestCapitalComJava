@@ -61,7 +61,6 @@ public class TradeTest extends Settings {
         smoke.checkWindow();
         authorization();
 
-        smoke.checkWindow();
         smoke.clickETFTrading();
 
         LocatorsCheck locators = new LocatorsCheck(getDriver())

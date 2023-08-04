@@ -89,7 +89,7 @@ public class EducatedMove extends AbstractPage {
 
     public WebElement fluentWaitLocators(WebElement webElement) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(Duration.ofSeconds(20))
+                .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(java.util.NoSuchElementException.class);
         //wait.until(driver -> {
