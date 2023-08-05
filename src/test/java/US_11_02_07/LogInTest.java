@@ -19,10 +19,10 @@ public class LogInTest extends Settings {
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")
     @Feature("US_11-02-07_ETF_trading")
     @Story("TestETFTrading")
-    @Description("Check: Education > Menu Item [ETF trading] > Test button [Log in]")
+    @Description("Check: Education > Menu Item [ETF trading] > Test button [LogIn]")
     @DisplayName("TC_11-02-07_01 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void logIn(String languages, String countries) {
+    void logInUnReg(String languages, String countries) {
         EducatedMove smokeMain = new EducatedMove(getDriver());
 
         precondition(languages, countries);
@@ -31,6 +31,39 @@ public class LogInTest extends Settings {
         smokeMain.checkWindow();
         smokeMain.clickETFTrading();
         smokeMain.checkWindow();
+
+        LocatorsCheck locators = new LocatorsCheck(getDriver())
+                .logInClick();
+
+        Assertions.assertTrue(locators.getNameLogIn().isDisplayed());
+        Assertions.assertTrue(locators.getLinkSignUp().isDisplayed());
+        Assertions.assertTrue(locators.getInputEmail().isDisplayed());
+        Assertions.assertTrue(locators.getInputPassword().isDisplayed());
+        Assertions.assertTrue(locators.getInputPassword().isDisplayed());
+        Assertions.assertTrue(locators.getButtonContinue().isDisplayed());
+        Assertions.assertTrue(locators.getCheckBox().isDisplayed());
+
+    }
+
+    @ParameterizedTest
+    @Owner("Edgar Nurmagomedov")
+    @Epic("tests.US_11_Education.11-02-07_ETF_trading")
+    @Feature("US_11-02-07_ETF_trading")
+    @Story("TestETFTrading")
+    @Description("Check: Education > Menu Item [ETF trading] > Test button [LogIn]")
+    @DisplayName("TC_11-02-07_01 (UnAuth)")
+    @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
+    void logInUnAuth(String languages, String countries) throws InterruptedException{
+        EducatedMove smokeMain = new EducatedMove(getDriver());
+
+        precondition(languages, countries);
+
+        smokeMain.acceptAllCookies();
+        smokeMain.checkWindow();
+
+        smokeMain.authorization();
+
+        smokeMain.clickETFTrading();
 
         LocatorsCheck locators = new LocatorsCheck(getDriver())
                 .logInClick();

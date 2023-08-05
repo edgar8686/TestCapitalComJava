@@ -35,18 +35,11 @@ public class EducatedMove extends AbstractPage {
         return educated;
     }
 
-    public WebElement getButtonLive() {
-        return buttonLive;
-    }
-
-    public WebElement getLogout() {
-        return logout;
-    }
-
     public EducatedMove(WebDriver driver) {
         super(driver);
     }
 
+    //--------------------------------------------------------------------------------------------------------------------
     public EducatedMove clickETFTrading() {
         try {
             fluentWaitLocators(educated);
@@ -59,8 +52,9 @@ public class EducatedMove extends AbstractPage {
         } catch (NoSuchElementException e) {
             throw new TestSkippedException("Test Skipped: ETF trading not found. For tests on language the page Education->ETF trading doesn't exist on production");
         }
-
     }
+
+    //---------------------------------------------------------------------------------------------------------------------
 
     public void acceptAllCookies() {
         try {
@@ -104,4 +98,19 @@ public class EducatedMove extends AbstractPage {
         return this;
     }
 
+    public void authorization() throws InterruptedException {
+        LocatorsCheck check = new LocatorsCheck(getDriver());
+        fluentWaitLocators(check.getTrade());
+        check.getTrade().click();
+        Thread.sleep(2000);
+        check.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
+        Thread.sleep(2000);
+        check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
+        fluentWaitLocators(check.getButtonSignUpContinueIncluded());
+        check.getButtonSignUpContinueIncluded().click();
+        Thread.sleep(10000);
+        fluentWaitLocators(buttonLive);
+        buttonLive.click();
+        logout.click();
+    }
 }

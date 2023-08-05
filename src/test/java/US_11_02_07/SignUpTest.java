@@ -4,7 +4,6 @@ import io.qameta.allure.*;
 import org.example.elements.LocatorsCheck;
 import org.example.elements.EducatedMove;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,16 +12,16 @@ import settings.Settings;
 import settings.TestListener;
 
 @ExtendWith(TestListener.class)
-public class TradeTest extends Settings {
+public class SignUpTest extends Settings {
     @ParameterizedTest
     @Owner("Edgar Nurmagomedov")
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")
     @Feature("US_11-02-07_ETF_trading")
     @Story("TestETFTrading")
-    @Description("Check: Education > Menu Item [ETF trading] > Test button [Trade]")
+    @Description("Check: Education > Menu Item [ETF trading] > Test button [SignUp]")
     @DisplayName("TC_11-02-07_02 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void tradeUnReg(String languages, String countries) {
+    void signUpUnReg(String languages, String countries) {
 
         EducatedMove smoke = new EducatedMove(getDriver());
         precondition(languages, countries);
@@ -33,7 +32,7 @@ public class TradeTest extends Settings {
         smoke.checkWindow();
 
         LocatorsCheck locators = new LocatorsCheck(getDriver())
-                .tradeClick();
+                .signUpClick();
 
         Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
         Assertions.assertTrue(locators.getLinkLogin().isDisplayed());
@@ -49,22 +48,22 @@ public class TradeTest extends Settings {
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")
     @Feature("US_11-02-07_ETF_trading")
     @Story("TestETFTrading")
-    @Description("Check: Education > Menu Item [ETF trading] > Test button [Trade]")
+    @Description("Check: Education > Menu Item [ETF trading] > Test button [SignUp]")
     @DisplayName("TC_11-02-07_02 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void tradeUnAuth(String languages, String countries) throws Exception {
+    void signUpUnAuth(String languages, String countries) throws InterruptedException {
 
         EducatedMove smoke = new EducatedMove(getDriver());
         precondition(languages, countries);
 
         smoke.acceptAllCookies();
         smoke.checkWindow();
-        authorization();
+        smoke.authorization();
 
         smoke.clickETFTrading();
 
         LocatorsCheck locators = new LocatorsCheck(getDriver())
-                .tradeClick();
+                .signUpClick();
 
         Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
         Assertions.assertTrue(locators.getLinkLogin().isDisplayed());

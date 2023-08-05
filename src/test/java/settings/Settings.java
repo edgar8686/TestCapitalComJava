@@ -25,7 +25,6 @@ import java.util.Set;
 
 public abstract class Settings {
     private static WebDriver driver;
-    private static WebDriver driver2;
     Set<Cookie> cookies;
     static final Dimension windowSize = new Dimension(1800, 800);
 
@@ -117,28 +116,10 @@ public abstract class Settings {
     }
 
     @Step
-    public void authorization() throws InterruptedException {
-        EducatedMove move = new EducatedMove(getDriver());
-        LocatorsCheck check = new LocatorsCheck(getDriver());
-        move.fluentWaitLocators(check.getTrade());
-        check.getTrade().click();
-        Thread.sleep(2000);
-        check.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
-        Thread.sleep(2000);
-        check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
-        move.fluentWaitLocators(check.getButtonSignUpContinueIncluded());
-        check.getButtonSignUpContinueIncluded().click();
-        Thread.sleep(10000);
-        move.fluentWaitLocators(move.getButtonLive());
-        move.getButtonLive().click();
-        move.getLogout().click();
-    }
-
-    @Step
     public void unAuthorizationStart(String languages, String countries) {
         for (Cookie cookie : cookies) {
-            driver2.manage().addCookie(cookie);
+            driver.manage().addCookie(cookie);
         }
-        driver2.navigate().refresh();
+        driver.navigate().refresh();
     }
 }

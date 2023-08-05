@@ -10,7 +10,7 @@ public class LocatorsCheck extends AbstractPage {
     @FindBy(css = "#wg_loginBtn")
     private WebElement logIn;
     @FindBy(css = ".cc-header__btn.js_signup.js-analyticsVisible.js-analyticsClick")
-    private WebElement trade;
+    private WebElement signUp;
     //-------------------------------------------------
     //Check LogInForm
     @FindBy(css = "div[class='form-container-white form-container-small modal'] div[class='h1']")
@@ -50,12 +50,27 @@ public class LocatorsCheck extends AbstractPage {
     private WebElement linkPrivate;
     //-----------------------------------------------------------------------------------
 
+
+    public LocatorsCheck logInClick() {
+        new EducatedMove(getDriver())
+                .fluentWaitLocators(logIn);
+        logIn.click();
+        return this;
+    }
+
+    public LocatorsCheck signUpClick() {
+        new EducatedMove(getDriver())
+                .fluentWaitLocators(signUp);
+        signUp.click();
+        return this;
+    }
+
     public WebElement getLogIn() {
         return logIn;
     }
 
     public WebElement getTrade() {
-        return trade;
+        return signUp;
     }
 
     public WebElement getNameSignUp() {
@@ -86,19 +101,6 @@ public class LocatorsCheck extends AbstractPage {
         super(driver);
     }
 
-    public LocatorsCheck logInClick() {
-        new EducatedMove(getDriver())
-                .fluentWaitLocators(logIn);
-        logIn.click();
-        return this;
-    }
-
-    public LocatorsCheck tradeClick() {
-        new EducatedMove(getDriver())
-                .fluentWaitLocators(trade);
-        trade.click();
-        return this;
-    }
 
     public WebElement getNameLogIn() {
         return nameLogIn;
