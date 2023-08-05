@@ -58,6 +58,7 @@ public class SignUpTest extends Settings {
 
         smoke.acceptAllCookies();
         smoke.checkWindow();
+
         smoke.authorization();
 
         smoke.clickETFTrading();

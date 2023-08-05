@@ -26,10 +26,16 @@ public class EducatedMove extends AbstractPage {
     private WebElement email;
     @FindBy(xpath = "//button[contains(@class,'button-cleared small s_cancel')]//*[name()='svg']")
     private WebElement closeWindow;
+    //------------------------------------------------------------------------------------
+    // platform elements
     @FindBy(css = ".iconex-arrow-down-mini.icon-square.arrow-down")
     private WebElement buttonLive;
     @FindBy(css = "div[data-qa='logout']")
     private WebElement logout;
+    @FindBy(css = "button[class='iconex-close-small icon-square modal__header-btn']")
+    private WebElement iconClose;
+    @FindBy(css = "button[class='solid default large']")
+    private WebElement ok;
 
     public WebElement getEducated() {
         return educated;
@@ -77,7 +83,18 @@ public class EducatedMove extends AbstractPage {
                 System.out.println("The SignUp form is closed");
             }
         } catch (NoSuchElementException e) {
-            System.out.println("SignUp form don't surfaced");
+            System.out.println("SignUp form is not surfaced");
+        }
+    }
+    public void checkButtonIconClose() {
+        try {
+            fluentWaitLocators(iconClose);
+            if (iconClose.isDisplayed()) {
+                iconClose.click();
+                System.out.println("The button [iconClose] is closed");
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("The button [iconClose] dis not surfaced");
         }
     }
 
@@ -108,7 +125,8 @@ public class EducatedMove extends AbstractPage {
         check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
         fluentWaitLocators(check.getButtonSignUpContinueIncluded());
         check.getButtonSignUpContinueIncluded().click();
-        Thread.sleep(10000);
+       // Thread.sleep(20000);
+        checkButtonIconClose();
         fluentWaitLocators(buttonLive);
         buttonLive.click();
         logout.click();
