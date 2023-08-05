@@ -81,15 +81,15 @@ public class EducatedMove extends AbstractPage {
         }
     }
 
-    public WebElement fluentWaitLocators(WebElement webElement) {
+    public void fluentWaitLocators(WebElement webElement) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(Duration.ofSeconds(42))
-                .pollingEvery(Duration.ofSeconds(3))
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(java.util.NoSuchElementException.class);
         //wait.until(driver -> {
         // return webElement;
         //});
-        return wait.until(ExpectedConditions.elementToBeClickable(webElement));
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public EducatedMove closeLogInForm() {
