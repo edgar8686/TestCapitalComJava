@@ -25,6 +25,7 @@ import java.util.Set;
 
 public abstract class Settings {
     private static WebDriver driver;
+    static String baseUrl = "https://capital.com/";
     Set<Cookie> cookies;
     static final Dimension windowSize = new Dimension(1800, 800);
 
@@ -108,11 +109,15 @@ public abstract class Settings {
 
     @Step
     public void precondition(String languages, String countries) {
-        if (languages.equalsIgnoreCase("en")) {
-            getDriver().navigate().to("https://capital.com/" + countries);
-        } else {
-            getDriver().navigate().to("https://capital.com/" + languages + countries);
-        }
+        String absoluteUrl = baseUrl + (languages.equalsIgnoreCase("en") ? "" : languages) + countries;
+        getDriver().navigate().to(absoluteUrl);
+       // if (languages.equalsIgnoreCase("en")) {
+          //  String absolutUrl = baseUrl + countries;
+            //getDriver().navigate().to(absolutUrl);
+      //  } else {
+           // String absolutUrl = baseUrl + languages + countries;
+           // getDriver().navigate().to(absolutUrl);
+       // }
     }
 
     @Step

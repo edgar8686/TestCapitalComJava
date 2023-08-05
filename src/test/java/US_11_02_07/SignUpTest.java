@@ -21,7 +21,7 @@ public class SignUpTest extends Settings {
     @Description("Check: Education > Menu Item [ETF trading] > Test button [SignUp]")
     @DisplayName("TC_11-02-07_02 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void signUpUnReg(String languages, String countries) {
+    void signUpUnReg(String languages, String countries) throws InterruptedException{
 
         EducatedMove smoke = new EducatedMove(getDriver());
         precondition(languages, countries);

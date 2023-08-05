@@ -22,7 +22,7 @@ public class LogInTest extends Settings {
     @Description("Check: Education > Menu Item [ETF trading] > Test button [LogIn]")
     @DisplayName("TC_11-02-07_01 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void logInUnReg(String languages, String countries) {
+    void logInUnReg(String languages, String countries) throws InterruptedException{
         EducatedMove smokeMain = new EducatedMove(getDriver());
 
         precondition(languages, countries);

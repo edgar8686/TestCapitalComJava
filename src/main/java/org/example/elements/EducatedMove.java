@@ -62,8 +62,9 @@ public class EducatedMove extends AbstractPage {
 
     //---------------------------------------------------------------------------------------------------------------------
 
-    public void acceptAllCookies() {
+    public void acceptAllCookies() throws InterruptedException {
         try {
+            Thread.sleep(20000);
             fluentWaitLocators(cookie);
             if (cookie.isDisplayed()) {
                 cookie.click();
@@ -100,7 +101,7 @@ public class EducatedMove extends AbstractPage {
 
     public void fluentWaitLocators(WebElement webElement) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(Duration.ofSeconds(40))
+                .withTimeout(Duration.ofSeconds(50))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(java.util.NoSuchElementException.class);
         //wait.until(driver -> {
