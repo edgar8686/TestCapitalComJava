@@ -21,6 +21,17 @@ jobs:
         distribution: 'adopt'
         architecture: x64
         cache: gradle
+#------------------------------------------------
+   # - name: Install Docker Compose
+    #  run: |
+     #   choco install docker-compose -y
+    #    if: runner.os == 'Windows'
+
+   # - name: Start Selenoid
+    #  run: |
+     #   docker-compose up -d
+     #   if: runner.os == 'Windows'
+#------------------------------------------------     
 
     #- name: Set up Docker
     #  run: |
@@ -46,6 +57,7 @@ jobs:
          #   -v $GITHUB_WORKSPACE/browsers.json:/etc/selenoid/browsers.json  
           #  aerokube/selenoid:latest-release
        # if: runner.os == 'Windows'
+#------------------------------------------------------------------------
       
     #- name: Make gradlew executable
     #  run: chmod +x ./gradlew  
@@ -53,11 +65,17 @@ jobs:
     - name: Run tests with Gradle
       run: ./gradlew test -Dbrowser=chrome --info
 
+#--------------------------------------------------------------------
    # - name: Stop Selenoid
     #  run: |
      #   docker stop selenoid
       #  if: runner.os == 'Windows'
       
+   # - name: Stop Selenoid
+    #  run: |
+     #   docker-compose down
+      #  if: runner.os == 'Windows'
+#-------------------------------------------------------------------- 
       
     - name: Upload artifact "allure-results"
       if: always()
