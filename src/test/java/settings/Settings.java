@@ -37,8 +37,8 @@ public abstract class Settings {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        //optionsChrome.addArguments("--headless");
-        //optionsChrome.setHeadless(true);
+        optionsChrome.addArguments("--headless");
+        optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -49,8 +49,8 @@ public abstract class Settings {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        //optionsFirefox.addArguments("--headless");
-        //optionsFirefox.setHeadless(true);
+        optionsFirefox.addArguments("--headless");
+        optionsFirefox.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsFirefox.addArguments("--lang=en");
