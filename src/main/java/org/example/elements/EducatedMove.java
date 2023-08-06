@@ -64,7 +64,7 @@ public class EducatedMove extends AbstractPage {
 
     public void acceptAllCookies() throws InterruptedException {
         try {
-            Thread.sleep(20000);
+            Thread.sleep(5000);
             fluentWaitLocators(cookie);
             if (cookie.isDisplayed()) {
                 cookie.click();
