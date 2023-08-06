@@ -62,8 +62,8 @@ public class LogInTest extends Settings {
         smokeMain.checkWindow();
 
         smokeMain.authorization();
-        //Thread.sleep(10000);
-        //getDriver().navigate().to("https://capital.com/cn?country=hk");
+        Thread.sleep(10000);
+        getDriver().navigate().to("https://capital.com/pl?country=pl");
 
         smokeMain.clickETFTrading();
 
