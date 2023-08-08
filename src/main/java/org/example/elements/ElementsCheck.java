@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LocatorsCheck extends AbstractPage {
+public class ElementsCheck extends AbstractPage {
     //LogIn Trade buttons
     @FindBy(css = "#wg_loginBtn")
     private WebElement logIn;
@@ -46,19 +46,19 @@ public class LocatorsCheck extends AbstractPage {
 
     @FindBy(css = "button[class='btn btn--md btn--wide s2_btn disabled hasPointer']")
     private WebElement buttonSignUpContinue;
-    @FindBy(css = "a[href$='/terms-and-policies'][target='_blank']")
+    @FindBy(css = "div[class='reg-desc textCenter'] p a")
     private WebElement linkPrivate;
     //-----------------------------------------------------------------------------------
 
 
-    public LocatorsCheck logInClick() {
+    public ElementsCheck logInClick() {
         new EducatedMove(getDriver())
                 .fluentWaitLocators(logIn);
         logIn.click();
         return this;
     }
 
-    public LocatorsCheck signUpClick() {
+    public ElementsCheck signUpClick() {
         new EducatedMove(getDriver())
                 .fluentWaitLocators(signUp);
         signUp.click();
@@ -97,7 +97,7 @@ public class LocatorsCheck extends AbstractPage {
         return linkPrivate;
     }
 
-    public LocatorsCheck(WebDriver driver) {
+    public ElementsCheck(WebDriver driver) {
         super(driver);
     }
 

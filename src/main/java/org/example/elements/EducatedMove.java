@@ -1,7 +1,5 @@
 package org.example.elements;
 
-import io.qameta.allure.Allure;
-import io.qameta.allure.Step;
 import org.example.abstractClass.AbstractPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -115,7 +113,7 @@ public class EducatedMove extends AbstractPage {
 
 
     public void authorization() throws InterruptedException {
-        LocatorsCheck check = new LocatorsCheck(getDriver());
+        ElementsCheck check = new ElementsCheck(getDriver());
         fluentWaitLocators(check.getTrade());
         check.getTrade().click();
         Thread.sleep(1000);

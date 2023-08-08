@@ -1,7 +1,7 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.elements.LocatorsCheck;
+import org.example.elements.ElementsCheck;
 import org.example.elements.EducatedMove;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -31,7 +31,7 @@ public class SignUpTest extends SeleniumConfiguration {
         smoke.clickETFTrading();
         smoke.checkWindow();
 
-        LocatorsCheck locators = new LocatorsCheck(getDriver())
+        ElementsCheck locators = new ElementsCheck(getDriver())
                 .signUpClick();
 
         Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
@@ -60,12 +60,12 @@ public class SignUpTest extends SeleniumConfiguration {
         smoke.checkWindow();
 
         smoke.authorization();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         precondition(languages, countries);
 
         smoke.clickETFTrading();
 
-        LocatorsCheck locators = new LocatorsCheck(getDriver())
+        ElementsCheck locators = new ElementsCheck(getDriver())
                 .signUpClick();
 
         Assertions.assertTrue(locators.getNameSignUp().isDisplayed());

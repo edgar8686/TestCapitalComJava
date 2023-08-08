@@ -1,7 +1,7 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.elements.LocatorsCheck;
+import org.example.elements.ElementsCheck;
 import org.example.elements.EducatedMove;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,6 +13,8 @@ import settings.TestListener;
 
 @ExtendWith(TestListener.class)
 public class LogInTest extends SeleniumConfiguration {
+    EducatedMove smokeMain = new EducatedMove(getDriver());
+    ElementsCheck locators = new ElementsCheck(getDriver());
 
     @ParameterizedTest
     @Owner("Edgar Nurmagomedov")
@@ -23,7 +25,6 @@ public class LogInTest extends SeleniumConfiguration {
     @DisplayName("TC_11-02-07_01 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void logInUnReg(String languages, String countries) throws InterruptedException {
-        EducatedMove smokeMain = new EducatedMove(getDriver());
 
         precondition(languages, countries);
 
@@ -32,8 +33,7 @@ public class LogInTest extends SeleniumConfiguration {
         smokeMain.clickETFTrading();
         smokeMain.checkWindow();
 
-        LocatorsCheck locators = new LocatorsCheck(getDriver())
-                .logInClick();
+        locators.logInClick();
 
         Assertions.assertTrue(locators.getNameLogIn().isDisplayed());
         Assertions.assertTrue(locators.getLinkSignUp().isDisplayed());
@@ -54,7 +54,6 @@ public class LogInTest extends SeleniumConfiguration {
     @DisplayName("TC_11-02-07_01 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void logInUnAuth(String languages, String countries) throws InterruptedException {
-        EducatedMove smokeMain = new EducatedMove(getDriver());
 
         precondition(languages, countries);
 
@@ -62,14 +61,12 @@ public class LogInTest extends SeleniumConfiguration {
         smokeMain.checkWindow();
 
         smokeMain.authorization();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         precondition(languages, countries);
-
 
         smokeMain.clickETFTrading();
 
-        LocatorsCheck locators = new LocatorsCheck(getDriver())
-                .logInClick();
+        locators.logInClick();
 
         Assertions.assertTrue(locators.getNameLogIn().isDisplayed());
         Assertions.assertTrue(locators.getLinkSignUp().isDisplayed());
