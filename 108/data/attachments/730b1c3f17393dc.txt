@@ -1,9 +1,0 @@
-org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element is not clickable at point (896, 675)
-  (Session info: chrome=115.0.5790.102)
-Build info: version: '4.10.0', revision: 'c14d967899'
-System info: os.name: 'Windows Server 2022', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.20'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c5c1fb5e5e68c3c16ee9b9bf93d7e7d3, clickElement {id=4EB8F53419F5150D5F86240F8255603B_element_30}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 115.0.5790.102, chrome: {chromedriverVersion: 115.0.5790.102 (90efd4b0ad6..., userDataDir: C:\Windows\SystemTemp\scope...}, goog:chromeOptions: {debuggerAddress: localhost:50129}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50129/devtoo..., se:cdpVersion: 115.0.5790.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (c5c1fb5e5e68c3c16ee9b9bf93d7e7d3)] -> css selector: #onetrust-accept-btn-handler]
-Session ID: c5c1fb5e5e68c3c16ee9b9bf93d7e7d3
