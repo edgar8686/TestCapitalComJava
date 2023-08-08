@@ -117,7 +117,6 @@ public abstract class SeleniumConfiguration {
         // }
     }
 
-    @Step
     public void unAuthorizationStart(String languages, String countries) {
         for (Cookie cookie : cookies) {
             driver.manage().addCookie(cookie);

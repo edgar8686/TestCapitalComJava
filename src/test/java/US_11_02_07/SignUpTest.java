@@ -30,7 +30,7 @@ public class SignUpTest extends SeleniumConfiguration {
 
         smoke.acceptAllCookies();
         smoke.checkWindow();
-        smoke.clickETFTrading();
+        smoke.clickPage();
         smoke.checkWindow();
 
         locators.signUpClick();
@@ -63,7 +63,7 @@ public class SignUpTest extends SeleniumConfiguration {
         //Thread.sleep(5000);
         precondition(languages, countries);
 
-        smoke.clickETFTrading();
+        smoke.clickPage();
 
         locators.signUpClick();
 

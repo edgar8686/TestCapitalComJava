@@ -46,7 +46,7 @@ public class EducatedMove extends AbstractPage {
 
     //--------------------------------------------------------------------------------------------------------------------
     //Move page
-    public EducatedMove clickETFTrading() {
+    public EducatedMove clickPage() {
         try {
             fluentWaitLocators(educated);
             new Actions(getDriver())

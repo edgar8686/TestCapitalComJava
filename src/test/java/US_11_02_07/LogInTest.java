@@ -30,7 +30,7 @@ public class LogInTest extends SeleniumConfiguration {
 
         smokeMain.acceptAllCookies();
         smokeMain.checkWindow();
-        smokeMain.clickETFTrading();
+        smokeMain.clickPage();
         smokeMain.checkWindow();
 
         locators.logInClick();
@@ -64,7 +64,7 @@ public class LogInTest extends SeleniumConfiguration {
         //Thread.sleep(5000);
         precondition(languages, countries);
 
-        smokeMain.clickETFTrading();
+        smokeMain.clickPage();
 
         locators.logInClick();
 
