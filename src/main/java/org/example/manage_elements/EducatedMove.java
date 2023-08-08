@@ -1,4 +1,4 @@
-package org.example.elements;
+package org.example.manage_elements;
 
 import org.example.abstractClass.AbstractPage;
 import org.openqa.selenium.*;
@@ -64,7 +64,7 @@ public class EducatedMove extends AbstractPage {
 
     public void acceptAllCookies() throws InterruptedException {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
             fluentWaitLocators(cookie);
             if (cookie.isDisplayed()) {
                 cookie.click();

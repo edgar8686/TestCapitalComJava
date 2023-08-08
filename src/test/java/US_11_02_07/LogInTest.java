@@ -1,8 +1,8 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.elements.ElementsCheck;
-import org.example.elements.EducatedMove;
+import org.example.manage_elements.ElementsCheck;
+import org.example.manage_elements.EducatedMove;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;

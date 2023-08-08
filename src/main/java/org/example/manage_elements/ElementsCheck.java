@@ -1,4 +1,4 @@
-package org.example.elements;
+package org.example.manage_elements;
 
 import org.example.abstractClass.AbstractPage;
 import org.openqa.selenium.WebDriver;

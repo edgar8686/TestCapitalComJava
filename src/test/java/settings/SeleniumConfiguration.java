@@ -4,7 +4,6 @@ package settings;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
-import org.example.elements.EducatedMove;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
@@ -105,7 +104,7 @@ public abstract class SeleniumConfiguration {
         return driver;
     }
 
-    @Step
+
     public void precondition(String languages, String countries) {
         String absoluteUrl = baseUrl + (languages.equalsIgnoreCase("en") ? "" : languages) + countries;
         getDriver().navigate().to(absoluteUrl);

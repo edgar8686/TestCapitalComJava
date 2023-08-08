@@ -1,8 +1,8 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.elements.ElementsCheck;
-import org.example.elements.EducatedMove;
+import org.example.manage_elements.ElementsCheck;
+import org.example.manage_elements.EducatedMove;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +13,9 @@ import settings.TestListener;
 
 @ExtendWith(TestListener.class)
 public class SignUpTest extends SeleniumConfiguration {
+    EducatedMove smoke = new EducatedMove(getDriver());
+    ElementsCheck locators = new ElementsCheck(getDriver());
+
     @ParameterizedTest
     @Owner("Edgar Nurmagomedov")
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")
@@ -21,9 +24,8 @@ public class SignUpTest extends SeleniumConfiguration {
     @Description("Check: Education > Menu Item [ETF trading] > Test button [SignUp]")
     @DisplayName("TC_11-02-07_02 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void signUpUnReg(String languages, String countries) throws InterruptedException{
+    void signUpUnReg(String languages, String countries) throws InterruptedException {
 
-        EducatedMove smoke = new EducatedMove(getDriver());
         precondition(languages, countries);
 
         smoke.acceptAllCookies();
@@ -31,8 +33,7 @@ public class SignUpTest extends SeleniumConfiguration {
         smoke.clickETFTrading();
         smoke.checkWindow();
 
-        ElementsCheck locators = new ElementsCheck(getDriver())
-                .signUpClick();
+        locators.signUpClick();
 
         Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
         Assertions.assertTrue(locators.getLinkLogin().isDisplayed());
@@ -53,7 +54,6 @@ public class SignUpTest extends SeleniumConfiguration {
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void signUpUnAuth(String languages, String countries) throws InterruptedException {
 
-        EducatedMove smoke = new EducatedMove(getDriver());
         precondition(languages, countries);
 
         smoke.acceptAllCookies();
@@ -65,8 +65,7 @@ public class SignUpTest extends SeleniumConfiguration {
 
         smoke.clickETFTrading();
 
-        ElementsCheck locators = new ElementsCheck(getDriver())
-                .signUpClick();
+        locators.signUpClick();
 
         Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
         Assertions.assertTrue(locators.getLinkLogin().isDisplayed());
