@@ -37,8 +37,8 @@ public abstract class Settings {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsChrome.addArguments("--headless");
-        optionsChrome.setHeadless(true);
+       // optionsChrome.addArguments("--headless");
+       // optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -88,7 +88,7 @@ public abstract class Settings {
         }
 
         driver.manage().window().setSize(windowSize);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @AfterAll

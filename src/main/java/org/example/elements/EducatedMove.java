@@ -14,6 +14,7 @@ import org.opentest4j.TestSkippedException;
 import java.time.Duration;
 
 public class EducatedMove extends AbstractPage {
+    static String baseUrl = "https://capital.com/";
     @FindBy(css = "a[data-type='nav_id96']")
     private WebElement educated;
     @FindBy(xpath = "//a[contains(@data-type,'nav_id243')]")
@@ -46,6 +47,7 @@ public class EducatedMove extends AbstractPage {
     }
 
     //--------------------------------------------------------------------------------------------------------------------
+    //Move page
     public EducatedMove clickETFTrading() {
         try {
             fluentWaitLocators(educated);
@@ -64,7 +66,7 @@ public class EducatedMove extends AbstractPage {
 
     public void acceptAllCookies() throws InterruptedException {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             fluentWaitLocators(cookie);
             if (cookie.isDisplayed()) {
                 cookie.click();
@@ -87,6 +89,7 @@ public class EducatedMove extends AbstractPage {
             System.out.println("SignUp form is not surfaced");
         }
     }
+
     public void checkButtonIconClose() {
         try {
             fluentWaitLocators(iconClose);
@@ -101,7 +104,7 @@ public class EducatedMove extends AbstractPage {
 
     public void fluentWaitLocators(WebElement webElement) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(Duration.ofSeconds(50))
+                .withTimeout(Duration.ofSeconds(40))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(java.util.NoSuchElementException.class);
         //wait.until(driver -> {
@@ -110,26 +113,22 @@ public class EducatedMove extends AbstractPage {
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
-    public EducatedMove closeLogInForm() {
-        fluentWaitLocators(closeWindow);
-        closeWindow.click();
-        return this;
-    }
 
     public void authorization() throws InterruptedException {
         LocatorsCheck check = new LocatorsCheck(getDriver());
         fluentWaitLocators(check.getTrade());
         check.getTrade().click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         check.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
         fluentWaitLocators(check.getButtonSignUpContinueIncluded());
         check.getButtonSignUpContinueIncluded().click();
-       // Thread.sleep(20000);
+        // Thread.sleep(20000);
         checkButtonIconClose();
         fluentWaitLocators(buttonLive);
         buttonLive.click();
         logout.click();
     }
+
 }

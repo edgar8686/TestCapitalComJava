@@ -60,8 +60,8 @@ public class SignUpTest extends Settings {
         smoke.checkWindow();
 
         smoke.authorization();
-        Thread.sleep(10000);
-        getDriver().navigate().to("https://capital.com/pl?country=pl");
+        Thread.sleep(5000);
+        precondition(languages, countries);
 
         smoke.clickETFTrading();
 
