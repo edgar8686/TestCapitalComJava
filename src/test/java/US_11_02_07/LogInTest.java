@@ -56,7 +56,7 @@ public class LogInTest extends SeleniumConfiguration {
     void logInUnAuth(String languages, String countries) throws InterruptedException {
 
         precondition(languages, countries);
-
+        System.out.println(getDriver().manage().getCookies());
         smokeMain.acceptAllCookies();
         smokeMain.checkWindow();
 
