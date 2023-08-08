@@ -5,7 +5,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.example.elements.EducatedMove;
-import org.example.elements.LocatorsCheck;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
@@ -19,11 +18,10 @@ import org.openqa.selenium.Dimension;
 
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 import java.util.Set;
 
-public abstract class Settings {
+public abstract class SeleniumConfiguration {
     private static WebDriver driver;
     static String baseUrl = "https://capital.com/";
     Set<Cookie> cookies;
@@ -37,8 +35,8 @@ public abstract class Settings {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-       // optionsChrome.addArguments("--headless");
-       // optionsChrome.setHeadless(true);
+        optionsChrome.addArguments("--headless");
+        optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -111,13 +109,13 @@ public abstract class Settings {
     public void precondition(String languages, String countries) {
         String absoluteUrl = baseUrl + (languages.equalsIgnoreCase("en") ? "" : languages) + countries;
         getDriver().navigate().to(absoluteUrl);
-       // if (languages.equalsIgnoreCase("en")) {
-          //  String absolutUrl = baseUrl + countries;
-            //getDriver().navigate().to(absolutUrl);
-      //  } else {
-           // String absolutUrl = baseUrl + languages + countries;
-           // getDriver().navigate().to(absolutUrl);
-       // }
+        // if (languages.equalsIgnoreCase("en")) {
+        //  String absolutUrl = baseUrl + countries;
+        //getDriver().navigate().to(absolutUrl);
+        //  } else {
+        // String absolutUrl = baseUrl + languages + countries;
+        // getDriver().navigate().to(absolutUrl);
+        // }
     }
 
     @Step

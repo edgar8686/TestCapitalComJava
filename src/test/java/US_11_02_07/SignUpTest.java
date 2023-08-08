@@ -8,11 +8,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import settings.Settings;
+import settings.SeleniumConfiguration;
 import settings.TestListener;
 
 @ExtendWith(TestListener.class)
-public class SignUpTest extends Settings {
+public class SignUpTest extends SeleniumConfiguration {
     @ParameterizedTest
     @Owner("Edgar Nurmagomedov")
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")

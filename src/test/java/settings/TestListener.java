@@ -11,7 +11,7 @@ import java.util.Optional;
 public class TestListener implements TestWatcher {
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
-        Allure.getLifecycle().addAttachment("screenshot", "image/png", "png", ((TakesScreenshot) Settings.getDriver()).getScreenshotAs(OutputType.BYTES));
+        Allure.getLifecycle().addAttachment("screenshot", "image/png", "png", ((TakesScreenshot) SeleniumConfiguration.getDriver()).getScreenshotAs(OutputType.BYTES));
         System.out.println("Test failed");
     }
 

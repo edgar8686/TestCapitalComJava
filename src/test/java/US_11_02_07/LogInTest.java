@@ -8,11 +8,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import settings.Settings;
+import settings.SeleniumConfiguration;
 import settings.TestListener;
 
 @ExtendWith(TestListener.class)
-public class LogInTest extends Settings {
+public class LogInTest extends SeleniumConfiguration {
 
     @ParameterizedTest
     @Owner("Edgar Nurmagomedov")
@@ -22,7 +22,7 @@ public class LogInTest extends Settings {
     @Description("Check: Education > Menu Item [ETF trading] > Test button [LogIn]")
     @DisplayName("TC_11-02-07_01 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void logInUnReg(String languages, String countries) throws InterruptedException{
+    void logInUnReg(String languages, String countries) throws InterruptedException {
         EducatedMove smokeMain = new EducatedMove(getDriver());
 
         precondition(languages, countries);
@@ -53,7 +53,7 @@ public class LogInTest extends Settings {
     @Description("Check: Education > Menu Item [ETF trading] > Test button [LogIn]")
     @DisplayName("TC_11-02-07_01 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void logInUnAuth(String languages, String countries) throws InterruptedException{
+    void logInUnAuth(String languages, String countries) throws InterruptedException {
         EducatedMove smokeMain = new EducatedMove(getDriver());
 
         precondition(languages, countries);
