@@ -1,8 +1,11 @@
 package settings;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.impl.WebDriverContainer;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -13,6 +16,7 @@ public abstract class SelenideConfiguration {
     static String baseUrl = "https://capital.com/";
     @BeforeAll
     public static void start() {
+        //WebDriver driver = new WebDriverRunner.getAndCheckWebDriver();
         Configuration.browser = "Chrome";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions chromeOptions = new ChromeOptions();
