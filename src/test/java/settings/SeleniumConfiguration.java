@@ -4,16 +4,20 @@ package settings;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
+import org.example.manage_elements.EducatedMove;
+import org.example.manage_elements.ElementsCheck;
+import org.example.move_page.MovePage;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.Dimension;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
 
 import java.net.MalformedURLException;
@@ -25,6 +29,7 @@ public abstract class SeleniumConfiguration {
     static String baseUrl = "https://capital.com/";
     Set<Cookie> cookies;
     static final Dimension windowSize = new Dimension(1800, 800);
+    EducatedMove educatedMove = new EducatedMove(getDriver());
 
     @BeforeAll
     static void init() throws MalformedURLException {
@@ -34,8 +39,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsChrome.addArguments("--headless");
-        optionsChrome.setHeadless(true);
+        //optionsChrome.addArguments("--headless");
+        //optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -92,7 +97,7 @@ public abstract class SeleniumConfiguration {
     static void close() {
         if (driver != null) {
             driver.manage().deleteAllCookies();
-            System.out.println("Cookies deleted");
+            System.out.println("Cookies are deleted");
             driver.close();
             System.out.println("The browser is closed");
             driver.quit();
@@ -108,14 +113,69 @@ public abstract class SeleniumConfiguration {
     public void precondition(String languages, String countries) {
         String absoluteUrl = baseUrl + (languages.equalsIgnoreCase("en") ? "" : languages) + countries;
         getDriver().navigate().to(absoluteUrl);
-        // if (languages.equalsIgnoreCase("en")) {
-        //  String absolutUrl = baseUrl + countries;
-        //getDriver().navigate().to(absolutUrl);
-        //  } else {
-        // String absolutUrl = baseUrl + languages + countries;
-        // getDriver().navigate().to(absolutUrl);
-        // }
     }
+
+    public void acceptAllCookies() throws InterruptedException {
+        try {
+            Thread.sleep(5000);
+            educatedMove.fluentWaitLocators(educatedMove.getCookie());
+            if (educatedMove.getCookie().isDisplayed()) {
+                educatedMove.getCookie().click();
+                System.out.println("All cookies accepted");
+            }
+        } catch (TimeoutException a) {
+            System.out.println("All cookies have been accepted");
+        } catch (NoSuchElementException e) {
+            System.out.println("All cookies have been accepted");
+        }
+    }
+
+    public void checkWindow() {
+        try {
+            if (educatedMove.getCloseWindow().isDisplayed()) {
+                educatedMove.getCloseWindow().click();
+                System.out.println("The SignUp form is closed");
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("SignUp form is not surfaced");
+        }
+    }
+
+    public void checkButtonIconClose() {
+        try {
+            educatedMove.fluentWaitLocators(educatedMove.getIconClose());
+            if (educatedMove.getIconClose().isDisplayed()) {
+                educatedMove.getIconClose().click();
+                System.out.println("The button [iconClose] is closed");
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("The button [iconClose] dis not surfaced");
+        }
+    }
+
+
+    public void authorization() throws InterruptedException {
+        ElementsCheck check = new ElementsCheck(getDriver());
+        Allure.addAttachment("Email", "aqa.tomelo.an@gmail.com");
+        Allure.addAttachment("Password", "iT9Vgqi6d$fiZ*Z");
+        educatedMove.fluentWaitLocators(check.getTrade());
+        check.getTrade().click();
+        Thread.sleep(1000);
+        check.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
+        Thread.sleep(1000);
+        check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
+        educatedMove.fluentWaitLocators(check.getButtonSignUpContinueIncluded());
+        check.getButtonSignUpContinueIncluded().click();
+        // Thread.sleep(20000);
+        checkButtonIconClose();
+    }
+
+    public void logoutClick() {
+        educatedMove.fluentWaitLocators(educatedMove.getButtonLive());
+        educatedMove.getButtonLive().click();
+        educatedMove.getLogout().click();
+    }
+
 
     public void unAuthorizationStart(String languages, String countries) {
         for (Cookie cookie : cookies) {

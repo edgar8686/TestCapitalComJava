@@ -1,19 +1,16 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.manage_elements.ElementsCheck;
 import org.example.manage_elements.EducatedMove;
+import org.example.manage_elements.ElementsCheck;
 import org.example.move_page.MovePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import settings.SeleniumConfiguration;
-import settings.TestListener;
 
-@ExtendWith(TestListener.class)
-public class SignUpTest extends SeleniumConfiguration {
+public class StartTradingTest extends SeleniumConfiguration {
     EducatedMove smoke = new EducatedMove(getDriver());
     MovePage move = new EducatedMove(getDriver());
     ElementsCheck locators = new ElementsCheck(getDriver());
@@ -23,10 +20,10 @@ public class SignUpTest extends SeleniumConfiguration {
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")
     @Feature("US_11-02-07_ETF_trading")
     @Story("TestETFTrading")
-    @Description("Check: Education > Menu Item [ETF trading] > Test button [SignUp]")
-    @DisplayName("TC_11-02-07_02 (UnReg)")
+    @Description("Check: Education > Menu Item [ETF trading] > Test button [StartTrading]")
+    @DisplayName("TC_11-02-07_03 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void signUpUnReg(String languages, String countries) throws InterruptedException {
+    void startTradingUnReg(String languages, String countries) throws InterruptedException {
 
         precondition(languages, countries);
 
@@ -35,7 +32,7 @@ public class SignUpTest extends SeleniumConfiguration {
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
         checkWindow();
 
-        locators.signUpClick();
+        locators.startTradingClick();
 
         Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
         Assertions.assertTrue(locators.getLinkLogin().isDisplayed());
@@ -51,33 +48,27 @@ public class SignUpTest extends SeleniumConfiguration {
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")
     @Feature("US_11-02-07_ETF_trading")
     @Story("TestETFTrading")
-    @Description("Check: Education > Menu Item [ETF trading] > Test button [SignUp]")
-    @DisplayName("TC_11-02-07_02 (UnAuth)")
+    @Description("Check: Education > Menu Item [ETF trading] > Test button [StartTrading]")
+    @DisplayName("TC_11-02-07_03 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void signUpUnAuth(String languages, String countries) throws InterruptedException {
+    void startTradingAuth(String languages, String countries) throws InterruptedException {
 
         precondition(languages, countries);
 
         acceptAllCookies();
         checkWindow();
-
         authorization();
-        logoutClick();
-        //Thread.sleep(5000);
 
         precondition(languages, countries);
-
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
 
-        locators.signUpClick();
-
-        Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
-        Assertions.assertTrue(locators.getLinkLogin().isDisplayed());
-        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed());
-        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed());
-        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed());
-        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed());
+        locators.startTradingClick();
+        Assertions.assertAll("TC_11-02-07_03 (Auth) check",
+                () ->
+                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com")),
+                () ->
+                        Assertions.assertTrue(locators.getLogo().isDisplayed())
+        );
 
     }
-
 }

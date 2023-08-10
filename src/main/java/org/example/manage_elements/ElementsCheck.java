@@ -11,6 +11,8 @@ public class ElementsCheck extends AbstractPage {
     private WebElement logIn;
     @FindBy(css = ".cc-header__btn.js_signup.js-analyticsVisible.js-analyticsClick")
     private WebElement signUp;
+    @FindBy(css = ".cc-banner__btn.btn.btn--darkText.js_signup.js-analyticsClick")
+    private WebElement startTrading;
     //-------------------------------------------------
     //Check LogInForm
     @FindBy(css = "div[class='form-container-white form-container-small modal'] div[class='h1']")
@@ -49,7 +51,9 @@ public class ElementsCheck extends AbstractPage {
     @FindBy(css = "div[class='reg-desc textCenter'] p a")
     private WebElement linkPrivate;
     //-----------------------------------------------------------------------------------
-
+    //Auth check
+    @FindBy(css = "object[class='logo'][data='./assets/pic/logo.svg'][type='image/svg+xml']")
+    private WebElement logo;
 
     public ElementsCheck logInClick() {
         new EducatedMove(getDriver())
@@ -63,6 +67,17 @@ public class ElementsCheck extends AbstractPage {
                 .fluentWaitLocators(signUp);
         signUp.click();
         return this;
+    }
+
+    public ElementsCheck startTradingClick() {
+        new EducatedMove(getDriver())
+                .fluentWaitLocators(startTrading);
+        startTrading.click();
+        return this;
+    }
+
+    public WebElement getSignUp() {
+        return signUp;
     }
 
     public WebElement getLogIn() {
@@ -128,5 +143,9 @@ public class ElementsCheck extends AbstractPage {
 
     public WebElement getCheckBox() {
         return checkBox;
+    }
+
+    public WebElement getLogo() {
+        return logo;
     }
 }

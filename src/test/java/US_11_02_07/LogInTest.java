@@ -3,6 +3,7 @@ package US_11_02_07;
 import io.qameta.allure.*;
 import org.example.manage_elements.ElementsCheck;
 import org.example.manage_elements.EducatedMove;
+import org.example.move_page.MovePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,6 +15,7 @@ import settings.TestListener;
 @ExtendWith(TestListener.class)
 public class LogInTest extends SeleniumConfiguration {
     EducatedMove smokeMain = new EducatedMove(getDriver());
+    MovePage move = new EducatedMove(getDriver());
     ElementsCheck locators = new ElementsCheck(getDriver());
 
     @ParameterizedTest
@@ -28,10 +30,10 @@ public class LogInTest extends SeleniumConfiguration {
 
         precondition(languages, countries);
 
-        smokeMain.acceptAllCookies();
-        smokeMain.checkWindow();
-        smokeMain.clickPage();
-        smokeMain.checkWindow();
+        acceptAllCookies();
+        checkWindow();
+        move.clickPage(smokeMain.getEducated(), smokeMain.getEtfTrading());
+        checkWindow();
 
         locators.logInClick();
 
@@ -56,15 +58,17 @@ public class LogInTest extends SeleniumConfiguration {
     void logInUnAuth(String languages, String countries) throws InterruptedException {
 
         precondition(languages, countries);
-        System.out.println(getDriver().manage().getCookies());
-        smokeMain.acceptAllCookies();
-        smokeMain.checkWindow();
 
-        smokeMain.authorization();
+        acceptAllCookies();
+        checkWindow();
+
+        authorization();
+        logoutClick();
         //Thread.sleep(5000);
+
         precondition(languages, countries);
 
-        smokeMain.clickPage();
+        move.clickPage(smokeMain.getEducated(), smokeMain.getEtfTrading());
 
         locators.logInClick();
 

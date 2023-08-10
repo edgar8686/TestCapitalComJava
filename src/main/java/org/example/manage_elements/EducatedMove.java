@@ -1,6 +1,8 @@
 package org.example.manage_elements;
 
+import io.qameta.allure.Allure;
 import org.example.abstractClass.AbstractPage;
+import org.example.move_page.MovePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +13,7 @@ import org.opentest4j.TestSkippedException;
 
 import java.time.Duration;
 
-public class EducatedMove extends AbstractPage {
+public class EducatedMove extends AbstractPage implements MovePage<EducatedMove> {
     static String baseUrl = "https://capital.com/";
     @FindBy(css = "a[data-type='nav_id96']")
     private WebElement educated;
@@ -25,6 +27,8 @@ public class EducatedMove extends AbstractPage {
     private WebElement email;
     @FindBy(xpath = "//button[contains(@class,'button-cleared small s_cancel')]//*[name()='svg']")
     private WebElement closeWindow;
+    @FindBy(css = ".regSteps__item.js_signup.js-analyticsClick.js-analyticsVisible")
+    private WebElement createVerifyYourAccountTest;
     //------------------------------------------------------------------------------------
     // platform elements
     @FindBy(css = ".iconex-arrow-down-mini.icon-square.arrow-down")
@@ -36,6 +40,7 @@ public class EducatedMove extends AbstractPage {
     @FindBy(css = "button[class='solid default large']")
     private WebElement ok;
 
+
     public WebElement getEducated() {
         return educated;
     }
@@ -46,60 +51,22 @@ public class EducatedMove extends AbstractPage {
 
     //--------------------------------------------------------------------------------------------------------------------
     //Move page
-    public EducatedMove clickPage() {
+    public EducatedMove clickPage(WebElement main, WebElement page) {
+
         try {
-            fluentWaitLocators(educated);
+            fluentWaitLocators(main);
             new Actions(getDriver())
-                    .moveToElement(educated)
+                    .moveToElement(main)
                     .perform();
-            fluentWaitLocators(etfTrading);
-            etfTrading.click();
+            fluentWaitLocators(page);
+            page.click();
             return this;
         } catch (NoSuchElementException e) {
             throw new TestSkippedException("Test Skipped: ETF trading not found. For tests on language the page Education->ETF trading doesn't exist on production");
         }
     }
 
-    //---------------------------------------------------------------------------------------------------------------------
-
-    public void acceptAllCookies() throws InterruptedException {
-        try {
-            Thread.sleep(5000);
-            fluentWaitLocators(cookie);
-            if (cookie.isDisplayed()) {
-                cookie.click();
-                System.out.println("All cookies accepted");
-            }
-        } catch (TimeoutException a) {
-            System.out.println("All cookies have been accepted");
-        } catch (NoSuchElementException e) {
-            System.out.println("All cookies have been accepted");
-        }
-    }
-
-    public void checkWindow() {
-        try {
-            if (closeWindow.isDisplayed()) {
-                closeWindow.click();
-                System.out.println("The SignUp form is closed");
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println("SignUp form is not surfaced");
-        }
-    }
-
-    public void checkButtonIconClose() {
-        try {
-            fluentWaitLocators(iconClose);
-            if (iconClose.isDisplayed()) {
-                iconClose.click();
-                System.out.println("The button [iconClose] is closed");
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println("The button [iconClose] dis not surfaced");
-        }
-    }
-
+    //-------------------------------------------------------------------------------------------------------------------------
     public void fluentWaitLocators(WebElement webElement) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(Duration.ofSeconds(40))
@@ -112,21 +79,48 @@ public class EducatedMove extends AbstractPage {
     }
 
 
-    public void authorization() throws InterruptedException {
-        ElementsCheck check = new ElementsCheck(getDriver());
-        fluentWaitLocators(check.getTrade());
-        check.getTrade().click();
-        Thread.sleep(1000);
-        check.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
-        Thread.sleep(1000);
-        check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
-        fluentWaitLocators(check.getButtonSignUpContinueIncluded());
-        check.getButtonSignUpContinueIncluded().click();
-        // Thread.sleep(20000);
-        checkButtonIconClose();
-        fluentWaitLocators(buttonLive);
-        buttonLive.click();
-        logout.click();
+    public static String getBaseUrl() {
+        return baseUrl;
     }
 
+    public WebElement getEtfTrading() {
+        return etfTrading;
+    }
+
+    public WebElement getCookie() {
+        return cookie;
+    }
+
+    public WebElement getSignUpForm() {
+        return signUpForm;
+    }
+
+    public WebElement getEmail() {
+        return email;
+    }
+
+    public WebElement getCloseWindow() {
+        return closeWindow;
+    }
+
+    public WebElement getButtonLive() {
+        return buttonLive;
+    }
+
+    public WebElement getLogout() {
+        return logout;
+    }
+
+    public WebElement getIconClose() {
+        return iconClose;
+    }
+
+    public WebElement getOk() {
+        return ok;
+    }
+
+    public WebElement getCreateVerifyYourAccountTest() {
+        return createVerifyYourAccountTest;
+    }
 }
+
