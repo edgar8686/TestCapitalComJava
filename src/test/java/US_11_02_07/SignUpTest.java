@@ -27,7 +27,7 @@ public class SignUpTest extends SeleniumConfiguration {
     @DisplayName("TC_11-02-07_02 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void signUpUnReg(String languages, String countries) throws InterruptedException {
-
+        deleteCookies();
         precondition(languages, countries);
 
         acceptAllCookies();
@@ -37,12 +37,20 @@ public class SignUpTest extends SeleniumConfiguration {
 
         locators.signUpClick();
 
-        Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
-        Assertions.assertTrue(locators.getLinkLogin().isDisplayed());
-        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed());
-        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed());
-        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed());
-        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed());
+        Assertions.assertAll("TC_11-02-07_02 (UnReg) check",
+                () ->
+                        Assertions.assertTrue(locators.getNameSignUp().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkLogin().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed())
+        );
 
     }
 
@@ -55,7 +63,7 @@ public class SignUpTest extends SeleniumConfiguration {
     @DisplayName("TC_11-02-07_02 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void signUpUnAuth(String languages, String countries) throws InterruptedException {
-
+        deleteCookies();
         precondition(languages, countries);
 
         acceptAllCookies();
@@ -63,20 +71,28 @@ public class SignUpTest extends SeleniumConfiguration {
 
         authorization();
         logoutClick();
-        //Thread.sleep(5000);
+        Thread.sleep(5000);
 
-        precondition(languages, countries);
+        postAuthorization();
 
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
 
         locators.signUpClick();
 
-        Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
-        Assertions.assertTrue(locators.getLinkLogin().isDisplayed());
-        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed());
-        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed());
-        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed());
-        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed());
+        Assertions.assertAll("TC_11-02-07_02 (UnAuth) check",
+                () ->
+                        Assertions.assertTrue(locators.getNameSignUp().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkLogin().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed())
+        );
 
     }
 

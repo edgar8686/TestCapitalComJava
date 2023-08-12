@@ -24,7 +24,7 @@ public class StartTradingTest extends SeleniumConfiguration {
     @DisplayName("TC_11-02-07_03 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void startTradingUnReg(String languages, String countries) throws InterruptedException {
-
+        deleteCookies();
         precondition(languages, countries);
 
         acceptAllCookies();
@@ -33,13 +33,20 @@ public class StartTradingTest extends SeleniumConfiguration {
         checkWindow();
 
         locators.startTradingClick();
-
-        Assertions.assertTrue(locators.getNameSignUp().isDisplayed());
-        Assertions.assertTrue(locators.getLinkLogin().isDisplayed());
-        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed());
-        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed());
-        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed());
-        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed());
+        Assertions.assertAll("TC_11-02-07_03 (UnReg) check",
+                () ->
+                        Assertions.assertTrue(locators.getNameSignUp().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkLogin().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed())
+        );
 
     }
 
@@ -52,14 +59,14 @@ public class StartTradingTest extends SeleniumConfiguration {
     @DisplayName("TC_11-02-07_03 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void startTradingAuth(String languages, String countries) throws InterruptedException {
-
+        deleteCookies();
         precondition(languages, countries);
 
         acceptAllCookies();
         checkWindow();
         authorization();
 
-        precondition(languages, countries);
+        postAuthorization();
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
 
         locators.startTradingClick();
@@ -68,6 +75,48 @@ public class StartTradingTest extends SeleniumConfiguration {
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com")),
                 () ->
                         Assertions.assertTrue(locators.getLogo().isDisplayed())
+        );
+
+    }
+
+    @ParameterizedTest
+    @Owner("Edgar Nurmagomedov")
+    @Epic("tests.US_11_Education.11-02-07_ETF_trading")
+    @Feature("US_11-02-07_ETF_trading")
+    @Story("TestETFTrading")
+    @Description("Check: Education > Menu Item [ETF trading] > Test button [StartTrading]")
+    @DisplayName("TC_11-02-07_03 (UnAuth)")
+    @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
+    void StartTradingUnAuth(String languages, String countries) throws InterruptedException {
+        deleteCookies();
+        precondition(languages, countries);
+
+        acceptAllCookies();
+        checkWindow();
+
+        authorization();
+        logoutClick();
+        Thread.sleep(5000);
+        postAuthorization();
+
+        move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
+
+
+        locators.startTradingClick();
+
+        Assertions.assertAll("TC_11-02-07_03 (UnAuth) check",
+                () ->
+                        Assertions.assertTrue(locators.getNameSignUp().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkLogin().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed())
         );
 
     }

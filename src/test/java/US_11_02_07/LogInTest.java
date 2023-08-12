@@ -27,7 +27,7 @@ public class LogInTest extends SeleniumConfiguration {
     @DisplayName("TC_11-02-07_01 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void logInUnReg(String languages, String countries) throws InterruptedException {
-
+        deleteCookies();
         precondition(languages, countries);
 
         acceptAllCookies();
@@ -37,13 +37,22 @@ public class LogInTest extends SeleniumConfiguration {
 
         locators.logInClick();
 
-        Assertions.assertTrue(locators.getNameLogIn().isDisplayed());
-        Assertions.assertTrue(locators.getLinkSignUp().isDisplayed());
-        Assertions.assertTrue(locators.getInputEmail().isDisplayed());
-        Assertions.assertTrue(locators.getInputPassword().isDisplayed());
-        Assertions.assertTrue(locators.getInputPassword().isDisplayed());
-        Assertions.assertTrue(locators.getButtonContinue().isDisplayed());
-        Assertions.assertTrue(locators.getCheckBox().isDisplayed());
+        Assertions.assertAll("TC_11-02-07_02 (UnReg) check",
+                () ->
+                        Assertions.assertTrue(locators.getNameLogIn().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkSignUp().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputEmail().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputPassword().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkForgotPassword().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getButtonContinue().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getCheckBox().isDisplayed())
+        );
 
     }
 
@@ -56,7 +65,7 @@ public class LogInTest extends SeleniumConfiguration {
     @DisplayName("TC_11-02-07_01 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void logInUnAuth(String languages, String countries) throws InterruptedException {
-
+        deleteCookies();
         precondition(languages, countries);
 
         acceptAllCookies();
@@ -64,21 +73,29 @@ public class LogInTest extends SeleniumConfiguration {
 
         authorization();
         logoutClick();
-        //Thread.sleep(5000);
+        Thread.sleep(5000);
 
-        precondition(languages, countries);
+        postAuthorization();
 
         move.clickPage(smokeMain.getEducated(), smokeMain.getEtfTrading());
 
         locators.logInClick();
-
-        Assertions.assertTrue(locators.getNameLogIn().isDisplayed());
-        Assertions.assertTrue(locators.getLinkSignUp().isDisplayed());
-        Assertions.assertTrue(locators.getInputEmail().isDisplayed());
-        Assertions.assertTrue(locators.getInputPassword().isDisplayed());
-        Assertions.assertTrue(locators.getInputPassword().isDisplayed());
-        Assertions.assertTrue(locators.getButtonContinue().isDisplayed());
-        Assertions.assertTrue(locators.getCheckBox().isDisplayed());
+        Assertions.assertAll("TC_11-02-07_02 (UnAuth) check",
+                () ->
+                        Assertions.assertTrue(locators.getNameLogIn().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkSignUp().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputEmail().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputPassword().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkForgotPassword().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getButtonContinue().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getCheckBox().isDisplayed())
+        );
 
     }
 }

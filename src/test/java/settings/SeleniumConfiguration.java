@@ -3,10 +3,8 @@ package settings;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
-import io.qameta.allure.Step;
 import org.example.manage_elements.EducatedMove;
 import org.example.manage_elements.ElementsCheck;
-import org.example.move_page.MovePage;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,9 +13,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.interactions.Actions;
 
 
 import java.net.MalformedURLException;
@@ -27,6 +23,7 @@ import java.util.Set;
 public abstract class SeleniumConfiguration {
     private static WebDriver driver;
     static String baseUrl = "https://capital.com/";
+    static String absoluteUrl;
     Set<Cookie> cookies;
     static final Dimension windowSize = new Dimension(1800, 800);
     EducatedMove educatedMove = new EducatedMove(getDriver());
@@ -111,13 +108,40 @@ public abstract class SeleniumConfiguration {
 
 
     public void precondition(String languages, String countries) {
-        String absoluteUrl = baseUrl + (languages.equalsIgnoreCase("en") ? "" : languages) + countries;
-        getDriver().navigate().to(absoluteUrl);
+        if (languages.equalsIgnoreCase("en")) {
+            absoluteUrl = baseUrl;
+            getDriver().navigate().to(absoluteUrl);
+            new Actions(getDriver())
+                    .moveToElement(educatedMove.getHdrIcon())
+                    .pause(Duration.ofSeconds(1))
+                    .click(educatedMove.getDropDownCountry())
+                    .pause(Duration.ofSeconds(1))
+                    .sendKeys(educatedMove.getSearchCountry(), countries)
+                    .pause(Duration.ofSeconds(3))
+                    .perform();
+            educatedMove.getSelectCountry().click();
+
+
+        } else {
+            absoluteUrl = baseUrl + languages;
+            getDriver().navigate().to(absoluteUrl);
+            new Actions(getDriver())
+                    .moveToElement(educatedMove.getHdrIcon())
+                    .pause(Duration.ofSeconds(1))
+                    .click(educatedMove.getDropDownCountry())
+                    .pause(Duration.ofSeconds(1))
+                    .sendKeys(educatedMove.getSearchCountry(), countries)
+                    .pause(Duration.ofSeconds(3))
+                    .perform();
+            educatedMove.getSelectCountry().click();
+        }
+
+
     }
 
     public void acceptAllCookies() throws InterruptedException {
         try {
-            Thread.sleep(5000);
+            // Thread.sleep(5000);
             educatedMove.fluentWaitLocators(educatedMove.getCookie());
             if (educatedMove.getCookie().isDisplayed()) {
                 educatedMove.getCookie().click();
@@ -170,10 +194,19 @@ public abstract class SeleniumConfiguration {
         checkButtonIconClose();
     }
 
+    public void postAuthorization() {
+        getDriver().navigate().to(absoluteUrl);
+
+
+    }
+
     public void logoutClick() {
         educatedMove.fluentWaitLocators(educatedMove.getButtonLive());
         educatedMove.getButtonLive().click();
         educatedMove.getLogout().click();
+    }
+    public void deleteCookies() {
+        getDriver().manage().deleteAllCookies();
     }
 
 
@@ -183,4 +216,13 @@ public abstract class SeleniumConfiguration {
         }
         driver.navigate().refresh();
     }
+    //Динамически изменяет элемент
+    // public SelenideElement getDynamicElement(String dynamicValue) {
+    //  String dynamicLocator = String.format("#%s", dynamicValue);
+    //  return $(dynamicLocator);
+
+    // MyPage myPage = new MyPage();
+    //SelenideElement element = myPage.getDynamicElement("my-dynamic-element");
+//element.click();
+    //}
 }

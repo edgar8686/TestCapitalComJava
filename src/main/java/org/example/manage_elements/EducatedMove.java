@@ -39,6 +39,14 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     private WebElement iconClose;
     @FindBy(css = "button[class='solid default large']")
     private WebElement ok;
+    @FindBy(css = ".licLangSw__btn.gI.gCenter.gXs.js-licLangSwBtn.js-countries")
+    private WebElement hdrIcon;
+    @FindBy(css = "input[class='fieldDropdown__control fieldDropdown__control--hidden']")
+    private WebElement dropDownCountry;
+    @FindBy(css = "input[class='fieldDropdown__control js-countriesSearchInput']")
+    private WebElement searchCountry;
+    @FindBy(css = ".gI.gXs.gCenter.js-switchCountry")
+    private WebElement selectCountry;
 
 
     public WebElement getEducated() {
@@ -72,10 +80,10 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
                 .withTimeout(Duration.ofSeconds(40))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(java.util.NoSuchElementException.class);
-        //wait.until(driver -> {
-        // return webElement;
-        //});
-        wait.until(ExpectedConditions.elementToBeClickable(webElement));
+        wait.until(driver -> {
+            return webElement;
+        });
+        //wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
 
@@ -121,6 +129,22 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
 
     public WebElement getCreateVerifyYourAccountTest() {
         return createVerifyYourAccountTest;
+    }
+
+    public WebElement getHdrIcon() {
+        return hdrIcon;
+    }
+
+    public WebElement getDropDownCountry() {
+        return dropDownCountry;
+    }
+
+    public WebElement getSearchCountry() {
+        return searchCountry;
+    }
+
+    public WebElement getSelectCountry() {
+        return selectCountry;
     }
 }
 
