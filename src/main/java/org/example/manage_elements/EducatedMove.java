@@ -80,10 +80,10 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
                 .withTimeout(Duration.ofSeconds(40))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(java.util.NoSuchElementException.class);
-        wait.until(driver -> {
-            return webElement;
-        });
-        //wait.until(ExpectedConditions.elementToBeClickable(webElement));
+        //wait.until(driver -> {
+        //    return webElement;
+       // });
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
 

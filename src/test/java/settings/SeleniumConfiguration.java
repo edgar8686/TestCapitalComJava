@@ -141,7 +141,7 @@ public abstract class SeleniumConfiguration {
 
     public void acceptAllCookies() throws InterruptedException {
         try {
-            // Thread.sleep(5000);
+            Thread.sleep(5000);
             educatedMove.fluentWaitLocators(educatedMove.getCookie());
             if (educatedMove.getCookie().isDisplayed()) {
                 educatedMove.getCookie().click();
@@ -205,6 +205,7 @@ public abstract class SeleniumConfiguration {
         educatedMove.getButtonLive().click();
         educatedMove.getLogout().click();
     }
+
     public void deleteCookies() {
         getDriver().manage().deleteAllCookies();
     }
