@@ -6,10 +6,13 @@ import org.example.manage_elements.ElementsCheck;
 import org.example.move_page.MovePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import settings.SeleniumConfiguration;
+import settings.TestListener;
 
+@ExtendWith(TestListener.class)
 public class StartTradingTest extends SeleniumConfiguration {
     EducatedMove smoke = new EducatedMove(getDriver());
     MovePage move = new EducatedMove(getDriver());
@@ -106,17 +109,19 @@ public class StartTradingTest extends SeleniumConfiguration {
 
         Assertions.assertAll("TC_11-02-07_03 (UnAuth) check",
                 () ->
-                        Assertions.assertTrue(locators.getNameSignUp().isDisplayed()),
+                        Assertions.assertTrue(locators.getNameLogIn().isDisplayed()),
                 () ->
-                        Assertions.assertTrue(locators.getLinkLogin().isDisplayed()),
+                        Assertions.assertTrue(locators.getLinkSignUp().isDisplayed()),
                 () ->
-                        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed()),
+                        Assertions.assertTrue(locators.getInputEmail().isDisplayed()),
                 () ->
-                        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed()),
+                        Assertions.assertTrue(locators.getInputPassword().isDisplayed()),
                 () ->
-                        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed()),
+                        Assertions.assertTrue(locators.getLinkForgotPassword().isDisplayed()),
                 () ->
-                        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed())
+                        Assertions.assertTrue(locators.getButtonContinue().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getCheckBox().isDisplayed())
         );
 
     }
