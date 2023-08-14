@@ -48,8 +48,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsFirefox.addArguments("--headless");
-        optionsFirefox.setHeadless(true);
+        //optionsFirefox.addArguments("--headless");
+        //optionsFirefox.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsFirefox.addArguments("--lang=en");

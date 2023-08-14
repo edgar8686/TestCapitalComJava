@@ -16,7 +16,7 @@ public abstract class SelenideConfiguration {
     static String baseUrl = "https://capital.com/";
     @BeforeAll
     public static void start() {
-        //WebDriver driver = new WebDriverRunner.getAndCheckWebDriver();
+        //WebDriver driver = new WebDriverRunner.getWebDriver();
         Configuration.browser = "Chrome";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -24,7 +24,7 @@ public abstract class SelenideConfiguration {
         capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         Configuration.browserCapabilities = capabilities;
         //Configuration.headless = true;
-        Configuration.timeout = 5000;
+        //Configuration.timeout = 5000;
         //Configuration.remote = "http://selenoid-host:4444/wd/hub";
         Configuration.browserSize = "1800x800";
     }
