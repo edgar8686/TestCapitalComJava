@@ -1,1 +1,0 @@
-{"total":2,"items":[{"uid":"31cea1dbdd37f5e8883ed7c6e2c6f48b","name":"US_11_02_07.TradeTest","statistic":{"failed":0,"broken":1,"skipped":1,"passed":0,"unknown":0,"total":2}},{"uid":"569815f346b9c78225fb39afa8e2da0d","name":"US_11_02_07.LogInTest","statistic":{"failed":0,"broken":1,"skipped":0,"passed":0,"unknown":0,"total":1}}]}
