@@ -77,7 +77,9 @@ public class StartTradingTest extends SeleniumConfiguration {
                 () ->
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com")),
                 () ->
-                        Assertions.assertTrue(locators.getLogo().isDisplayed())
+                        Assertions.assertTrue(locators.getLogo().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(getDriver().getCurrentUrl().equals("https://capital.com/trading/platform/"))
         );
 
     }

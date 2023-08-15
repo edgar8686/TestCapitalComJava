@@ -23,7 +23,7 @@ public class TryDemoTest extends SeleniumConfiguration {
     @Description("Check: Education > Menu Item [ETF trading] > Test button [TryDemo]")
     @DisplayName("TC_11-02-07_04 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void startTradingUnReg(String languages, String countries) throws InterruptedException {
+    void tryDemoUnReg(String languages, String countries) throws InterruptedException {
         deleteCookies();
         precondition(languages, countries);
 
@@ -46,6 +46,36 @@ public class TryDemoTest extends SeleniumConfiguration {
                         Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed()),
                 () ->
                         Assertions.assertTrue(locators.getLinkPrivate().isDisplayed())
+        );
+
+    }
+    @ParameterizedTest
+    @Owner("Edgar Nurmagomedov")
+    @Epic("tests.US_11_Education.11-02-07_ETF_trading")
+    @Feature("US_11-02-07_ETF_trading")
+    @Story("TestETFTrading")
+    @Description("Check: Education > Menu Item [ETF trading] > Test button [TryDemo]")
+    @DisplayName("TC_11-02-07_04 (Auth)")
+    @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
+    void tryDemoAuth(String languages, String countries) throws InterruptedException {
+        deleteCookies();
+        precondition(languages, countries);
+
+        acceptAllCookies();
+        checkWindow();
+        authorization();
+
+        postAuthorization();
+        move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
+
+        locators.startTradingClick();
+        Assertions.assertAll("TC_11-02-07_04 (Auth) check",
+                () ->
+                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com")),
+                () ->
+                        Assertions.assertTrue(locators.getLogo().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(getDriver().getCurrentUrl().equals("https://capital.com/trading/platform/"))
         );
 
     }
