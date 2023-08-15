@@ -188,7 +188,6 @@ public abstract class SeleniumConfiguration {
         check.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
         Thread.sleep(1000);
         check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
-        Thread.sleep(2000);
         educatedMove.fluentWaitLocators(check.getButtonSignUpContinueIncluded());
         check.getButtonSignUpContinueIncluded().click();
         // Thread.sleep(20000);
@@ -201,7 +200,8 @@ public abstract class SeleniumConfiguration {
 
     }
 
-    public void logoutClick() {
+    public void logoutClick() throws InterruptedException{
+        Thread.sleep(5000);
         educatedMove.fluentWaitLocators(educatedMove.getButtonLive());
         educatedMove.getButtonLive().click();
         educatedMove.getLogout().click();

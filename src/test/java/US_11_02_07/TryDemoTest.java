@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.opentest4j.MultipleFailuresError;
 import settings.SeleniumConfiguration;
 
 public class TryDemoTest extends SeleniumConfiguration {
@@ -49,6 +50,7 @@ public class TryDemoTest extends SeleniumConfiguration {
         );
 
     }
+
     @ParameterizedTest
     @Owner("Edgar Nurmagomedov")
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")
@@ -58,6 +60,7 @@ public class TryDemoTest extends SeleniumConfiguration {
     @DisplayName("TC_11-02-07_04 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void tryDemoAuth(String languages, String countries) throws InterruptedException {
+
         deleteCookies();
         precondition(languages, countries);
 
