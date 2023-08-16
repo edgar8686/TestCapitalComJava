@@ -71,7 +71,7 @@ public class TryDemoTest extends SeleniumConfiguration {
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
 
         locators.tryDemoClick();
-        Thread.sleep(10000);
+
         System.out.println(getDriver().getTitle());
         System.out.println(getDriver().getCurrentUrl());
         Assertions.assertAll("TC_11-02-07_04 (Auth) check",
