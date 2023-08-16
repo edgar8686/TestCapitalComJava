@@ -72,8 +72,6 @@ public class TryDemoTest extends SeleniumConfiguration {
 
         locators.tryDemoClick();
 
-        System.out.println(getDriver().getTitle());
-        System.out.println(getDriver().getCurrentUrl());
         Assertions.assertAll("TC_11-02-07_04 (Auth) check",
                 () ->
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com")),

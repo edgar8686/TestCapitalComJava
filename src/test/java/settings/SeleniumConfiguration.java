@@ -36,8 +36,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        //optionsChrome.addArguments("--headless");
-        //optionsChrome.setHeadless(true);
+        optionsChrome.addArguments("--headless");
+        optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -200,7 +200,7 @@ public abstract class SeleniumConfiguration {
 
     }
 
-    public void logoutClick() throws InterruptedException{
+    public void logoutClick() throws InterruptedException {
         Thread.sleep(2000);
         educatedMove.fluentWaitLocators(educatedMove.getButtonLive());
         educatedMove.getButtonLive().click();
