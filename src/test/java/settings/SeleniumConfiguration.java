@@ -36,8 +36,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsChrome.addArguments("--headless");
-        optionsChrome.setHeadless(true);
+        //optionsChrome.addArguments("--headless");
+        //optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -225,6 +225,6 @@ public abstract class SeleniumConfiguration {
 
     // MyPage myPage = new MyPage();
     //SelenideElement element = myPage.getDynamicElement("my-dynamic-element");
-//element.click();
+    //element.click();
     //}
 }

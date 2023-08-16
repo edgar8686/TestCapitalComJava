@@ -50,9 +50,9 @@ public class ElementsCheck extends AbstractPage {
     private WebElement linkPrivate;
     //-----------------------------------------------------------------------------------
     //Auth check
-    @FindBy(css = "object[class='logo'][data='./assets/pic/logo.svg'][type='image/svg+xml']")
+    @FindBy(css = "object[class='logo__icon']")
     private WebElement logo;
-    @FindBy(css = ".account__mode.account__mode_demo")
+    @FindBy(xpath = "//div[@class='account__mode account__mode_demo']")
     private WebElement accountDemo;
 
     public ElementsCheck logInClick() {

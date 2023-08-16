@@ -70,20 +70,23 @@ public class TryDemoTest extends SeleniumConfiguration {
         postAuthorization();
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
 
-        locators.startTradingClick();
-
+        locators.tryDemoClick();
+        Thread.sleep(10000);
+        System.out.println(getDriver().getTitle());
+        System.out.println(getDriver().getCurrentUrl());
         Assertions.assertAll("TC_11-02-07_04 (Auth) check",
+                () ->
+                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com")),
                 () ->
                         Assertions.assertTrue(locators.getAccountDemo().isDisplayed()),
                 () ->
-                        Assertions.assertTrue(getDriver().getTitle().endsWith("Trading Platform | Capital.com")),
-                () ->
                         Assertions.assertTrue(locators.getLogo().isDisplayed()),
                 () ->
-                        Assertions.assertTrue(getDriver().getCurrentUrl().equals("https://capital.com/trading/platform"))
+                        Assertions.assertTrue(getDriver().getCurrentUrl().equals("https://capital.com/trading/platform/?mode=demo"))
         );
 
     }
+
     @ParameterizedTest
     @Owner("Edgar Nurmagomedov")
     @Epic("tests.US_11_Education.11-02-07_ETF_trading")
@@ -105,7 +108,6 @@ public class TryDemoTest extends SeleniumConfiguration {
         postAuthorization();
 
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
-
 
         locators.tryDemoClick();
 
