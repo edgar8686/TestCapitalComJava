@@ -201,7 +201,7 @@ public abstract class SeleniumConfiguration {
     }
 
     public void logoutClick() throws InterruptedException{
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         educatedMove.fluentWaitLocators(educatedMove.getButtonLive());
         educatedMove.getButtonLive().click();
         educatedMove.getLogout().click();

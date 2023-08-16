@@ -60,7 +60,6 @@ public class TryDemoTest extends SeleniumConfiguration {
     @DisplayName("TC_11-02-07_04 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void tryDemoAuth(String languages, String countries) throws InterruptedException {
-
         deleteCookies();
         precondition(languages, countries);
 
@@ -72,13 +71,59 @@ public class TryDemoTest extends SeleniumConfiguration {
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
 
         locators.startTradingClick();
+
         Assertions.assertAll("TC_11-02-07_04 (Auth) check",
                 () ->
-                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com")),
+                        Assertions.assertTrue(locators.getAccountDemo().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(getDriver().getTitle().endsWith("Trading Platform | Capital.com")),
                 () ->
                         Assertions.assertTrue(locators.getLogo().isDisplayed()),
                 () ->
-                        Assertions.assertTrue(getDriver().getCurrentUrl().equals("https://capital.com/trading/platform/"))
+                        Assertions.assertTrue(getDriver().getCurrentUrl().equals("https://capital.com/trading/platform"))
+        );
+
+    }
+    @ParameterizedTest
+    @Owner("Edgar Nurmagomedov")
+    @Epic("tests.US_11_Education.11-02-07_ETF_trading")
+    @Feature("US_11-02-07_ETF_trading")
+    @Story("TestETFTrading")
+    @Description("Check: Education > Menu Item [ETF trading] > Test button [TryDemo]")
+    @DisplayName("TC_11-02-07_04 (UnAuth)")
+    @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
+    void StartTradingUnAuth(String languages, String countries) throws InterruptedException {
+        deleteCookies();
+        precondition(languages, countries);
+
+        acceptAllCookies();
+        checkWindow();
+
+        authorization();
+        logoutClick();
+        Thread.sleep(5000);
+        postAuthorization();
+
+        move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
+
+
+        locators.tryDemoClick();
+
+        Assertions.assertAll("TC_11-02-07_04 (UnAuth) check",
+                () ->
+                        Assertions.assertTrue(locators.getNameLogIn().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkSignUp().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputEmail().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getInputPassword().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getLinkForgotPassword().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getButtonContinue().isDisplayed()),
+                () ->
+                        Assertions.assertTrue(locators.getCheckBox().isDisplayed())
         );
 
     }

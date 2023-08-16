@@ -52,6 +52,8 @@ public class ElementsCheck extends AbstractPage {
     //Auth check
     @FindBy(css = "object[class='logo'][data='./assets/pic/logo.svg'][type='image/svg+xml']")
     private WebElement logo;
+    @FindBy(css = ".account__mode.account__mode_demo")
+    private WebElement accountDemo;
 
     public ElementsCheck logInClick() {
         new EducatedMove(getDriver())
@@ -157,5 +159,8 @@ public class ElementsCheck extends AbstractPage {
         return logo;
     }
 
+    public WebElement getAccountDemo() {
+        return accountDemo;
+    }
 }
 
