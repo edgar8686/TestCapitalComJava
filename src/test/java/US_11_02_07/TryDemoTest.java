@@ -74,7 +74,7 @@ public class TryDemoTest extends SeleniumConfiguration {
 
         Assertions.assertAll("TC_11-02-07_04 (Auth) check",
                 () ->
-                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com")),
+                        Assertions.assertTrue(getDriver().getTitle().equalsIgnoreCase("Trading Platform |Capital.com")),
                 () ->
                         Assertions.assertTrue(locators.getAccountDemo().isDisplayed()),
                 () ->
