@@ -93,7 +93,7 @@ public class TryDemoTest extends SeleniumConfiguration {
     @Description("Check: Education > Menu Item [ETF trading] > Test button [TryDemo]")
     @DisplayName("TC_11-02-07_04 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void StartTradingUnAuth(String languages, String countries) throws InterruptedException {
+    void tryDemoUnAuth(String languages, String countries) throws InterruptedException {
         deleteCookies();
         precondition(languages, countries);
 

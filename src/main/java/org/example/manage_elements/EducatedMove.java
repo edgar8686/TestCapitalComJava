@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.Wait;
 import org.opentest4j.TestSkippedException;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class EducatedMove extends AbstractPage implements MovePage<EducatedMove> {
     static String baseUrl = "https://capital.com/";
@@ -47,6 +49,16 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     private WebElement searchCountry;
     @FindBy(css = ".gI.gXs.gCenter.js-switchCountry")
     private WebElement selectCountry;
+    @FindBy(css = "a[data-iid='22855552501634244']")
+    private WebElement tesla;
+    @FindBy(css = "a[data-iid='16150730595456196']")
+    private WebElement nvidia;
+    @FindBy(css = "a[data-iid='21178483823812']")
+    private WebElement amc;
+    @FindBy(css = "a[data-iid='21182778791108']")
+    private WebElement amd;
+    @FindBy(css = "a[data-iid='1147941679092932']")
+    private WebElement apple;
 
 
     public WebElement getEducated() {
@@ -82,8 +94,29 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
                 .ignoring(java.util.NoSuchElementException.class);
         //wait.until(driver -> {
         //    return webElement;
-       // });
+        // });
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
+    public void randomElementClick() {
+        Random random = new Random();
+
+        ArrayList<WebElement> elements = new ArrayList<>();
+        elements.add(tesla);
+        elements.add(nvidia);
+        elements.add(amc);
+        elements.add(amd);
+        elements.add(apple);
+
+        int randomIndex = random.nextInt(elements.size());
+        WebElement randomElement = elements.get(randomIndex);
+
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(randomElement)
+                .click()
+                .perform();
+
+        System.out.println("Случайный элемент: " + randomElement);
     }
 
 
