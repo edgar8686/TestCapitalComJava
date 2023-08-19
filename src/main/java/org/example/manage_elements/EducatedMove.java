@@ -83,8 +83,8 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
         //wait.until(driver -> {
         //    return webElement;
         // });
-        wait.until(driver -> webElement.isDisplayed());
-       // wait.until(ExpectedConditions.elementToBeClickable(webElement));
+        // wait.until(driver -> webElement.isDisplayed());
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
 
