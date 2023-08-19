@@ -29,8 +29,6 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     private WebElement email;
     @FindBy(xpath = "//button[contains(@class,'button-cleared small s_cancel')]//*[name()='svg']")
     private WebElement closeWindow;
-    @FindBy(css = ".regSteps__item.js_signup.js-analyticsClick.js-analyticsVisible")
-    private WebElement createVerifyYourAccountTest;
     //------------------------------------------------------------------------------------
     // platform elements
     @FindBy(css = ".iconex-arrow-down-mini.icon-square.arrow-down")
@@ -49,16 +47,6 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     private WebElement searchCountry;
     @FindBy(css = ".gI.gXs.gCenter.js-switchCountry")
     private WebElement selectCountry;
-    @FindBy(css = "a[data-iid='22855552501634244']")
-    private WebElement tesla;
-    @FindBy(css = "a[data-iid='16150730595456196']")
-    private WebElement nvidia;
-    @FindBy(css = "a[data-iid='21178483823812']")
-    private WebElement amc;
-    @FindBy(css = "a[data-iid='21182778791108']")
-    private WebElement amd;
-    @FindBy(css = "a[data-iid='1147941679092932']")
-    private WebElement apple;
 
 
     public WebElement getEducated() {
@@ -89,34 +77,14 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     //-------------------------------------------------------------------------------------------------------------------------
     public void fluentWaitLocators(WebElement webElement) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(Duration.ofSeconds(40))
-                .pollingEvery(Duration.ofSeconds(2))
-                .ignoring(java.util.NoSuchElementException.class);
+                .withTimeout(Duration.ofSeconds(2))
+                .pollingEvery(Duration.ofSeconds(40))
+                .ignoring(ElementNotInteractableException.class);
         //wait.until(driver -> {
         //    return webElement;
         // });
-        wait.until(ExpectedConditions.elementToBeClickable(webElement));
-    }
-
-    public void randomElementClick() {
-        Random random = new Random();
-
-        ArrayList<WebElement> elements = new ArrayList<>();
-        elements.add(tesla);
-        elements.add(nvidia);
-        elements.add(amc);
-        elements.add(amd);
-        elements.add(apple);
-
-        int randomIndex = random.nextInt(elements.size());
-        WebElement randomElement = elements.get(randomIndex);
-
-        Actions actions = new Actions(getDriver());
-        actions.moveToElement(randomElement)
-                .click()
-                .perform();
-
-        System.out.println("Случайный элемент: " + randomElement);
+        wait.until(driver -> webElement.isDisplayed());
+       // wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
 
@@ -160,9 +128,6 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
         return ok;
     }
 
-    public WebElement getCreateVerifyYourAccountTest() {
-        return createVerifyYourAccountTest;
-    }
 
     public WebElement getHdrIcon() {
         return hdrIcon;

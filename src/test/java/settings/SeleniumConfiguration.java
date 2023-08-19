@@ -18,6 +18,8 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Set;
 
 public abstract class SeleniumConfiguration {
@@ -25,8 +27,12 @@ public abstract class SeleniumConfiguration {
     static String baseUrl = "https://capital.com/";
     static String absoluteUrl;
     Set<Cookie> cookies;
+    ArrayList<WebElement> elements = new ArrayList<>();
     static final Dimension windowSize = new Dimension(1800, 800);
     EducatedMove educatedMove = new EducatedMove(getDriver());
+    ElementsCheck elementsCheck = new ElementsCheck(getDriver());
+    WebElement randomElement;
+
 
     @BeforeAll
     static void init() throws MalformedURLException {
@@ -141,7 +147,7 @@ public abstract class SeleniumConfiguration {
 
     public void acceptAllCookies() throws InterruptedException {
         try {
-            Thread.sleep(5000);
+            //Thread.sleep(5000);
             educatedMove.fluentWaitLocators(educatedMove.getCookie());
             if (educatedMove.getCookie().isDisplayed()) {
                 educatedMove.getCookie().click();
@@ -196,8 +202,6 @@ public abstract class SeleniumConfiguration {
 
     public void postAuthorization() {
         getDriver().navigate().to(absoluteUrl);
-
-
     }
 
     public void logoutClick() throws InterruptedException {
@@ -218,6 +222,7 @@ public abstract class SeleniumConfiguration {
         }
         driver.navigate().refresh();
     }
+
     //Динамически изменяет элемент
     // public SelenideElement getDynamicElement(String dynamicValue) {
     //  String dynamicLocator = String.format("#%s", dynamicValue);
@@ -227,4 +232,29 @@ public abstract class SeleniumConfiguration {
     //SelenideElement element = myPage.getDynamicElement("my-dynamic-element");
     //element.click();
     //}
+    public void randomElement() {
+        Random random = new Random();
+
+        elements.add(elementsCheck.getTesla());
+        elements.add(elementsCheck.getNvidia());
+        elements.add(elementsCheck.getAmc());
+        elements.add(elementsCheck.getAmd());
+        elements.add(elementsCheck.getApple());
+
+        int randomIndex = random.nextInt(elements.size());
+        randomElement = elements.get(randomIndex);
+    }
+
+    public void scrollAndClickElement(WebElement webElement) {
+        //((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
+        new Actions(getDriver())
+                .scrollToElement(webElement)
+                .perform();
+        educatedMove.fluentWaitLocators(webElement);
+        webElement.click();
+    }
+
+    public WebElement getRandomElement() {
+        return randomElement;
+    }
 }

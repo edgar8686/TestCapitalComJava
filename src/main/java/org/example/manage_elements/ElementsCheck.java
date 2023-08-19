@@ -15,6 +15,18 @@ public class ElementsCheck extends AbstractPage {
     private WebElement startTrading;
     @FindBy(css = ".cc-banner__btn.btn.btn--emptyblack.js_signup.hideXs.js-analyticsClick")
     private WebElement tryDemo;
+    @FindBy(css = ".regSteps__item.js_signup.js-analyticsClick.js-analyticsVisible")
+    private WebElement createVerifyYourAccount;
+    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[href='/trade-etfs#'][data-link='uu'][data-iid='1147941679092932']")
+    private WebElement tesla;
+    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[href='/trade-etfs#'][data-link='uu'][data-iid='16150730595456196']")
+    private WebElement nvidia;
+    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[href='/trade-etfs#'][data-link='uu'][data-iid='21178483823812']")
+    private WebElement amc;
+    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[href='/trade-etfs#'][data-link='uu'][data-iid='21182778791108']")
+    private WebElement amd;
+    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[href='/trade-etfs#'][data-link='uu'][data-iid='1147941679092932']")
+    private WebElement apple;
     //-------------------------------------------------
     //Check LogInForm
     @FindBy(css = "div[class='form-container-white form-container-small modal'] div[class='h1']")
@@ -75,12 +87,14 @@ public class ElementsCheck extends AbstractPage {
         startTrading.click();
         return this;
     }
+
     public ElementsCheck tryDemoClick() {
         new EducatedMove(getDriver())
                 .fluentWaitLocators(tryDemo);
         tryDemo.click();
         return this;
     }
+
 
     public WebElement getButtonSignUpContinueIncluded() {
         return buttonSignUpContinueIncluded;
@@ -161,6 +175,30 @@ public class ElementsCheck extends AbstractPage {
 
     public WebElement getAccountDemo() {
         return accountDemo;
+    }
+
+    public WebElement getTesla() {
+        return tesla;
+    }
+
+    public WebElement getNvidia() {
+        return nvidia;
+    }
+
+    public WebElement getAmc() {
+        return amc;
+    }
+
+    public WebElement getAmd() {
+        return amd;
+    }
+
+    public WebElement getApple() {
+        return apple;
+    }
+
+    public WebElement getCreateVerifyYourAccount() {
+        return createVerifyYourAccount;
     }
 }
 

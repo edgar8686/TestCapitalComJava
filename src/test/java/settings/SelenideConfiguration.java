@@ -1,5 +1,6 @@
 package settings;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.impl.WebDriverContainer;
@@ -33,5 +34,18 @@ public abstract class SelenideConfiguration {
         String absoluteUrl = baseUrl + (languages.equalsIgnoreCase("en") ? "" : languages) + countries;
         open(absoluteUrl);
     }
+
+    /*void startTradingUnReg(String languages, String countries) throws InterruptedException {
+        openPage(languages, countries);
+        $(smoke.getCookie()).shouldBe(visible).click();
+        $(smoke.getCloseWindow()).shouldBe(visible).click();
+        $(smoke.getEducated()).click();
+        $(smoke.getEtfTrading()).click();
+        // $(smoke.getCreateVerifyYourAccountTest()).scrollIntoView(true);
+        // $(smoke.getCreateVerifyYourAccountTest()).click();
+        $(locators.getNameSignUp()).shouldBe(Condition.visible);
+    }
+
+     */
 
 }

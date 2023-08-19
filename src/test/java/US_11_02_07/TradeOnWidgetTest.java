@@ -11,7 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import settings.SeleniumConfiguration;
 
-public class TradeOnTheWidgetTest extends SeleniumConfiguration {
+public class TradeOnWidgetTest extends SeleniumConfiguration {
     EducatedMove smoke = new EducatedMove(getDriver());
     MovePage move = new EducatedMove(getDriver());
     ElementsCheck locators = new ElementsCheck(getDriver());
@@ -34,7 +34,8 @@ public class TradeOnTheWidgetTest extends SeleniumConfiguration {
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
         checkWindow();
 
-        locators.tryDemoClick();
+        randomElement();
+        scrollAndClickElement(getRandomElement());
         Assertions.assertAll("TC_11-02-07_05 (UnReg) check",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed()),
