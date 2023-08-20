@@ -31,7 +31,8 @@ public abstract class SeleniumConfiguration {
     static final Dimension windowSize = new Dimension(1800, 800);
     EducatedMove educatedMove = new EducatedMove(getDriver());
     ElementsCheck elementsCheck = new ElementsCheck(getDriver());
-    WebElement randomElement;
+    private WebElement randomElement;
+    private WebElement elementPlatform;
 
 
     @BeforeAll
@@ -237,24 +238,43 @@ public abstract class SeleniumConfiguration {
 
         elements.add(elementsCheck.getTesla());
         elements.add(elementsCheck.getNvidia());
-        elements.add(elementsCheck.getAmc());
         elements.add(elementsCheck.getAmd());
+        elements.add(elementsCheck.getAmc());
         elements.add(elementsCheck.getApple());
 
         int randomIndex = random.nextInt(elements.size());
         randomElement = elements.get(randomIndex);
+        System.out.println(randomElement);
+
+        // if (randomElement == elementsCheck.getTesla()) {
+        //   elementPlatform = elementsCheck.getElementPlatformTesla();
+        // } else if (randomElement == elementsCheck.getNvidia()) {
+
+        // } else if (randomElement == elementsCheck.getAmc()) {
+
+        // } else if (randomElement == elementsCheck.getAmd()) {
+
+        // } else if (randomElement == elementsCheck.getApple()) {
+
+        // }
     }
 
-    public void scrollAndClickElement(WebElement webElement) {
+    public void scrollAndClickElement(WebElement clickElement, WebElement scrollToElement) {
         //((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
         new Actions(getDriver())
-                .scrollToElement(webElement)
+                .scrollToElement(scrollToElement)
+                .pause(Duration.ofSeconds(1))
+                .moveToElement(clickElement)
+                .pause(Duration.ofSeconds(1))
+                .click(clickElement)
                 .perform();
-        educatedMove.fluentWaitLocators(webElement);
-        webElement.click();
     }
 
     public WebElement getRandomElement() {
         return randomElement;
+    }
+
+    public WebElement getElement() {
+        return elementPlatform;
     }
 }

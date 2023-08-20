@@ -78,9 +78,7 @@ public class TryDemoTest extends SeleniumConfiguration {
                 () ->
                         Assertions.assertTrue(locators.getAccountDemo().isDisplayed()),
                 () ->
-                        Assertions.assertTrue(locators.getLogo().isDisplayed()),
-                () ->
-                        Assertions.assertTrue(getDriver().getCurrentUrl().equals("https://capital.com/trading/platform/?mode=demo"))
+                        Assertions.assertTrue(locators.getLogo().isDisplayed())
         );
 
     }

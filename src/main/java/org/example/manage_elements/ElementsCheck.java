@@ -17,16 +17,22 @@ public class ElementsCheck extends AbstractPage {
     private WebElement tryDemo;
     @FindBy(css = ".regSteps__item.js_signup.js-analyticsClick.js-analyticsVisible")
     private WebElement createVerifyYourAccount;
-    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[href='/trade-etfs#'][data-link='uu'][data-iid='1147941679092932']")
+    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[data-iid='22855552501634244']")
     private WebElement tesla;
-    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[href='/trade-etfs#'][data-link='uu'][data-iid='16150730595456196']")
+    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[data-iid='16150730595456196']")
     private WebElement nvidia;
-    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[href='/trade-etfs#'][data-link='uu'][data-iid='21178483823812']")
+    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[data-iid='21178483823812']")
     private WebElement amc;
-    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[href='/trade-etfs#'][data-link='uu'][data-iid='21182778791108']")
+    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[data-iid='21182778791108']")
     private WebElement amd;
-    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[href='/trade-etfs#'][data-link='uu'][data-iid='1147941679092932']")
+    @FindBy(css = ".mostTraded__btn.btn.btn--xs.ln-auto.js_signup_new.js-analyticsClick[data-iid='1147941679092932']")
     private WebElement apple;
+    @FindBy(css = ".cc-box.grid.gSm.brickSm.mostTraded.js-mostTraded.js-analyticsVisible")
+    private WebElement widget;
+    //-----------------------------------------------------
+    @FindBy(css = "//*[text()=' Tesla ']")
+    private WebElement elementPlatformTesla;
+
     //-------------------------------------------------
     //Check LogInForm
     @FindBy(css = "div[class='form-container-white form-container-small modal'] div[class='h1']")
@@ -199,6 +205,14 @@ public class ElementsCheck extends AbstractPage {
 
     public WebElement getCreateVerifyYourAccount() {
         return createVerifyYourAccount;
+    }
+
+    public WebElement getWidget() {
+        return widget;
+    }
+
+    public WebElement getElementPlatformTesla() {
+        return elementPlatformTesla;
     }
 }
 

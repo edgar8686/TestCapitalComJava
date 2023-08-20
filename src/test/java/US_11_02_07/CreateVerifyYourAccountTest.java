@@ -33,7 +33,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
         checkWindow();
 
-        scrollAndClickElement(locators.getCreateVerifyYourAccount());
+        scrollAndClickElement(locators.getCreateVerifyYourAccount(), locators.getCreateVerifyYourAccount());
         Assertions.assertAll("TC_11-02-07_06 (UnReg) check",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed()),
@@ -70,7 +70,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
         postAuthorization();
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
 
-        scrollAndClickElement(locators.getCreateVerifyYourAccount());
+        scrollAndClickElement(locators.getCreateVerifyYourAccount(), locators.getCreateVerifyYourAccount());
         Assertions.assertAll("TC_11-02-07_06 (Auth) check",
                 () ->
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com")),
@@ -103,7 +103,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
 
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
 
-        scrollAndClickElement(locators.getCreateVerifyYourAccount());
+        scrollAndClickElement(locators.getCreateVerifyYourAccount(), locators.getCreateVerifyYourAccount());
         Assertions.assertAll("TC_11-02-07_06 (UnAuth) check",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed()),
