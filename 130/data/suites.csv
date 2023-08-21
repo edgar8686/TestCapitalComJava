@@ -1,5 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Sun Aug 06 15:57:53 GMT 2023","Sun Aug 06 15:58:37 GMT 2023","44195","","US_11_02_07.LogInTest","","US_11_02_07.LogInTest","logInUnAuth","TC_11-02-07_01 (UnAuth) [1] pl, ?country=pl","Check: Education > Menu Item [ETF trading] > Test button [LogIn]"
-"passed","Sun Aug 06 15:59:06 GMT 2023","Sun Aug 06 15:59:50 GMT 2023","44144","","US_11_02_07.SignUpTest","","US_11_02_07.SignUpTest","signUpUnAuth","TC_11-02-07_02 (UnAuth) [1] pl, ?country=pl","Check: Education > Menu Item [ETF trading] > Test button [SignUp]"
-"broken","Sun Aug 06 15:58:38 GMT 2023","Sun Aug 06 15:59:06 GMT 2023","27176","","US_11_02_07.SignUpTest","","US_11_02_07.SignUpTest","signUpUnReg","TC_11-02-07_02 (UnReg) [1] pl, ?country=pl","Check: Education > Menu Item [ETF trading] > Test button [SignUp]"
-"broken","Sun Aug 06 15:57:22 GMT 2023","Sun Aug 06 15:57:52 GMT 2023","30705","","US_11_02_07.LogInTest","","US_11_02_07.LogInTest","logInUnReg","TC_11-02-07_01 (UnReg) [1] pl, ?country=pl","Check: Education > Menu Item [ETF trading] > Test button [LogIn]"
