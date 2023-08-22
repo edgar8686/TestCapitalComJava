@@ -43,7 +43,7 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     private WebElement hdrIcon;
     @FindBy(css = "input[class='fieldDropdown__control fieldDropdown__control--hidden']")
     private WebElement dropDownCountry;
-    @FindBy(css = "input[class='fieldDropdown__control js-countriesSearchInput']")
+    @FindBy(css = "input[class='fieldDropdown__control js-countriesSearchInput js-fieldDropdownFilterSearch']")
     private WebElement searchCountry;
     @FindBy(css = ".gI.gXs.gCenter.js-switchCountry")
     private WebElement selectCountry;

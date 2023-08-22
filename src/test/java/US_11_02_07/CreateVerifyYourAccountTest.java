@@ -7,10 +7,13 @@ import org.example.move_page.MovePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import settings.SeleniumConfiguration;
+import settings.TestListener;
 
+@ExtendWith(TestListener.class)
 public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
     EducatedMove smoke = new EducatedMove(getDriver());
     MovePage move = new EducatedMove(getDriver());
