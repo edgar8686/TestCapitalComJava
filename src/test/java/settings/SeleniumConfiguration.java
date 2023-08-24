@@ -33,6 +33,7 @@ public abstract class SeleniumConfiguration {
     ElementsCheck elementsCheck = new ElementsCheck(getDriver());
     private WebElement randomElement;
     private WebElement elementPlatform;
+    private WebElement elementPlatform2;
 
 
     @BeforeAll
@@ -46,8 +47,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        //optionsChrome.addArguments("--headless");
-        //optionsChrome.setHeadless(true);
+        optionsChrome.addArguments("--headless");
+        optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -250,17 +251,22 @@ public abstract class SeleniumConfiguration {
         randomElement = elements.get(randomIndex);
         System.out.println(randomElement);
 
-        // if (randomElement == elementsCheck.getTesla()) {
-        //   elementPlatform = elementsCheck.getElementPlatformTesla();
-        // } else if (randomElement == elementsCheck.getNvidia()) {
-
-        // } else if (randomElement == elementsCheck.getAmc()) {
-
-        // } else if (randomElement == elementsCheck.getAmd()) {
-
-        // } else if (randomElement == elementsCheck.getApple()) {
-
-        // }
+        if (randomElement == elementsCheck.getTesla()) {
+            elementPlatform = elementsCheck.getElementPlatformTesla();
+            elementPlatform2 = elementsCheck.getElementActiveTesla();
+        } else if (randomElement == elementsCheck.getNvidia()) {
+            elementPlatform = elementsCheck.getElementPlatformNvidia();
+            elementPlatform2 = elementsCheck.getElementActiveNvidia();
+        } else if (randomElement == elementsCheck.getAmc()) {
+            elementPlatform = elementsCheck.getElementPlatformAmc();
+            elementPlatform2 = elementsCheck.getElementActiveAmc();
+        } else if (randomElement == elementsCheck.getAmd()) {
+            elementPlatform = elementsCheck.getElementPlatformAmd();
+            elementPlatform2 = elementsCheck.getElementActiveAmd();
+        } else if (randomElement == elementsCheck.getApple()) {
+            elementPlatform = elementsCheck.getElementPlatformApple();
+            elementPlatform2 = elementsCheck.getElementActiveApple();
+        }
     }
 
     public void scrollAndClickElement(WebElement clickElement, WebElement scrollToElement) {
@@ -278,7 +284,11 @@ public abstract class SeleniumConfiguration {
         return randomElement;
     }
 
-    public WebElement getElement() {
+    public WebElement getElementPlatform() {
         return elementPlatform;
+    }
+
+    public WebElement getElementPlatform2() {
+        return elementPlatform2;
     }
 }

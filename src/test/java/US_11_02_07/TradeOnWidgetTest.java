@@ -78,13 +78,15 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
 
         randomElement();
         scrollAndClickElement(getRandomElement(), locators.getWidget());
-        Assertions.assertAll("TC_11-02-07_05 (Auth) check",
+        Assertions.assertAll("Failed: Trade element is not opened",
                 () ->
-                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com")),
+                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"), "Platform is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLogo().isDisplayed())
-                //() ->
-                       // Assertions.assertTrue(locators.getElementPlatformTesla().isDisplayed())
+                        Assertions.assertTrue(locators.getLogo().isDisplayed(), "Logo is not displayed"),
+                () ->
+                        Assertions.assertTrue(getElementPlatform().isDisplayed(), "Trade element is not displayed"),
+                () ->
+                        Assertions.assertTrue(getElementPlatform2().isDisplayed(), "Trade active element is not displayed")
         );
 
     }

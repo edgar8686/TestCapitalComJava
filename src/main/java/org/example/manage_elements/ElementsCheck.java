@@ -30,8 +30,26 @@ public class ElementsCheck extends AbstractPage {
     @FindBy(css = ".cc-box.grid.gSm.brickSm.mostTraded.js-mostTraded.js-analyticsVisible")
     private WebElement widget;
     //-----------------------------------------------------
-    @FindBy(css = "//*[text()=' Tesla ']")
+    @FindBy(xpath = "//*[text()=' Tesla ']")
     private WebElement elementPlatformTesla;
+    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='Tesla']")
+    private WebElement elementActiveTesla;
+    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='AMC']")
+    private WebElement elementActiveAmc;
+    @FindBy(xpath = "//*[text()=' AMC ']")
+    private WebElement elementPlatformAmc;
+    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='Nvidia']")
+    private WebElement elementActiveNvidia;
+    @FindBy(xpath = "//*[text()=' Nvidia ']")
+    private WebElement elementPlatformNvidia;
+    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='AMD']")
+    private WebElement elementActiveAmd;
+    @FindBy(xpath = "//*[text()=' AMD ']")
+    private WebElement elementPlatformAmd;
+    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='Apple']")
+    private WebElement elementActiveApple;
+    @FindBy(xpath = "//*[text()=' Apple ']")
+    private WebElement elementPlatformApple;
 
     //-------------------------------------------------
     //Check LogInForm
@@ -213,6 +231,42 @@ public class ElementsCheck extends AbstractPage {
 
     public WebElement getElementPlatformTesla() {
         return elementPlatformTesla;
+    }
+
+    public WebElement getElementActiveTesla() {
+        return elementActiveTesla;
+    }
+
+    public WebElement getElementActiveAmc() {
+        return elementActiveAmc;
+    }
+
+    public WebElement getElementPlatformAmc() {
+        return elementPlatformAmc;
+    }
+
+    public WebElement getElementActiveNvidia() {
+        return elementActiveNvidia;
+    }
+
+    public WebElement getElementPlatformNvidia() {
+        return elementPlatformNvidia;
+    }
+
+    public WebElement getElementActiveAmd() {
+        return elementActiveAmd;
+    }
+
+    public WebElement getElementPlatformAmd() {
+        return elementPlatformAmd;
+    }
+
+    public WebElement getElementActiveApple() {
+        return elementActiveApple;
+    }
+
+    public WebElement getElementPlatformApple() {
+        return elementPlatformApple;
     }
 }
 
