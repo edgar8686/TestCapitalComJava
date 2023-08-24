@@ -1,0 +1,4 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"US_11_Education 11-02-07_ETF_trading","Role: UnReg / TS_11.01.07 | Education > Menu Item [ETF trading]","TestETFTrading","0","7","0","0","0"
+"US_11_Education 11-02-07_ETF_trading","Role: Auth / TS_11.01.07 | Education > Menu Item [ETF trading]","TestETFTrading","0","4","0","0","0"
+"US_11_Education 11-02-07_ETF_trading","Role: UnAuth / TS_11.01.07 | Education > Menu Item [ETF trading]","TestETFTrading","0","5","0","0","0"
