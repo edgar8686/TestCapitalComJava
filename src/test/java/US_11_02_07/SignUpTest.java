@@ -6,6 +6,7 @@ import org.example.manage_elements.EducatedMove;
 import org.example.move_page.MovePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -19,9 +20,10 @@ public class SignUpTest extends SeleniumConfiguration {
     ElementsCheck locators = new ElementsCheck(getDriver());
 
     @ParameterizedTest
+    @Tag("us_11_02_07")
     @Owner("Edgar Nurmagomedov")
-    @Epic("tests.US_11_Education.11-02-07_ETF_trading")
-    @Feature("US_11-02-07_ETF_trading")
+    @Epic("US_11_Education 11-02-07_ETF_trading")
+    @Feature("Role: UnReg / TS_11.01.07 | Education > Menu Item [ETF trading]")
     @Story("TestETFTrading")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [SignUp]")
     @DisplayName("TC_11-02-07_02 (UnReg)")
@@ -37,27 +39,28 @@ public class SignUpTest extends SeleniumConfiguration {
 
         locators.signUpClick();
 
-        Assertions.assertAll("TC_11-02-07_02 (UnReg) check",
+        Assertions.assertAll("Failed: Opened a 'Sign up' form instead of a 'Login' form",
                 () ->
-                        Assertions.assertTrue(locators.getNameSignUp().isDisplayed()),
+                        Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLinkLogin().isDisplayed()),
+                        Assertions.assertTrue(locators.getLinkLogin().isDisplayed(), "Login link is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed()),
+                        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed(), "SignUp Email input is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed()),
+                        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed(),"SignUp Password input is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed()),
+                        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed(), "SignUp Continue button is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed())
+                        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed(), "Private link is not displayed")
         );
 
     }
 
     @ParameterizedTest
+    @Tag("us_11_02_07")
     @Owner("Edgar Nurmagomedov")
-    @Epic("tests.US_11_Education.11-02-07_ETF_trading")
-    @Feature("US_11-02-07_ETF_trading")
+    @Epic("US_11_Education 11-02-07_ETF_trading")
+    @Feature("Role: UnReg / TS_11.01.07 | Education > Menu Item [ETF trading]")
     @Story("TestETFTrading")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [SignUp]")
     @DisplayName("TC_11-02-07_02 (UnAuth)")
@@ -79,19 +82,19 @@ public class SignUpTest extends SeleniumConfiguration {
 
         locators.signUpClick();
 
-        Assertions.assertAll("TC_11-02-07_02 (UnAuth) check",
+        Assertions.assertAll("Failed: Opened a 'Sign up' form instead of a 'Login' form",
                 () ->
-                        Assertions.assertTrue(locators.getNameSignUp().isDisplayed()),
+                        Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLinkLogin().isDisplayed()),
+                        Assertions.assertTrue(locators.getLinkLogin().isDisplayed(), "Login link is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed()),
+                        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed(), "SignUp Email input is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed()),
+                        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed(),"SignUp Password input is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed()),
+                        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed(), "SignUp Continue button is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed())
+                        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed(), "Private link is not displayed")
         );
 
     }

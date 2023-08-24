@@ -2,7 +2,7 @@ package settings;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Allure;
+import io.qameta.allure.*;
 import org.example.manage_elements.EducatedMove;
 import org.example.manage_elements.ElementsCheck;
 import org.junit.jupiter.api.*;
@@ -36,6 +36,9 @@ public abstract class SeleniumConfiguration {
 
 
     @BeforeAll
+    @Epics({@Epic("US_11_Education 11-02-07_ETF_trading")})
+    @Features({@Feature("Role: UnReg / TS_11.01.07 | Education > Menu Item [ETF trading]"), @Feature("Role: Auth / TS_11.01.07 | Education > Menu Item [ETF trading]"), @Feature("Role: UnAuth / TS_11.01.07 | Education > Menu Item [ETF trading]")})
+    @Tags({@Tag("us_11_02_07")})
     static void init() throws MalformedURLException {
 
         WebDriverManager.chromedriver().setup();
@@ -43,8 +46,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsChrome.addArguments("--headless");
-        optionsChrome.setHeadless(true);
+        //optionsChrome.addArguments("--headless");
+        //optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -76,20 +79,20 @@ public abstract class SeleniumConfiguration {
             case "chrome":
                 driver = new ChromeDriver(optionsChrome);
                 System.out.println("Start on chrome");
-                Allure.addAttachment("Browser", "Start on chrome");
+                Allure.parameter("Browser", "Start on chrome");
                 break;
             case "firefox":
                 driver = new FirefoxDriver(optionsFirefox);
                 System.out.println("Start on firefox");
-                Allure.addAttachment("Browser", "Start on firefox");
+                Allure.parameter("Browser", "Start on firefox");
                 break;
             case "edge":
                 driver = new EdgeDriver(optionsEdge);
                 System.out.println("Start on edge");
-                Allure.addAttachment("Browser", "Start on edge");
+                Allure.parameter("Browser", "Start on edge");
                 break;
             default:
-                Allure.addAttachment("IllegalArgumentException", "Invalid browser name: " + browser);
+                Allure.parameter("IllegalArgumentException", "Invalid browser name: " + browser);
                 throw new IllegalArgumentException("Invalid browser name: " + browser);
         }
 
@@ -184,11 +187,11 @@ public abstract class SeleniumConfiguration {
         }
     }
 
-
+    @Attachment
     public void authorization() throws InterruptedException {
         ElementsCheck check = new ElementsCheck(getDriver());
-        Allure.addAttachment("Email", "aqa.tomelo.an@gmail.com");
-        Allure.addAttachment("Password", "iT9Vgqi6d$fiZ*Z");
+        Allure.parameter("Email", "aqa.tomelo.an@gmail.com");
+        Allure.parameter("Password", "iT9Vgqi6d$fiZ*Z");
         educatedMove.fluentWaitLocators(check.getTrade());
         check.getTrade().click();
         Thread.sleep(1000);
@@ -200,6 +203,7 @@ public abstract class SeleniumConfiguration {
         // Thread.sleep(20000);
         checkButtonIconClose();
     }
+
 
     public void postAuthorization() {
         getDriver().navigate().to(absoluteUrl);
