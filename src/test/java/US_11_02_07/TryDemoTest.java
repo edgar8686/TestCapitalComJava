@@ -25,7 +25,7 @@ public class TryDemoTest extends SeleniumConfiguration {
     @Owner("Edgar Nurmagomedov")
     @Epic("US_11_Education 11-02-07_ETF_trading")
     @Feature("Role: UnReg / TS_11.01.07 | Education > Menu Item [ETF trading]")
-    @Story("TestETFTrading")
+    @Story("TC_11.01.01_04 | Testing button [TryDemo]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [TryDemo]")
     @DisplayName("TC_11-02-07_04 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
@@ -39,7 +39,7 @@ public class TryDemoTest extends SeleniumConfiguration {
         checkWindow();
 
         locators.tryDemoClick();
-        Assertions.assertAll("Failed: Opened a 'Sign up' form instead of a 'Login' form",
+        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
@@ -61,7 +61,7 @@ public class TryDemoTest extends SeleniumConfiguration {
     @Owner("Edgar Nurmagomedov")
     @Epic("US_11_Education 11-02-07_ETF_trading")
     @Feature("Role: Auth / TS_11.01.07 | Education > Menu Item [ETF trading]")
-    @Story("TestETFTrading")
+    @Story("TC_11.01.01_04 | Testing button [TryDemo]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [TryDemo]")
     @DisplayName("TC_11-02-07_04 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
@@ -78,13 +78,13 @@ public class TryDemoTest extends SeleniumConfiguration {
 
         locators.tryDemoClick();
 
-        Assertions.assertAll("TC_11-02-07_04 (Auth) check",
+        Assertions.assertAll("Failed: Trade element is not opened",
                 () ->
-                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com")),
+                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"),"Platform title is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getAccountDemo().isDisplayed()),
+                        Assertions.assertTrue(locators.getAccountDemo().isDisplayed(),"Demo button is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLogo().isDisplayed())
+                        Assertions.assertTrue(locators.getLogo().isDisplayed(),"Logo is not displayed")
         );
 
     }
@@ -94,7 +94,7 @@ public class TryDemoTest extends SeleniumConfiguration {
     @Owner("Edgar Nurmagomedov")
     @Epic("US_11_Education 11-02-07_ETF_trading")
     @Feature("Role: UnAuth / TS_11.01.07 | Education > Menu Item [ETF trading]")
-    @Story("TestETFTrading")
+    @Story("TC_11.01.01_04 | Testing button [TryDemo]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [TryDemo]")
     @DisplayName("TC_11-02-07_04 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
@@ -114,7 +114,7 @@ public class TryDemoTest extends SeleniumConfiguration {
 
         locators.tryDemoClick();
 
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'Sign up' form",
+        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'Login' form",
                 () ->
                         Assertions.assertTrue(locators.getNameLogIn().isDisplayed(), "Login is not displayed"),
                 () ->

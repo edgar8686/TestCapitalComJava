@@ -24,7 +24,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
     @Owner("Edgar Nurmagomedov")
     @Epic("US_11_Education 11-02-07_ETF_trading")
     @Feature("Role: UnReg / TS_11.01.07 | Education > Menu Item [ETF trading]")
-    @Story("TestETFTrading")
+    @Story("TC_11.01.01_05 | Testing button [Trade] on Widget 'Most Traded'")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Trade] on Widget 'Most Traded'")
     @DisplayName("TC_11-02-07_05 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
@@ -39,7 +39,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
 
         randomElement();
         scrollAndClickElement(getRandomElement(), locators.getWidget());
-        Assertions.assertAll("Failed: Opened a 'Sign up' form instead of a 'Login' form",
+        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
@@ -61,7 +61,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
     @Owner("Edgar Nurmagomedov")
     @Epic("US_11_Education 11-02-07_ETF_trading")
     @Feature("Role: Auth / TS_11.01.07 | Education > Menu Item [ETF trading]")
-    @Story("TestETFTrading")
+    @Story("TC_11.01.01_05 | Testing button [Trade] on Widget 'Most Traded'")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Trade] on Widget 'Most Traded'")
     @DisplayName("TC_11-02-07_05 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
@@ -96,7 +96,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
     @Owner("Edgar Nurmagomedov")
     @Epic("US_11_Education 11-02-07_ETF_trading")
     @Feature("Role: UnAuth / TS_11.01.07 | Education > Menu Item [ETF trading]")
-    @Story("TestETFTrading")
+    @Story("TC_11.01.01_05 | Testing button [Trade] on Widget 'Most Traded'")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Trade] on Widget 'Most Traded'")
     @DisplayName("TC_11-02-07_05 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
@@ -117,7 +117,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
         randomElement();
         scrollAndClickElement(getRandomElement(), locators.getWidget());
 
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'Sign up' form",
+        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'LogIn' form",
                 () ->
                         Assertions.assertTrue(locators.getNameLogIn().isDisplayed(), "Login is not displayed"),
                 () ->

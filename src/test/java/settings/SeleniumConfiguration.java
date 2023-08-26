@@ -39,6 +39,7 @@ public abstract class SeleniumConfiguration {
     @BeforeAll
     @Epics({@Epic("US_11_Education 11-02-07_ETF_trading")})
     @Features({@Feature("Role: UnReg / TS_11.01.07 | Education > Menu Item [ETF trading]"), @Feature("Role: Auth / TS_11.01.07 | Education > Menu Item [ETF trading]"), @Feature("Role: UnAuth / TS_11.01.07 | Education > Menu Item [ETF trading]")})
+    @Stories({@Story("TC_11.01.01_06 | Testing button [Create & verify your account]"), @Story("TC_11.01.01_01 | Testing button [LogIn]"), @Story("TC_11.01.01_02 | Testing button [SignUp]"), @Story("TC_11.01.01_03 | Testing button [StartTrading]"), @Story("TC_11.01.01_05 | Testing button [Trade] on Widget 'Most Traded'"), @Story("TC_11.01.01_04 | Testing button [TryDemo]")})
     @Tags({@Tag("us_11_02_07")})
     static void init() throws MalformedURLException {
 
@@ -80,17 +81,17 @@ public abstract class SeleniumConfiguration {
             case "chrome":
                 driver = new ChromeDriver(optionsChrome);
                 System.out.println("Start on chrome");
-                Allure.parameter("Browser", "Start on chrome");
+                Allure.parameter("Browser", "Chrome");
                 break;
             case "firefox":
                 driver = new FirefoxDriver(optionsFirefox);
                 System.out.println("Start on firefox");
-                Allure.parameter("Browser", "Start on firefox");
+                Allure.parameter("Browser", "Firefox");
                 break;
             case "edge":
                 driver = new EdgeDriver(optionsEdge);
                 System.out.println("Start on edge");
-                Allure.parameter("Browser", "Start on edge");
+                Allure.parameter("Browser", "Edge");
                 break;
             default:
                 Allure.parameter("IllegalArgumentException", "Invalid browser name: " + browser);
@@ -128,7 +129,7 @@ public abstract class SeleniumConfiguration {
                     .click(educatedMove.getDropDownCountry())
                     .pause(Duration.ofSeconds(1))
                     .sendKeys(educatedMove.getSearchCountry(), countries)
-                    .pause(Duration.ofSeconds(5))
+                    .pause(Duration.ofSeconds(4))
                     .perform();
             educatedMove.getSelectCountry().click();
 
@@ -142,12 +143,10 @@ public abstract class SeleniumConfiguration {
                     .click(educatedMove.getDropDownCountry())
                     .pause(Duration.ofSeconds(1))
                     .sendKeys(educatedMove.getSearchCountry(), countries)
-                    .pause(Duration.ofSeconds(5))
+                    .pause(Duration.ofSeconds(4))
                     .perform();
             educatedMove.getSelectCountry().click();
         }
-
-
     }
 
     public void acceptAllCookies() throws InterruptedException {
@@ -188,7 +187,7 @@ public abstract class SeleniumConfiguration {
         }
     }
 
-    @Attachment
+
     public void authorization() throws InterruptedException {
         ElementsCheck check = new ElementsCheck(getDriver());
         Allure.parameter("Email", "aqa.tomelo.an@gmail.com");

@@ -24,7 +24,7 @@ public class LogInTest extends SeleniumConfiguration {
     @Owner("Edgar Nurmagomedov")
     @Epic("US_11_Education 11-02-07_ETF_trading")
     @Feature("Role: UnReg / TS_11.01.07 | Education > Menu Item [ETF trading]")
-    @Story("TestETFTrading")
+    @Story("TC_11.01.01_01 | Testing button [LogIn]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [LogIn]")
     @DisplayName("TC_11-02-07_01 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
@@ -39,7 +39,7 @@ public class LogInTest extends SeleniumConfiguration {
 
         locators.logInClick();
 
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'Sign up' form",
+        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'Login' form",
                 () ->
                         Assertions.assertTrue(locators.getNameLogIn().isDisplayed(), "Login is not displayed"),
                 () ->
@@ -63,7 +63,7 @@ public class LogInTest extends SeleniumConfiguration {
     @Owner("Edgar Nurmagomedov")
     @Epic("US_11_Education 11-02-07_ETF_trading")
     @Feature("Role: UnAuth / TS_11.01.07 | Education > Menu Item [ETF trading]")
-    @Story("TestETFTrading")
+    @Story("TC_11.01.01_01 | Testing button [LogIn]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [LogIn]")
     @DisplayName("TC_11-02-07_01 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
@@ -83,7 +83,7 @@ public class LogInTest extends SeleniumConfiguration {
         move.clickPage(smokeMain.getEducated(), smokeMain.getEtfTrading());
 
         locators.logInClick();
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'Sign up' form",
+        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'Login' form",
                 () ->
                         Assertions.assertTrue(locators.getNameLogIn().isDisplayed(), "Login is not displayed"),
                 () ->
