@@ -38,8 +38,8 @@ public abstract class SeleniumConfiguration {
 
     @BeforeAll
     @Epics({@Epic("US_11_Education 11-02-07_ETF_trading")})
-    @Features({@Feature("Role: UnReg / TS_11.01.07 | Education > Menu Item [ETF trading]"), @Feature("Role: Auth / TS_11.01.07 | Education > Menu Item [ETF trading]"), @Feature("Role: UnAuth / TS_11.01.07 | Education > Menu Item [ETF trading]")})
-    @Stories({@Story("TC_11.01.01_06 | Testing button [Create & verify your account]"), @Story("TC_11.01.01_01 | Testing button [LogIn]"), @Story("TC_11.01.01_02 | Testing button [SignUp]"), @Story("TC_11.01.01_03 | Testing button [StartTrading]"), @Story("TC_11.01.01_05 | Testing button [Trade] on Widget 'Most Traded'"), @Story("TC_11.01.01_04 | Testing button [TryDemo]")})
+    @Features({@Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]"), @Feature("Role: Auth / TS_11.02.07 | Education > Menu Item [ETF trading]"), @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [ETF trading]")})
+    @Stories({@Story("TC_11.02.07_06 | Testing button [Create & verify your account]"), @Story("TC_11.02.07_01 | Testing button [LogIn]"), @Story("TC_11.02.07_02 | Testing button [SignUp]"), @Story("TC_11.02.07_03 | Testing button [StartTrading]"), @Story("TC_11.02.07_05 | Testing button [Trade] on Widget 'Most Traded'"), @Story("TC_11.02.07_04 | Testing button [TryDemo]")})
     @Tags({@Tag("us_11_02_07")})
     static void init() throws MalformedURLException {
 
@@ -71,8 +71,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsEdge.addArguments("--headless");
-        optionsEdge.setHeadless(true);
+        //optionsEdge.addArguments("--headless");
+        //optionsEdge.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsEdge.addArguments("--lang=en");
@@ -120,32 +120,34 @@ public abstract class SeleniumConfiguration {
 
 
     public void precondition(String languages, String countries) {
-        if (languages.equalsIgnoreCase("en")) {
+        if (languages.equalsIgnoreCase("en") && countries.equalsIgnoreCase("gb")) {
             absoluteUrl = baseUrl;
             getDriver().navigate().to(absoluteUrl);
-            new Actions(getDriver())
-                    .moveToElement(educatedMove.getHdrIcon())
+            Actions actions = new Actions(getDriver());
+            actions.moveToElement(educatedMove.getHdrIcon())
                     .pause(Duration.ofSeconds(1))
                     .click(educatedMove.getDropDownCountry())
                     .pause(Duration.ofSeconds(1))
-                    .sendKeys(educatedMove.getSearchCountry(), countries)
-                    .pause(Duration.ofSeconds(4))
+                    //.sendKeys(educatedMove.getSearchCountry(), countries)
                     .perform();
-            educatedMove.getSelectCountry().click();
+            actions.moveToElement(educatedMove.getCountryList())
+                    .scrollToElement(educatedMove.getCountryGb())
+                    .click(educatedMove.getCountryGb())
+                    .perform();
 
-
-        } else {
+        } else if (countries.equalsIgnoreCase("hu") && languages.equalsIgnoreCase("hu")) {
             absoluteUrl = baseUrl + languages;
             getDriver().navigate().to(absoluteUrl);
-            new Actions(getDriver())
-                    .moveToElement(educatedMove.getHdrIcon())
+            Actions actions = new Actions(getDriver());
+            actions.moveToElement(educatedMove.getHdrIcon())
                     .pause(Duration.ofSeconds(1))
                     .click(educatedMove.getDropDownCountry())
                     .pause(Duration.ofSeconds(1))
-                    .sendKeys(educatedMove.getSearchCountry(), countries)
-                    .pause(Duration.ofSeconds(4))
                     .perform();
-            educatedMove.getSelectCountry().click();
+            actions.moveToElement(educatedMove.getCountryList())
+                    .scrollToElement(educatedMove.getCountryHu())
+                    .click(educatedMove.getCountryHu())
+                    .perform();
         }
     }
 
@@ -228,6 +230,7 @@ public abstract class SeleniumConfiguration {
         driver.navigate().refresh();
     }
 
+
     //Динамически изменяет элемент
     // public SelenideElement getDynamicElement(String dynamicValue) {
     //  String dynamicLocator = String.format("#%s", dynamicValue);
@@ -270,13 +273,17 @@ public abstract class SeleniumConfiguration {
 
     public void scrollAndClickElement(WebElement clickElement, WebElement scrollToElement) {
         //((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
-        new Actions(getDriver())
-                .scrollToElement(scrollToElement)
-                .pause(Duration.ofSeconds(1))
-                .moveToElement(clickElement)
-                .pause(Duration.ofSeconds(1))
-                .click(clickElement)
-                .perform();
+        try {
+            new Actions(getDriver())
+                    .scrollToElement(scrollToElement)
+                    .pause(Duration.ofSeconds(1))
+                    .moveToElement(clickElement)
+                    .pause(Duration.ofSeconds(1))
+                    .click(clickElement)
+                    .perform();
+        } catch (NoSuchElementException e) {
+            throw new NoSuchElementException("Trade button is missing");
+        }
     }
 
     public WebElement getRandomElement() {

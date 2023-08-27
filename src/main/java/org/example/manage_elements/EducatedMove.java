@@ -16,17 +16,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class EducatedMove extends AbstractPage implements MovePage<EducatedMove> {
-    static String baseUrl = "https://capital.com/";
     @FindBy(css = "a[data-type='nav_id96']")
     private WebElement educated;
     @FindBy(xpath = "//a[contains(@data-type,'nav_id243')]")
     private WebElement etfTrading;
     @FindBy(xpath = "//button[@id='onetrust-accept-btn-handler']")
     private WebElement cookie;
-    @FindBy(css = "div[class='form-container-small-header s-between'] div[class='h1']")
-    private WebElement signUpForm;
-    @FindBy(css = "input[name='ff01']")
-    private WebElement email;
     @FindBy(xpath = "//button[contains(@class,'button-cleared small s_cancel')]//*[name()='svg']")
     private WebElement closeWindow;
     //------------------------------------------------------------------------------------
@@ -41,12 +36,19 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     private WebElement ok;
     @FindBy(css = ".licLangSw__btn.gI.gCenter.gXs.js-licLangSwBtn.js-countries")
     private WebElement hdrIcon;
+    //------------------------------------------------------------------------------
+    //Choice country
     @FindBy(css = "input[class='fieldDropdown__control fieldDropdown__control--hidden']")
     private WebElement dropDownCountry;
     @FindBy(css = "input[class='fieldDropdown__control js-countriesSearchInput js-fieldDropdownFilterSearch']")
     private WebElement searchCountry;
-    @FindBy(css = ".gI.gXs.gCenter.js-switchCountry")
-    private WebElement selectCountry;
+    @FindBy(css = ".licLangSw__countries.grid.gXs.js-countriesList")
+    private WebElement countryList;
+    @FindBy(css = "a[data-country='gb']")
+    private WebElement countryGb;
+    @FindBy(css = "a[data-country='hu']")
+    private WebElement countryHu;
+
 
 
     public WebElement getEducated() {
@@ -83,13 +85,8 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
         //wait.until(driver -> {
         //    return webElement;
         // });
-        // wait.until(driver -> webElement.isDisplayed());
-        wait.until(ExpectedConditions.elementToBeClickable(webElement));
-    }
-
-
-    public static String getBaseUrl() {
-        return baseUrl;
+         wait.until(driver -> webElement.isDisplayed());
+       // wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public WebElement getEtfTrading() {
@@ -99,15 +96,6 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     public WebElement getCookie() {
         return cookie;
     }
-
-    public WebElement getSignUpForm() {
-        return signUpForm;
-    }
-
-    public WebElement getEmail() {
-        return email;
-    }
-
     public WebElement getCloseWindow() {
         return closeWindow;
     }
@@ -141,8 +129,16 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
         return searchCountry;
     }
 
-    public WebElement getSelectCountry() {
-        return selectCountry;
+    public WebElement getCountryList() {
+        return countryList;
+    }
+
+    public WebElement getCountryGb() {
+        return countryGb;
+    }
+
+    public WebElement getCountryHu() {
+        return countryHu;
     }
 }
 
