@@ -160,15 +160,14 @@ public abstract class SeleniumConfiguration {
             Allure.step("Language: " + languages + " Countries: " + countries);
             Actions actions = new Actions(getDriver());
             actions.moveToElement(educatedMove.getHdrIcon())
-                    .pause(Duration.ofSeconds(1))
                     .click(educatedMove.getDropDownCountry())
-                    .pause(Duration.ofSeconds(1))
                     .perform();
             actions.moveToElement(educatedMove.getCountryList())
                     .scrollToElement(educatedMove.getCountryDe())
-                    .pause(Duration.ofSeconds(1))
-                    .click(educatedMove.getCountryDe())
+                   // .click(educatedMove.getCountryDe())
                     .perform();
+            educatedMove.fluentWaitLocators(educatedMove.getCountryDe());
+            educatedMove.getCountryDe();
         }
     }
 
