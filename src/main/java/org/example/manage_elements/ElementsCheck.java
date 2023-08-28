@@ -114,10 +114,11 @@ public class ElementsCheck extends AbstractPage {
         return this;
     }
 
-    public ElementsCheck tryDemoClick() {
+    public ElementsCheck tryDemoClick() throws InterruptedException {
         new EducatedMove(getDriver())
                 .fluentWaitLocators(tryDemo);
         tryDemo.click();
+        Thread.sleep(2000);
         return this;
     }
 

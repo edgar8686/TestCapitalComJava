@@ -14,6 +14,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.opentest4j.AssertionFailedError;
 import org.opentest4j.MultipleFailuresError;
 
@@ -114,6 +115,7 @@ public abstract class SeleniumConfiguration {
             System.out.println("The browser is closed");
             driver.quit();
             System.out.println("The driver is quit");
+            Allure.step("Driver is quit");
         }
     }
 
@@ -166,6 +168,7 @@ public abstract class SeleniumConfiguration {
                     .perform();
             actions.moveToElement(educatedMove.getCountryList())
                     .scrollToElement(educatedMove.getCountryDe())
+                    .pause(Duration.ofSeconds(1))
                     .click(educatedMove.getCountryDe())
                     .perform();
         }
