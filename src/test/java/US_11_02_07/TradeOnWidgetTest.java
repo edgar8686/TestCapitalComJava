@@ -82,7 +82,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
                 () ->
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"), "Platform is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLogo().isDisplayed(), "Logo is not displayed"),
+                        Assertions.assertTrue(locators.getLogo2().isDisplayed(), "Logo is not displayed"),
                 () ->
                         Assertions.assertTrue(getElementPlatform().isDisplayed(), "Trade element is not displayed"),
                 () ->

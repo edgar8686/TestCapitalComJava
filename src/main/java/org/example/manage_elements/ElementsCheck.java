@@ -88,6 +88,8 @@ public class ElementsCheck extends AbstractPage {
     //Auth check
     @FindBy(css = "object[class='logo__icon']")
     private WebElement logo;
+    @FindBy(css = ".logo")
+    private WebElement logo2;
     @FindBy(xpath = "//div[@class='account__mode account__mode_demo']")
     private WebElement accountDemo;
 
@@ -267,6 +269,10 @@ public class ElementsCheck extends AbstractPage {
 
     public WebElement getElementPlatformApple() {
         return elementPlatformApple;
+    }
+
+    public WebElement getLogo2() {
+        return logo2;
     }
 }
 
