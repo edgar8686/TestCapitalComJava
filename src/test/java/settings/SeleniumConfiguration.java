@@ -166,7 +166,6 @@ public abstract class SeleniumConfiguration {
                     .perform();
             actions.moveToElement(educatedMove.getCountryList())
                     .scrollToElement(educatedMove.getCountryDe())
-                    .pause(Duration.ofSeconds(2))
                     .click(educatedMove.getCountryDe())
                     .perform();
         }
