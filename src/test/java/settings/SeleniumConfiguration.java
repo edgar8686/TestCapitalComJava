@@ -167,7 +167,7 @@ public abstract class SeleniumConfiguration {
                    // .click(educatedMove.getCountryDe())
                     .perform();
             educatedMove.fluentWaitLocators(educatedMove.getCountryDe());
-            educatedMove.getCountryDe();
+            educatedMove.getCountryDe().click();
         }
     }
 
