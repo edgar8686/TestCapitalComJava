@@ -51,8 +51,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsChrome.addArguments("--headless");
-        optionsChrome.setHeadless(true);
+        //optionsChrome.addArguments("--headless");
+       // optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -165,7 +165,6 @@ public abstract class SeleniumConfiguration {
                     .pause(Duration.ofSeconds(1))
                     .perform();
             actions.moveToElement(educatedMove.getCountryList())
-                    .pause(Duration.ofSeconds(1))
                     .scrollToElement(educatedMove.getCountryDe())
                     .pause(Duration.ofSeconds(1))
                     .click(educatedMove.getCountryDe())
