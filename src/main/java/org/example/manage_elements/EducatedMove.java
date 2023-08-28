@@ -70,7 +70,9 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
         try {
             fluentWaitLocators(main);
             new Actions(getDriver())
+                    .pause(Duration.ofSeconds(1))
                     .moveToElement(main)
+                    .pause(Duration.ofSeconds(1))
                     .perform();
             fluentWaitLocators(page);
             page.click();
@@ -89,8 +91,8 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
         //wait.until(driver -> {
         //    return webElement;
         // });
-        wait.until(driver -> webElement.isDisplayed());
-        // wait.until(ExpectedConditions.elementToBeClickable(webElement));
+        //wait.until(driver -> webElement.isDisplayed());
+         wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public WebElement getEtfTrading() {

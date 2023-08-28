@@ -165,7 +165,9 @@ public abstract class SeleniumConfiguration {
                     .pause(Duration.ofSeconds(1))
                     .perform();
             actions.moveToElement(educatedMove.getCountryList())
+                    .pause(Duration.ofSeconds(1))
                     .scrollToElement(educatedMove.getCountryDe())
+                    .pause(Duration.ofSeconds(1))
                     .click(educatedMove.getCountryDe())
                     .perform();
         }
@@ -221,19 +223,19 @@ public abstract class SeleniumConfiguration {
 
     @Step("Step: authorization")
     public void authorization() throws InterruptedException {
-        ElementsCheck check = new ElementsCheck(getDriver());
+       // ElementsCheck check = new ElementsCheck(getDriver());
         Allure.parameter("Email", "aqa.tomelo.an@gmail.com");
         Allure.parameter("Password", "iT9Vgqi6d$fiZ*Z");
         Allure.step("Email: aqa.tomelo.an@gmail.com");
         Allure.step("Password: iT9Vgqi6d$fiZ*Z");
-        educatedMove.fluentWaitLocators(check.getTrade());
-        check.getTrade().click();
+        educatedMove.fluentWaitLocators(elementsCheck.getTrade());
+        elementsCheck.getTrade().click();
         Thread.sleep(1000);
-        check.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
+        elementsCheck.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
         Thread.sleep(1000);
-        check.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
-        educatedMove.fluentWaitLocators(check.getButtonSignUpContinueIncluded());
-        check.getButtonSignUpContinueIncluded().click();
+        elementsCheck.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
+        educatedMove.fluentWaitLocators(elementsCheck.getButtonSignUpContinueIncluded());
+        elementsCheck.getButtonSignUpContinueIncluded().click();
         // Thread.sleep(20000);
         checkButtonIconClose();
     }
