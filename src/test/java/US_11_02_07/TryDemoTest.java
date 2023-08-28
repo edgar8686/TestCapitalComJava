@@ -60,7 +60,7 @@ public class TryDemoTest extends SeleniumConfiguration {
     @Tag("us_11_02_07")
     @Owner("Edgar Nurmagomedov")
     @Epic("US_11_Education 11-02-07_ETF_trading")
-    @Feature("Role: Auth / TS_11.01.07 | Education > Menu Item [ETF trading]")
+    @Feature("Role: Auth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_04 | Testing button [TryDemo]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [TryDemo]")
     @DisplayName("TC_11-02-07_04 (Auth)")

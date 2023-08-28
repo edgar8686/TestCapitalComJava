@@ -60,7 +60,7 @@ public class SignUpTest extends SeleniumConfiguration {
     @Tag("us_11_02_07")
     @Owner("Edgar Nurmagomedov")
     @Epic("US_11_Education 11-02-07_ETF_trading")
-    @Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]")
+    @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_02 | Testing button [SignUp]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [SignUp]")
     @DisplayName("TC_11-02-07_02 (UnAuth)")

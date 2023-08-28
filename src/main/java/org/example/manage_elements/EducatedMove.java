@@ -1,6 +1,7 @@
 package org.example.manage_elements;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 import org.example.abstractClass.AbstractPage;
 import org.example.move_page.MovePage;
 import org.openqa.selenium.*;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.opentest4j.TestAbortedException;
 import org.opentest4j.TestSkippedException;
 
 import java.time.Duration;
@@ -48,7 +50,8 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     private WebElement countryGb;
     @FindBy(css = "a[data-country='hu']")
     private WebElement countryHu;
-
+    @FindBy(css = "a[data-country='de']")
+    private WebElement countryDe;
 
 
     public WebElement getEducated() {
@@ -61,8 +64,9 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
 
     //--------------------------------------------------------------------------------------------------------------------
     //Move page
+    @Step("Step: Educated move")
     public EducatedMove clickPage(WebElement main, WebElement page) {
-
+        Allure.step("Move to ETF trading");
         try {
             fluentWaitLocators(main);
             new Actions(getDriver())
@@ -72,7 +76,7 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
             page.click();
             return this;
         } catch (NoSuchElementException e) {
-            throw new TestSkippedException("Test Skipped: ETF trading not found. For tests on language the page Education->ETF trading doesn't exist on production");
+            throw new TestAbortedException("Test Skipped: ETF trading not found. For tests on language the page Education->ETF trading doesn't exist on production");
         }
     }
 
@@ -85,8 +89,8 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
         //wait.until(driver -> {
         //    return webElement;
         // });
-         wait.until(driver -> webElement.isDisplayed());
-       // wait.until(ExpectedConditions.elementToBeClickable(webElement));
+        wait.until(driver -> webElement.isDisplayed());
+        // wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public WebElement getEtfTrading() {
@@ -96,6 +100,7 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     public WebElement getCookie() {
         return cookie;
     }
+
     public WebElement getCloseWindow() {
         return closeWindow;
     }
@@ -139,6 +144,10 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
 
     public WebElement getCountryHu() {
         return countryHu;
+    }
+
+    public WebElement getCountryDe() {
+        return countryDe;
     }
 }
 

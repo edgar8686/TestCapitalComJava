@@ -14,6 +14,8 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.opentest4j.AssertionFailedError;
+import org.opentest4j.MultipleFailuresError;
 
 
 import java.net.MalformedURLException;
@@ -37,6 +39,7 @@ public abstract class SeleniumConfiguration {
 
 
     @BeforeAll
+    @Attachment
     @Epics({@Epic("US_11_Education 11-02-07_ETF_trading")})
     @Features({@Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]"), @Feature("Role: Auth / TS_11.02.07 | Education > Menu Item [ETF trading]"), @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [ETF trading]")})
     @Stories({@Story("TC_11.02.07_06 | Testing button [Create & verify your account]"), @Story("TC_11.02.07_01 | Testing button [LogIn]"), @Story("TC_11.02.07_02 | Testing button [SignUp]"), @Story("TC_11.02.07_03 | Testing button [StartTrading]"), @Story("TC_11.02.07_05 | Testing button [Trade] on Widget 'Most Traded'"), @Story("TC_11.02.07_04 | Testing button [TryDemo]")})
@@ -81,20 +84,20 @@ public abstract class SeleniumConfiguration {
             case "chrome":
                 driver = new ChromeDriver(optionsChrome);
                 System.out.println("Start on chrome");
-                Allure.parameter("Browser", "Chrome");
+                Allure.addAttachment("Browser", "Chrome");
                 break;
             case "firefox":
                 driver = new FirefoxDriver(optionsFirefox);
                 System.out.println("Start on firefox");
-                Allure.parameter("Browser", "Firefox");
+                Allure.addAttachment("Browser", "Firefox");
                 break;
             case "edge":
                 driver = new EdgeDriver(optionsEdge);
                 System.out.println("Start on edge");
-                Allure.parameter("Browser", "Edge");
+                Allure.addAttachment("Browser", "Edge");
                 break;
             default:
-                Allure.parameter("IllegalArgumentException", "Invalid browser name: " + browser);
+                Allure.addAttachment("IllegalArgumentException", "Invalid browser name: " + browser);
                 throw new IllegalArgumentException("Invalid browser name: " + browser);
         }
 
@@ -118,11 +121,12 @@ public abstract class SeleniumConfiguration {
         return driver;
     }
 
-
+    @Step("Step precondition: choice language and country")
     public void precondition(String languages, String countries) {
         if (languages.equalsIgnoreCase("en") && countries.equalsIgnoreCase("gb")) {
             absoluteUrl = baseUrl;
             getDriver().navigate().to(absoluteUrl);
+            Allure.step("Language: " + languages + " Countries: " + countries);
             Actions actions = new Actions(getDriver());
             actions.moveToElement(educatedMove.getHdrIcon())
                     .pause(Duration.ofSeconds(1))
@@ -138,6 +142,7 @@ public abstract class SeleniumConfiguration {
         } else if (countries.equalsIgnoreCase("hu") && languages.equalsIgnoreCase("hu")) {
             absoluteUrl = baseUrl + languages;
             getDriver().navigate().to(absoluteUrl);
+            Allure.step("Language: " + languages + " Countries: " + countries);
             Actions actions = new Actions(getDriver());
             actions.moveToElement(educatedMove.getHdrIcon())
                     .pause(Duration.ofSeconds(1))
@@ -148,9 +153,25 @@ public abstract class SeleniumConfiguration {
                     .scrollToElement(educatedMove.getCountryHu())
                     .click(educatedMove.getCountryHu())
                     .perform();
+
+        } else if (countries.equalsIgnoreCase("de") && languages.equalsIgnoreCase("de")) {
+            absoluteUrl = baseUrl + languages;
+            getDriver().navigate().to(absoluteUrl);
+            Allure.step("Language: " + languages + " Countries: " + countries);
+            Actions actions = new Actions(getDriver());
+            actions.moveToElement(educatedMove.getHdrIcon())
+                    .pause(Duration.ofSeconds(1))
+                    .click(educatedMove.getDropDownCountry())
+                    .pause(Duration.ofSeconds(1))
+                    .perform();
+            actions.moveToElement(educatedMove.getCountryList())
+                    .scrollToElement(educatedMove.getCountryDe())
+                    .click(educatedMove.getCountryDe())
+                    .perform();
         }
     }
 
+    @Step("Step: Accept all cookies")
     public void acceptAllCookies() throws InterruptedException {
         try {
             Thread.sleep(5000);
@@ -158,42 +179,53 @@ public abstract class SeleniumConfiguration {
             if (educatedMove.getCookie().isDisplayed()) {
                 educatedMove.getCookie().click();
                 System.out.println("All cookies accepted");
+                Allure.step("Cookies accepted");
             }
         } catch (TimeoutException a) {
             System.out.println("All cookies have been accepted");
+            Allure.step("Cookies have been accepted");
         } catch (NoSuchElementException e) {
             System.out.println("All cookies have been accepted");
+            Allure.step("Cookies have been accepted");
         }
     }
 
+    @Step("Step: Checking the pop-up window")
     public void checkWindow() {
         try {
             if (educatedMove.getCloseWindow().isDisplayed()) {
                 educatedMove.getCloseWindow().click();
                 System.out.println("The SignUp form is closed");
+                Allure.step("The SignUp form is closed");
             }
         } catch (NoSuchElementException e) {
             System.out.println("SignUp form is not surfaced");
+            Allure.step("SignUp form is not surfaced");
         }
     }
 
+    @Step("Step: Checking the pop-up window platform")
     public void checkButtonIconClose() {
         try {
             educatedMove.fluentWaitLocators(educatedMove.getIconClose());
             if (educatedMove.getIconClose().isDisplayed()) {
                 educatedMove.getIconClose().click();
                 System.out.println("The button [iconClose] is closed");
+                Allure.step("The button [iconClose] is closed");
             }
         } catch (NoSuchElementException e) {
-            System.out.println("The button [iconClose] dis not surfaced");
+            System.out.println("The button [iconClose] is not surfaced");
+            Allure.step("The button [iconClose] is not surfaced");
         }
     }
 
-
+    @Step("Step: authorization")
     public void authorization() throws InterruptedException {
         ElementsCheck check = new ElementsCheck(getDriver());
         Allure.parameter("Email", "aqa.tomelo.an@gmail.com");
         Allure.parameter("Password", "iT9Vgqi6d$fiZ*Z");
+        Allure.step("Email: aqa.tomelo.an@gmail.com");
+        Allure.step("Password: iT9Vgqi6d$fiZ*Z");
         educatedMove.fluentWaitLocators(check.getTrade());
         check.getTrade().click();
         Thread.sleep(1000);
@@ -206,19 +238,24 @@ public abstract class SeleniumConfiguration {
         checkButtonIconClose();
     }
 
-
+    @Step("Step: post authorization")
     public void postAuthorization() {
+        Allure.step("Go to " + absoluteUrl);
         getDriver().navigate().to(absoluteUrl);
     }
 
+    @Step("Step: click logout")
     public void logoutClick() throws InterruptedException {
         Thread.sleep(2000);
+        Allure.step("Logout");
         educatedMove.fluentWaitLocators(educatedMove.getButtonLive());
         educatedMove.getButtonLive().click();
         educatedMove.getLogout().click();
     }
 
+    @Step("Step: delete cookies")
     public void deleteCookies() {
+        Allure.step("The cookies is deleted");
         getDriver().manage().deleteAllCookies();
     }
 
@@ -240,6 +277,7 @@ public abstract class SeleniumConfiguration {
     //SelenideElement element = myPage.getDynamicElement("my-dynamic-element");
     //element.click();
     //}
+    @Step("Step: random selection of an element on the Widget")
     public void randomElement() {
         Random random = new Random();
 
@@ -252,6 +290,7 @@ public abstract class SeleniumConfiguration {
         int randomIndex = random.nextInt(elements.size());
         randomElement = elements.get(randomIndex);
         System.out.println(randomElement);
+        Allure.step("Element: " + randomElement);
 
         if (randomElement == elementsCheck.getTesla()) {
             elementPlatform = elementsCheck.getElementPlatformTesla();
@@ -271,9 +310,12 @@ public abstract class SeleniumConfiguration {
         }
     }
 
+    @Step("Step: scroll and click element")
     public void scrollAndClickElement(WebElement clickElement, WebElement scrollToElement) {
         //((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
         try {
+            Allure.step("Scroll to: " + scrollToElement);
+            Allure.step("Element click: " + clickElement);
             new Actions(getDriver())
                     .scrollToElement(scrollToElement)
                     .pause(Duration.ofSeconds(1))
@@ -282,7 +324,8 @@ public abstract class SeleniumConfiguration {
                     .click(clickElement)
                     .perform();
         } catch (NoSuchElementException e) {
-            throw new NoSuchElementException("Trade button is missing");
+            Allure.step("Trade button is missing");
+            throw new AssertionFailedError("Trade button is missing");
         }
     }
 
