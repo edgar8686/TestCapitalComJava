@@ -333,12 +333,14 @@ public abstract class SeleniumConfiguration {
         try {
             Allure.step("Scroll to: " + scrollToElement);
             Allure.step("Element click: " + clickElement);
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", scrollToElement);
-            new Actions(getDriver())
-                    //.scrollToElement(scrollToElement)
-                    //.pause(Duration.ofSeconds(1))
-                    .moveToElement(clickElement)
-                    .pause(Duration.ofSeconds(1))
+            //((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", scrollToElement);
+            Actions actions = new Actions(getDriver());
+            actions.scrollToElement(scrollToElement)
+                    .perform();
+
+            educatedMove.fluentWaitLocators(clickElement);
+
+            actions.moveToElement(clickElement)
                     .click(clickElement)
                     .perform();
         } catch (NoSuchElementException e) {
