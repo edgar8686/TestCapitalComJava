@@ -179,10 +179,13 @@ public abstract class SeleniumConfiguration {
                     .click(educatedMove.getDropDownCountry())
                     .pause(Duration.ofSeconds(1))
                     .perform();
-            actions.moveToElement(educatedMove.getCountryList())
-                    .scrollToElement(educatedMove.getCountryEs())
-                    .click(educatedMove.getCountryEs())
-                    .perform();
+            //actions.moveToElement(educatedMove.getCountryList())
+                 //   .scrollToElement(educatedMove.getCountryEs())
+                   // .click(educatedMove.getCountryEs())
+                   // .perform();
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryEs());
+            educatedMove.fluentWaitLocators(educatedMove.getCountryEs());
+            educatedMove.getCountryEs().click();
         }
     }
 
