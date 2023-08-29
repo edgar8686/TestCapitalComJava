@@ -180,9 +180,9 @@ public abstract class SeleniumConfiguration {
                     .pause(Duration.ofSeconds(1))
                     .perform();
             //actions.moveToElement(educatedMove.getCountryList())
-                 //   .scrollToElement(educatedMove.getCountryEs())
-                   // .click(educatedMove.getCountryEs())
-                   // .perform();
+            //   .scrollToElement(educatedMove.getCountryEs())
+            // .click(educatedMove.getCountryEs())
+            // .perform();
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryEs());
             educatedMove.fluentWaitLocators(educatedMove.getCountryEs());
             educatedMove.getCountryEs().click();
@@ -192,7 +192,7 @@ public abstract class SeleniumConfiguration {
     @Step("Step: Accept all cookies")
     public void acceptAllCookies() throws InterruptedException {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(6000);
             educatedMove.fluentWaitLocators(educatedMove.getCookie());
             if (educatedMove.getCookie().isDisplayed()) {
                 educatedMove.getCookie().click();
@@ -239,7 +239,7 @@ public abstract class SeleniumConfiguration {
 
     @Step("Step: authorization")
     public void authorization() throws InterruptedException {
-       // ElementsCheck check = new ElementsCheck(getDriver());
+        // ElementsCheck check = new ElementsCheck(getDriver());
         Allure.parameter("Email", "aqa.tomelo.an@gmail.com");
         Allure.parameter("Password", "iT9Vgqi6d$fiZ*Z");
         Allure.step("Email: aqa.tomelo.an@gmail.com");
@@ -330,13 +330,13 @@ public abstract class SeleniumConfiguration {
 
     @Step("Step: scroll and click element")
     public void scrollAndClickElement(WebElement clickElement, WebElement scrollToElement) {
-        //((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
         try {
             Allure.step("Scroll to: " + scrollToElement);
             Allure.step("Element click: " + clickElement);
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", scrollToElement);
             new Actions(getDriver())
-                    .scrollToElement(scrollToElement)
-                    .pause(Duration.ofSeconds(1))
+                    //.scrollToElement(scrollToElement)
+                    //.pause(Duration.ofSeconds(1))
                     .moveToElement(clickElement)
                     .pause(Duration.ofSeconds(1))
                     .click(clickElement)
