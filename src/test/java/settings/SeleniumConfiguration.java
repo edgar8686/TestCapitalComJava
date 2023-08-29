@@ -40,7 +40,6 @@ public abstract class SeleniumConfiguration {
 
 
     @BeforeAll
-    @Attachment
     @Epics({@Epic("US_11_Education 11-02-07_ETF_trading")})
     @Features({@Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]"), @Feature("Role: Auth / TS_11.02.07 | Education > Menu Item [ETF trading]"), @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [ETF trading]")})
     @Stories({@Story("TC_11.02.07_06 | Testing button [Create & verify your account]"), @Story("TC_11.02.07_01 | Testing button [LogIn]"), @Story("TC_11.02.07_02 | Testing button [SignUp]"), @Story("TC_11.02.07_03 | Testing button [StartTrading]"), @Story("TC_11.02.07_05 | Testing button [Trade] on Widget 'Most Traded'"), @Story("TC_11.02.07_04 | Testing button [TryDemo]")})
@@ -169,6 +168,20 @@ public abstract class SeleniumConfiguration {
             actions.moveToElement(educatedMove.getCountryList())
                     .scrollToElement(educatedMove.getCountryDe())
                     .click(educatedMove.getCountryDe())
+                    .perform();
+        } else if (countries.equalsIgnoreCase("es") && languages.equalsIgnoreCase("es")) {
+            absoluteUrl = baseUrl + languages;
+            getDriver().navigate().to(absoluteUrl);
+            Allure.step("Language: " + languages + " Countries: " + countries);
+            Actions actions = new Actions(getDriver());
+            actions.moveToElement(educatedMove.getHdrIcon())
+                    .pause(Duration.ofSeconds(1))
+                    .click(educatedMove.getDropDownCountry())
+                    .pause(Duration.ofSeconds(1))
+                    .perform();
+            actions.moveToElement(educatedMove.getCountryList())
+                    .scrollToElement(educatedMove.getCountryEs())
+                    .click(educatedMove.getCountryEs())
                     .perform();
         }
     }
