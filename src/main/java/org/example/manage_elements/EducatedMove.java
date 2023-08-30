@@ -54,6 +54,8 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     private WebElement countryDe;
     @FindBy(css = "a[data-country='es']")
     private WebElement countryEs;
+    @FindBy(css = "a[data-country='fr']")
+    private WebElement countryFr;
 
 
     public WebElement getEducated() {
@@ -87,7 +89,7 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     //-------------------------------------------------------------------------------------------------------------------------
     public void fluentWaitLocators(WebElement webElement) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(Duration.ofSeconds(2))
+                .withTimeout(Duration.ofSeconds(1))
                 .pollingEvery(Duration.ofSeconds(40))
                 .ignoring(ElementNotInteractableException.class);
         //wait.until(driver -> {
@@ -156,6 +158,10 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
 
     public WebElement getCountryEs() {
         return countryEs;
+    }
+
+    public WebElement getCountryFr() {
+        return countryFr;
     }
 }
 

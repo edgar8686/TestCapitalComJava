@@ -115,10 +115,11 @@ public class ElementsCheck extends AbstractPage {
     }
 
     public ElementsCheck tryDemoClick() throws InterruptedException {
-        new EducatedMove(getDriver())
-                .fluentWaitLocators(tryDemo);
+       EducatedMove move = new EducatedMove(getDriver());
+               move.fluentWaitLocators(tryDemo);
         tryDemo.click();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        move.fluentWaitLocators(getAccountDemo());
         return this;
     }
 

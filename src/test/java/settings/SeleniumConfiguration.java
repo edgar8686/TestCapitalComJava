@@ -186,6 +186,20 @@ public abstract class SeleniumConfiguration {
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryEs());
             educatedMove.fluentWaitLocators(educatedMove.getCountryEs());
             educatedMove.getCountryEs().click();
+        } else if (countries.equalsIgnoreCase("fr") && languages.equalsIgnoreCase("fr")) {
+            absoluteUrl = baseUrl + languages;
+            getDriver().navigate().to(absoluteUrl);
+            Allure.step("Language: " + languages + " Countries: " + countries);
+            Actions actions = new Actions(getDriver());
+            actions.moveToElement(educatedMove.getHdrIcon())
+                    .pause(Duration.ofSeconds(1))
+                    .click(educatedMove.getDropDownCountry())
+                    .pause(Duration.ofSeconds(1))
+                    .perform();
+
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryFr());
+            educatedMove.fluentWaitLocators(educatedMove.getCountryFr());
+            educatedMove.getCountryEs().click();
         }
     }
 
