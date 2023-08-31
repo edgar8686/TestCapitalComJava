@@ -36,7 +36,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
         checkWindow();
 
         scrollAndClickElement(locators.getCreateVerifyYourAccount(), locators.getCreateVerifyYourAccount());
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form ",
+        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form (UnReg)",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
@@ -74,7 +74,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
 
         scrollAndClickElement(locators.getCreateVerifyYourAccount(), locators.getCreateVerifyYourAccount());
-        Assertions.assertAll("Failed: Platform is not opened",
+        Assertions.assertAll("Failed: Platform is not opened (Auth)",
                 () ->
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"), "Platform title is not displayed"),
                 () ->
@@ -106,7 +106,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
 
         scrollAndClickElement(locators.getCreateVerifyYourAccount(), locators.getCreateVerifyYourAccount());
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form",
+        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form (UnAuth)",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->

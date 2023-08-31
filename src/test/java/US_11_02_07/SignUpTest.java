@@ -39,7 +39,7 @@ public class SignUpTest extends SeleniumConfiguration {
 
         locators.signUpClick();
 
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form",
+        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form (UnReg)",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
@@ -82,7 +82,7 @@ public class SignUpTest extends SeleniumConfiguration {
 
         locators.signUpClick();
 
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form",
+        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form (UnAuth)",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->

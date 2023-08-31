@@ -39,7 +39,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
 
         randomElement();
         scrollAndClickElement(getRandomElement(), locators.getWidget());
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form",
+        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form (UnReg)",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
@@ -80,7 +80,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
         scrollAndClickElement(getRandomElement(), locators.getWidget());
 
         smoke.fluentWaitLocators(getElementPlatform2());
-        Assertions.assertAll("Failed: Trade element is not active",
+        Assertions.assertAll("Failed: Trade element is not active (Auth)",
                 () ->
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"), "Platform is not displayed"),
                 () ->
@@ -119,7 +119,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
         randomElement();
         scrollAndClickElement(getRandomElement(), locators.getWidget());
 
-        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'LogIn' form",
+        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'LogIn' form (UnAuth)",
                 () ->
                         Assertions.assertTrue(locators.getNameLogIn().isDisplayed(), "Login is not displayed"),
                 () ->

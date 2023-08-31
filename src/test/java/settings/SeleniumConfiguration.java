@@ -357,8 +357,8 @@ public abstract class SeleniumConfiguration {
                     .click(clickElement)
                     .perform();
         } catch (NoSuchElementException e) {
-            Allure.step("Trade button is missing");
-            throw new AssertionFailedError("Trade button is missing");
+            Allure.step("Trade button is missing on the Widget");
+            throw new AssertionFailedError("Trade button is missing on the Widget");
         }
     }
 

@@ -39,7 +39,7 @@ public class LogInTest extends SeleniumConfiguration {
 
         locators.logInClick();
 
-        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'Login' form",
+        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'Login' form (UnReg)",
                 () ->
                         Assertions.assertTrue(locators.getNameLogIn().isDisplayed(), "Login is not displayed"),
                 () ->
@@ -83,7 +83,7 @@ public class LogInTest extends SeleniumConfiguration {
         move.clickPage(smokeMain.getEducated(), smokeMain.getEtfTrading());
 
         locators.logInClick();
-        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'Login' form",
+        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'Login' form (UnAuth)",
                 () ->
                         Assertions.assertTrue(locators.getNameLogIn().isDisplayed(), "Login is not displayed"),
                 () ->

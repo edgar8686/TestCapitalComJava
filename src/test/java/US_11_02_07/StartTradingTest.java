@@ -38,7 +38,7 @@ public class StartTradingTest extends SeleniumConfiguration {
         checkWindow();
 
         locators.startTradingClick();
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form",
+        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form (UnReg)",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
@@ -76,7 +76,7 @@ public class StartTradingTest extends SeleniumConfiguration {
         move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
 
         locators.startTradingClick();
-        Assertions.assertAll("Failed: Platform is not opened",
+        Assertions.assertAll("Failed: Platform is not opened (Auth)",
                 () ->
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"), "Platform title is not displayed"),
                 () ->
@@ -111,7 +111,7 @@ public class StartTradingTest extends SeleniumConfiguration {
 
         locators.startTradingClick();
 
-        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'Login' form",
+        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'Login' form (UnAuth)",
                 () ->
                         Assertions.assertTrue(locators.getNameLogIn().isDisplayed(), "Login is not displayed"),
                 () ->
