@@ -133,12 +133,11 @@ public abstract class SeleniumConfiguration {
                     .pause(Duration.ofSeconds(1))
                     .click(educatedMove.getDropDownCountry())
                     .pause(Duration.ofSeconds(1))
-                    //.sendKeys(educatedMove.getSearchCountry(), countries)
                     .perform();
-            actions.moveToElement(educatedMove.getCountryList())
-                    .scrollToElement(educatedMove.getCountryGb())
-                    .click(educatedMove.getCountryGb())
-                    .perform();
+
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryGb());
+            educatedMove.fluentWaitLocators(educatedMove.getCountryGb());
+            educatedMove.getCountryGb().click();
 
         } else if (countries.equalsIgnoreCase("hu") && languages.equalsIgnoreCase("hu")) {
             absoluteUrl = baseUrl + languages;
