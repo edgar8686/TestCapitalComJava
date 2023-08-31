@@ -119,7 +119,7 @@ public class ElementsCheck extends AbstractPage {
                move.fluentWaitLocators(tryDemo);
         tryDemo.click();
         //Thread.sleep(2000);
-        move.fluentWaitLocators(getAccountDemo());
+        //move.fluentWaitLocators(getAccountDemo());
         return this;
     }
 
