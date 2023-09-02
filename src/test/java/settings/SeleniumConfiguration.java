@@ -200,6 +200,21 @@ public abstract class SeleniumConfiguration {
             educatedMove.fluentWaitLocators(educatedMove.getCountryFr());
             educatedMove.getCountryEs().click();
         }
+        else if (countries.equalsIgnoreCase("pl") && languages.equalsIgnoreCase("pl")) {
+            absoluteUrl = baseUrl + languages;
+            getDriver().navigate().to(absoluteUrl);
+            Allure.step("Language: " + languages + " Countries: " + countries);
+            Actions actions = new Actions(getDriver());
+            actions.moveToElement(educatedMove.getHdrIcon())
+                    .pause(Duration.ofSeconds(1))
+                    .click(educatedMove.getDropDownCountry())
+                    .pause(Duration.ofSeconds(1))
+                    .perform();
+
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryPl());
+            educatedMove.fluentWaitLocators(educatedMove.getCountryPl());
+            educatedMove.getCountryPl().click();
+        }
     }
 
     @Step("Step: Accept all cookies")
