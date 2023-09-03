@@ -293,7 +293,7 @@ public abstract class SeleniumConfiguration {
         elementsCheck.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
         educatedMove.fluentWaitLocators(elementsCheck.getButtonSignUpContinueIncluded());
         elementsCheck.getButtonSignUpContinueIncluded().click();
-        Thread.sleep(2000);
+        Thread.sleep(20000);
         checkButtonIconClose();
     }
 
@@ -370,7 +370,7 @@ public abstract class SeleniumConfiguration {
     }
 
     @Step("Step: scroll and click element")
-    public void scrollAndClickElement(WebElement clickElement, WebElement scrollToElement) {
+    public void scrollAndClickElement(WebElement clickElement, WebElement scrollToElement) throws InterruptedException {
         try {
             Allure.step("Scroll to: " + scrollToElement);
             Allure.step("Element click: " + clickElement);
@@ -384,6 +384,7 @@ public abstract class SeleniumConfiguration {
             actions.moveToElement(clickElement)
                     .click(clickElement)
                     .perform();
+            Thread.sleep(20000);
             checkButtonIconClose();
         } catch (NoSuchElementException e) {
             Allure.step("Trade button is missing on the Widget");
