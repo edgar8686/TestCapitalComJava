@@ -58,6 +58,8 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
     private WebElement countryFr;
     @FindBy(css = "a[data-country='pl']")
     private WebElement countryPl;
+    @FindBy(css = "a[data-country='hk']")
+    private WebElement countryHk;
 
 
     public WebElement getEducated() {
@@ -168,6 +170,10 @@ public class EducatedMove extends AbstractPage implements MovePage<EducatedMove>
 
     public WebElement getCountryPl() {
         return countryPl;
+    }
+
+    public WebElement getCountryHk() {
+        return countryHk;
     }
 }
 
