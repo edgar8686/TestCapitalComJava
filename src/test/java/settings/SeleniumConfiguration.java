@@ -51,8 +51,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsChrome.addArguments("--headless");
-        optionsChrome.setHeadless(true);
+        //optionsChrome.addArguments("--headless");
+        //optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -293,7 +293,7 @@ public abstract class SeleniumConfiguration {
         elementsCheck.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
         educatedMove.fluentWaitLocators(elementsCheck.getButtonSignUpContinueIncluded());
         elementsCheck.getButtonSignUpContinueIncluded().click();
-        // Thread.sleep(20000);
+        Thread.sleep(2000);
         checkButtonIconClose();
     }
 
