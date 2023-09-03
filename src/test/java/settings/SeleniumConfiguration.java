@@ -233,7 +233,7 @@ public abstract class SeleniumConfiguration {
     @Step("Step: Accept all cookies")
     public void acceptAllCookies() throws InterruptedException {
         try {
-            Thread.sleep(6000);
+            Thread.sleep(5000);
             educatedMove.fluentWaitLocators(educatedMove.getCookie());
             if (educatedMove.getCookie().isDisplayed()) {
                 educatedMove.getCookie().click();
@@ -293,7 +293,7 @@ public abstract class SeleniumConfiguration {
         elementsCheck.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
         educatedMove.fluentWaitLocators(elementsCheck.getButtonSignUpContinueIncluded());
         elementsCheck.getButtonSignUpContinueIncluded().click();
-        //Thread.sleep(20000);
+        Thread.sleep(5000);
         checkButtonIconClose();
     }
 
@@ -384,6 +384,7 @@ public abstract class SeleniumConfiguration {
             actions.moveToElement(clickElement)
                     .click(clickElement)
                     .perform();
+
             checkButtonIconClose();
         } catch (NoSuchElementException e) {
             Allure.step("Trade button is missing on the Widget");
