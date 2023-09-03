@@ -213,7 +213,7 @@ public abstract class SeleniumConfiguration {
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryPl());
             educatedMove.fluentWaitLocators(educatedMove.getCountryPl());
             educatedMove.getCountryPl().click();
-        } else if (countries.equalsIgnoreCase("cn") && languages.equalsIgnoreCase("hk")) {
+        } else if (countries.equalsIgnoreCase("hk") && languages.equalsIgnoreCase("cn")) {
             absoluteUrl = baseUrl + languages;
             getDriver().navigate().to(absoluteUrl);
             Allure.step("Language: " + languages + " Countries: " + countries);
