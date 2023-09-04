@@ -198,7 +198,7 @@ public abstract class SeleniumConfiguration {
 
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryFr());
             educatedMove.fluentWaitLocators(educatedMove.getCountryFr());
-            educatedMove.getCountryEs().click();
+            educatedMove.getCountryFr().click();
         } else if (countries.equalsIgnoreCase("pl") && languages.equalsIgnoreCase("pl")) {
             absoluteUrl = baseUrl + languages;
             getDriver().navigate().to(absoluteUrl);
@@ -293,7 +293,7 @@ public abstract class SeleniumConfiguration {
         elementsCheck.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
         educatedMove.fluentWaitLocators(elementsCheck.getButtonSignUpContinueIncluded());
         elementsCheck.getButtonSignUpContinueIncluded().click();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         checkButtonIconClose();
     }
 
