@@ -1,8 +1,9 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.manage_elements.EducatedMove;
-import org.example.manage_elements.ElementsCheck;
+import org.example.manage_elements.EducatedMainPageElements;
+import org.example.manage_elements.LogInFormElements;
+import org.example.manage_elements.PageCheckElements;
 import org.example.move_page.MovePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -15,9 +16,10 @@ import settings.TestListener;
 
 @ExtendWith(TestListener.class)
 public class TradeOnWidgetTest extends SeleniumConfiguration {
-    EducatedMove smoke = new EducatedMove(getDriver());
-    MovePage move = new EducatedMove(getDriver());
-    ElementsCheck locators = new ElementsCheck(getDriver());
+    EducatedMainPageElements smoke = new EducatedMainPageElements(getDriver());
+    MovePage move = new EducatedMainPageElements(getDriver());
+    PageCheckElements locators = new PageCheckElements(getDriver());
+    LogInFormElements logIn = new LogInFormElements(getDriver());
 
     @ParameterizedTest
     @Tag("us_11_02_07")
@@ -79,7 +81,6 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
         randomElement();
         scrollAndClickElement(getRandomElement(), locators.getWidget());
 
-        smoke.fluentWaitLocators(getElementPlatform2());
         Assertions.assertAll("Failed: Trade element is not active (Auth)",
                 () ->
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"), "Platform is not displayed"),
@@ -121,19 +122,19 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
 
         Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'LogIn' form (UnAuth)",
                 () ->
-                        Assertions.assertTrue(locators.getNameLogIn().isDisplayed(), "Login is not displayed"),
+                        Assertions.assertTrue(logIn.getNameLogIn().isDisplayed(), "Login is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLinkSignUp().isDisplayed(), "Link SignUp is not displayed"),
+                        Assertions.assertTrue(logIn.getLinkSignUp().isDisplayed(), "Link SignUp is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getInputEmail().isDisplayed(), "Email input is not displayed"),
+                        Assertions.assertTrue(logIn.getInputEmail().isDisplayed(), "Email input is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getInputPassword().isDisplayed(), "Password input is not displayed"),
+                        Assertions.assertTrue(logIn.getInputPassword().isDisplayed(), "Password input is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLinkForgotPassword().isDisplayed(), "Password forgot link is not displayed"),
+                        Assertions.assertTrue(logIn.getLinkForgotPassword().isDisplayed(), "Password forgot link is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getButtonContinue().isDisplayed(), "Continue button is not displayed"),
+                        Assertions.assertTrue(logIn.getButtonContinue().isDisplayed(), "Continue button is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getCheckBox().isDisplayed(), "CheckBox is not displayed")
+                        Assertions.assertTrue(logIn.getCheckBox().isDisplayed(), "CheckBox is not displayed")
         );
     }
 }

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ElementsCheck extends AbstractPage {
+public class PageCheckElements extends AbstractPage {
     //LogIn Trade buttons
     @FindBy(css = "#wg_loginBtn")
     private WebElement logIn;
@@ -30,6 +30,7 @@ public class ElementsCheck extends AbstractPage {
     @FindBy(css = ".cc-box.grid.gSm.brickSm.mostTraded.js-mostTraded.js-analyticsVisible")
     private WebElement widget;
     //-----------------------------------------------------
+    // Elements on the Widget
     @FindBy(xpath = "//*[text()=' Tesla ']")
     private WebElement elementPlatformTesla;
     @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='Tesla']")
@@ -51,22 +52,6 @@ public class ElementsCheck extends AbstractPage {
     @FindBy(xpath = "//*[text()=' Apple ']")
     private WebElement elementPlatformApple;
 
-    //-------------------------------------------------
-    //Check LogInForm
-    @FindBy(css = "div[class='form-container-white form-container-small modal'] div[class='h1']")
-    private WebElement nameLogIn;
-    @FindBy(css = "div[class='form-container-small-header'] a[class='l_btn_signup']")
-    private WebElement linkSignUp;
-    @FindBy(css = "input[name='email']")
-    private WebElement inputEmail;
-    @FindBy(css = "input[name='password']")
-    private WebElement inputPassword;
-    @FindBy(css = "button[class='btn btn--md btn--wide l_btn']")
-    private WebElement buttonContinue;
-    @FindBy(css = ".l_btn_forgot")
-    private WebElement linkForgotPassword;
-    @FindBy(css = "label[class='checkbox'] span")
-    private WebElement checkBox;
     //-------------------------------------------------------
     //Check TradeForm
     @FindBy(css = "div[class='form-container-small-header s-between'] div[class='h1']")
@@ -93,30 +78,30 @@ public class ElementsCheck extends AbstractPage {
     @FindBy(xpath = "//div[@class='account__mode account__mode_demo']")
     private WebElement accountDemo;
 
-    public ElementsCheck logInClick() {
-        new EducatedMove(getDriver())
+    public PageCheckElements logInClick() {
+        new EducatedMainPageElements(getDriver())
                 .fluentWaitLocators(logIn);
         logIn.click();
         return this;
     }
 
-    public ElementsCheck signUpClick() {
-        new EducatedMove(getDriver())
+    public PageCheckElements signUpClick() {
+        new EducatedMainPageElements(getDriver())
                 .fluentWaitLocators(signUp);
         signUp.click();
         return this;
     }
 
-    public ElementsCheck startTradingClick() {
-        new EducatedMove(getDriver())
+    public PageCheckElements startTradingClick() {
+        new EducatedMainPageElements(getDriver())
                 .fluentWaitLocators(startTrading);
         startTrading.click();
         return this;
     }
 
-    public ElementsCheck tryDemoClick() throws InterruptedException {
-       EducatedMove move = new EducatedMove(getDriver());
-               move.fluentWaitLocators(tryDemo);
+    public PageCheckElements tryDemoClick() throws InterruptedException {
+        EducatedMainPageElements move = new EducatedMainPageElements(getDriver());
+        move.fluentWaitLocators(tryDemo);
         tryDemo.click();
         //Thread.sleep(2000);
         //move.fluentWaitLocators(getAccountDemo());
@@ -164,37 +149,8 @@ public class ElementsCheck extends AbstractPage {
         return linkPrivate;
     }
 
-    public ElementsCheck(WebDriver driver) {
+    public PageCheckElements(WebDriver driver) {
         super(driver);
-    }
-
-
-    public WebElement getNameLogIn() {
-        return nameLogIn;
-    }
-
-    public WebElement getLinkSignUp() {
-        return linkSignUp;
-    }
-
-    public WebElement getInputEmail() {
-        return inputEmail;
-    }
-
-    public WebElement getInputPassword() {
-        return inputPassword;
-    }
-
-    public WebElement getButtonContinue() {
-        return buttonContinue;
-    }
-
-    public WebElement getLinkForgotPassword() {
-        return linkForgotPassword;
-    }
-
-    public WebElement getCheckBox() {
-        return checkBox;
     }
 
     public WebElement getLogo() {

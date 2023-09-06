@@ -1,8 +1,9 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.manage_elements.EducatedMove;
-import org.example.manage_elements.ElementsCheck;
+import org.example.manage_elements.EducatedMainPageElements;
+import org.example.manage_elements.LogInFormElements;
+import org.example.manage_elements.PageCheckElements;
 import org.example.move_page.MovePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -10,15 +11,15 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.opentest4j.MultipleFailuresError;
 import settings.SeleniumConfiguration;
 import settings.TestListener;
 
 @ExtendWith(TestListener.class)
 public class TryDemoTest extends SeleniumConfiguration {
-    EducatedMove smoke = new EducatedMove(getDriver());
-    MovePage move = new EducatedMove(getDriver());
-    ElementsCheck locators = new ElementsCheck(getDriver());
+    EducatedMainPageElements smoke = new EducatedMainPageElements(getDriver());
+    MovePage move = new EducatedMainPageElements(getDriver());
+    PageCheckElements locators = new PageCheckElements(getDriver());
+    LogInFormElements logIn = new LogInFormElements(getDriver());
 
     @ParameterizedTest
     @Tag("us_11_02_07")
@@ -116,19 +117,19 @@ public class TryDemoTest extends SeleniumConfiguration {
 
         Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'Login' form (UnAuth)",
                 () ->
-                        Assertions.assertTrue(locators.getNameLogIn().isDisplayed(), "Login is not displayed"),
+                        Assertions.assertTrue(logIn.getNameLogIn().isDisplayed(), "Login is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLinkSignUp().isDisplayed(), "Link SignUp is not displayed"),
+                        Assertions.assertTrue(logIn.getLinkSignUp().isDisplayed(), "Link SignUp is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getInputEmail().isDisplayed(), "Email input is not displayed"),
+                        Assertions.assertTrue(logIn.getInputEmail().isDisplayed(), "Email input is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getInputPassword().isDisplayed(), "Password input is not displayed"),
+                        Assertions.assertTrue(logIn.getInputPassword().isDisplayed(), "Password input is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLinkForgotPassword().isDisplayed(), "Password forgot link is not displayed"),
+                        Assertions.assertTrue(logIn.getLinkForgotPassword().isDisplayed(), "Password forgot link is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getButtonContinue().isDisplayed(), "Continue button is not displayed"),
+                        Assertions.assertTrue(logIn.getButtonContinue().isDisplayed(), "Continue button is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getCheckBox().isDisplayed(), "CheckBox is not displayed")
+                        Assertions.assertTrue(logIn.getCheckBox().isDisplayed(), "CheckBox is not displayed")
         );
 
     }

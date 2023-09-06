@@ -3,8 +3,10 @@ package settings;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
-import org.example.manage_elements.EducatedMove;
-import org.example.manage_elements.ElementsCheck;
+import org.example.manage_elements.ChoiceCountryElements;
+import org.example.manage_elements.EducatedMainPageElements;
+import org.example.manage_elements.PageCheckElements;
+import org.example.manage_elements.PlatformTradingViewElements;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,26 +16,24 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.opentest4j.AssertionFailedError;
-import org.opentest4j.MultipleFailuresError;
 
 
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Set;
 
 public abstract class SeleniumConfiguration {
     private static WebDriver driver;
     static String baseUrl = "https://capital.com/";
     static String absoluteUrl;
-    Set<Cookie> cookies;
     ArrayList<WebElement> elements = new ArrayList<>();
     static final Dimension windowSize = new Dimension(1800, 800);
-    EducatedMove educatedMove = new EducatedMove(getDriver());
-    ElementsCheck elementsCheck = new ElementsCheck(getDriver());
+    EducatedMainPageElements educatedMove = new EducatedMainPageElements(getDriver());
+    PageCheckElements elementsCheck = new PageCheckElements(getDriver());
+    PlatformTradingViewElements platformElements = new PlatformTradingViewElements(getDriver());
+    ChoiceCountryElements country = new ChoiceCountryElements(getDriver());
     private WebElement randomElement;
     private WebElement elementPlatform;
     private WebElement elementPlatform2;
@@ -124,109 +124,112 @@ public abstract class SeleniumConfiguration {
 
     @Step("Step precondition: choice language and country")
     public void precondition(String languages, String countries) {
-        if (languages.equalsIgnoreCase("en") && countries.equalsIgnoreCase("gb")) {
-            absoluteUrl = baseUrl;
-            getDriver().navigate().to(absoluteUrl);
-            Allure.step("Language: " + languages + " Countries: " + countries);
-            Actions actions = new Actions(getDriver());
-            actions.moveToElement(educatedMove.getHdrIcon())
-                    .pause(Duration.ofSeconds(1))
-                    .click(educatedMove.getDropDownCountry())
-                    .pause(Duration.ofSeconds(1))
-                    .perform();
+        Actions actions = new Actions(getDriver());
+        switch (languages.toLowerCase()) {
+            case "en":
+                absoluteUrl = baseUrl;
+                getDriver().navigate().to(absoluteUrl);
+                Allure.step("Language: " + languages + " Countries: " + countries);
+                actions.moveToElement(platformElements.getHdrIcon())
+                        .pause(Duration.ofSeconds(1))
+                        .click(country.getDropDownCountry())
+                        .pause(Duration.ofSeconds(1))
+                        .perform();
 
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryGb());
-            educatedMove.fluentWaitLocators(educatedMove.getCountryGb());
-            educatedMove.getCountryGb().click();
+                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryGb());
+                educatedMove.fluentWaitLocators(country.getCountryGb());
+                country.getCountryGb().click();
+                break;
+            case "hu":
+                absoluteUrl = baseUrl + languages;
+                getDriver().navigate().to(absoluteUrl);
+                Allure.step("Language: " + languages + " Countries: " + countries);
+                actions.moveToElement(platformElements.getHdrIcon())
+                        .pause(Duration.ofSeconds(1))
+                        .click(country.getDropDownCountry())
+                        .pause(Duration.ofSeconds(1))
+                        .perform();
 
-        } else if (countries.equalsIgnoreCase("hu") && languages.equalsIgnoreCase("hu")) {
-            absoluteUrl = baseUrl + languages;
-            getDriver().navigate().to(absoluteUrl);
-            Allure.step("Language: " + languages + " Countries: " + countries);
-            Actions actions = new Actions(getDriver());
-            actions.moveToElement(educatedMove.getHdrIcon())
-                    .pause(Duration.ofSeconds(1))
-                    .click(educatedMove.getDropDownCountry())
-                    .pause(Duration.ofSeconds(1))
-                    .perform();
-            actions.moveToElement(educatedMove.getCountryList())
-                    .scrollToElement(educatedMove.getCountryHu())
-                    .click(educatedMove.getCountryHu())
-                    .perform();
+                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryHu());
+                educatedMove.fluentWaitLocators(country.getCountryHu());
+                country.getCountryHu().click();
+                break;
+            case "de":
+                absoluteUrl = baseUrl + languages;
+                getDriver().navigate().to(absoluteUrl);
+                Allure.step("Language: " + languages + " Countries: " + countries);
+                actions.moveToElement(platformElements.getHdrIcon())
+                        .pause(Duration.ofSeconds(1))
+                        .click(country.getDropDownCountry())
+                        .pause(Duration.ofSeconds(1))
+                        .perform();
 
-        } else if (countries.equalsIgnoreCase("de") && languages.equalsIgnoreCase("de")) {
-            absoluteUrl = baseUrl + languages;
-            getDriver().navigate().to(absoluteUrl);
-            Allure.step("Language: " + languages + " Countries: " + countries);
-            Actions actions = new Actions(getDriver());
-            actions.moveToElement(educatedMove.getHdrIcon())
-                    .pause(Duration.ofSeconds(1))
-                    .click(educatedMove.getDropDownCountry())
-                    .pause(Duration.ofSeconds(1))
-                    .perform();
-            actions.moveToElement(educatedMove.getCountryList())
-                    .scrollToElement(educatedMove.getCountryDe())
-                    .click(educatedMove.getCountryDe())
-                    .perform();
-        } else if (countries.equalsIgnoreCase("es") && languages.equalsIgnoreCase("es")) {
-            absoluteUrl = baseUrl + languages;
-            getDriver().navigate().to(absoluteUrl);
-            Allure.step("Language: " + languages + " Countries: " + countries);
-            Actions actions = new Actions(getDriver());
-            actions.moveToElement(educatedMove.getHdrIcon())
-                    .pause(Duration.ofSeconds(1))
-                    .click(educatedMove.getDropDownCountry())
-                    .pause(Duration.ofSeconds(1))
-                    .perform();
-            //actions.moveToElement(educatedMove.getCountryList())
-            //   .scrollToElement(educatedMove.getCountryEs())
-            // .click(educatedMove.getCountryEs())
-            // .perform();
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryEs());
-            educatedMove.fluentWaitLocators(educatedMove.getCountryEs());
-            educatedMove.getCountryEs().click();
-        } else if (countries.equalsIgnoreCase("fr") && languages.equalsIgnoreCase("fr")) {
-            absoluteUrl = baseUrl + languages;
-            getDriver().navigate().to(absoluteUrl);
-            Allure.step("Language: " + languages + " Countries: " + countries);
-            Actions actions = new Actions(getDriver());
-            actions.moveToElement(educatedMove.getHdrIcon())
-                    .pause(Duration.ofSeconds(1))
-                    .click(educatedMove.getDropDownCountry())
-                    .pause(Duration.ofSeconds(1))
-                    .perform();
+                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryDe());
+                educatedMove.fluentWaitLocators(country.getCountryDe());
+                country.getCountryDe().click();
+                break;
+            case "es":
+                absoluteUrl = baseUrl + languages;
+                getDriver().navigate().to(absoluteUrl);
+                Allure.step("Language: " + languages + " Countries: " + countries);
+                actions.moveToElement(platformElements.getHdrIcon())
+                        .pause(Duration.ofSeconds(1))
+                        .click(country.getDropDownCountry())
+                        .pause(Duration.ofSeconds(1))
+                        .perform();
+                //actions.moveToElement(educatedMove.getCountryList())
+                //   .scrollToElement(educatedMove.getCountryEs())
+                // .click(educatedMove.getCountryEs())
+                // .perform();
+                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryEs());
+                educatedMove.fluentWaitLocators(country.getCountryEs());
+                country.getCountryEs().click();
+                break;
+            case "fr":
+                absoluteUrl = baseUrl + languages;
+                getDriver().navigate().to(absoluteUrl);
+                Allure.step("Language: " + languages + " Countries: " + countries);
+                actions.moveToElement(platformElements.getHdrIcon())
+                        .pause(Duration.ofSeconds(1))
+                        .click(country.getDropDownCountry())
+                        .pause(Duration.ofSeconds(1))
+                        .perform();
 
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryFr());
-            educatedMove.fluentWaitLocators(educatedMove.getCountryFr());
-            educatedMove.getCountryFr().click();
-        } else if (countries.equalsIgnoreCase("pl") && languages.equalsIgnoreCase("pl")) {
-            absoluteUrl = baseUrl + languages;
-            getDriver().navigate().to(absoluteUrl);
-            Allure.step("Language: " + languages + " Countries: " + countries);
-            Actions actions = new Actions(getDriver());
-            actions.moveToElement(educatedMove.getHdrIcon())
-                    .pause(Duration.ofSeconds(1))
-                    .click(educatedMove.getDropDownCountry())
-                    .pause(Duration.ofSeconds(1))
-                    .perform();
+                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryFr());
+                educatedMove.fluentWaitLocators(country.getCountryFr());
+                country.getCountryFr().click();
+                break;
+            case "pl":
+                absoluteUrl = baseUrl + languages;
+                getDriver().navigate().to(absoluteUrl);
+                Allure.step("Language: " + languages + " Countries: " + countries);
+                actions.moveToElement(platformElements.getHdrIcon())
+                        .pause(Duration.ofSeconds(1))
+                        .click(country.getDropDownCountry())
+                        .pause(Duration.ofSeconds(1))
+                        .perform();
 
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryPl());
-            educatedMove.fluentWaitLocators(educatedMove.getCountryPl());
-            educatedMove.getCountryPl().click();
-        } else if (countries.equalsIgnoreCase("hk") && languages.equalsIgnoreCase("cn")) {
-            absoluteUrl = baseUrl + languages;
-            getDriver().navigate().to(absoluteUrl);
-            Allure.step("Language: " + languages + " Countries: " + countries);
-            Actions actions = new Actions(getDriver());
-            actions.moveToElement(educatedMove.getHdrIcon())
-                    .pause(Duration.ofSeconds(1))
-                    .click(educatedMove.getDropDownCountry())
-                    .pause(Duration.ofSeconds(1))
-                    .perform();
+                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryPl());
+                educatedMove.fluentWaitLocators(country.getCountryPl());
+                country.getCountryPl().click();
+                break;
+            case "cn":
+                absoluteUrl = baseUrl + languages;
+                getDriver().navigate().to(absoluteUrl);
+                Allure.step("Language: " + languages + " Countries: " + countries);
+                actions.moveToElement(platformElements.getHdrIcon())
+                        .pause(Duration.ofSeconds(1))
+                        .click(country.getDropDownCountry())
+                        .pause(Duration.ofSeconds(1))
+                        .perform();
 
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", educatedMove.getCountryHk());
-            educatedMove.fluentWaitLocators(educatedMove.getCountryHk());
-            educatedMove.getCountryHk().click();
+                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryHk());
+                educatedMove.fluentWaitLocators(country.getCountryHk());
+                country.getCountryHk().click();
+                break;
+            default:
+                Allure.step("Language: " + languages + " Countries: " + countries);
+                throw new NoSuchElementException("No such language or country was found");
         }
     }
 
@@ -266,9 +269,9 @@ public abstract class SeleniumConfiguration {
     @Step("Step: Checking the pop-up window platform")
     public void checkButtonIconClose() {
         try {
-            educatedMove.fluentWaitLocators(educatedMove.getIconClose());
-            if (educatedMove.getIconClose().isDisplayed()) {
-                educatedMove.getIconClose().click();
+            educatedMove.fluentWaitLocators(platformElements.getIconClose());
+            if (platformElements.getIconClose().isDisplayed()) {
+                platformElements.getIconClose().click();
                 System.out.println("The button [iconClose] is closed");
                 Allure.step("The button [iconClose] is closed");
             }
@@ -285,6 +288,7 @@ public abstract class SeleniumConfiguration {
         Allure.parameter("Password", "iT9Vgqi6d$fiZ*Z");
         Allure.step("Email: aqa.tomelo.an@gmail.com");
         Allure.step("Password: iT9Vgqi6d$fiZ*Z");
+
         educatedMove.fluentWaitLocators(elementsCheck.getTrade());
         elementsCheck.getTrade().click();
         Thread.sleep(1000);
@@ -307,9 +311,9 @@ public abstract class SeleniumConfiguration {
     public void logoutClick() throws InterruptedException {
         Thread.sleep(2000);
         Allure.step("Logout");
-        educatedMove.fluentWaitLocators(educatedMove.getButtonLive());
-        educatedMove.getButtonLive().click();
-        educatedMove.getLogout().click();
+        educatedMove.fluentWaitLocators(platformElements.getButtonLive());
+        platformElements.getButtonLive().click();
+        platformElements.getLogout().click();
     }
 
     @Step("Step: delete cookies")
@@ -317,15 +321,6 @@ public abstract class SeleniumConfiguration {
         Allure.step("The cookies is deleted");
         getDriver().manage().deleteAllCookies();
     }
-
-
-    public void unAuthorizationStart(String languages, String countries) {
-        for (Cookie cookie : cookies) {
-            driver.manage().addCookie(cookie);
-        }
-        driver.navigate().refresh();
-    }
-
 
     //Динамически изменяет элемент
     // public SelenideElement getDynamicElement(String dynamicValue) {
@@ -370,7 +365,7 @@ public abstract class SeleniumConfiguration {
     }
 
     @Step("Step: scroll and click element")
-    public void scrollAndClickElement(WebElement clickElement, WebElement scrollToElement) {
+    public void scrollAndClickElement(WebElement clickElement, WebElement scrollToElement) throws InterruptedException {
         try {
             Allure.step("Scroll to: " + scrollToElement);
             Allure.step("Element click: " + clickElement);
@@ -384,7 +379,7 @@ public abstract class SeleniumConfiguration {
             actions.moveToElement(clickElement)
                     .click(clickElement)
                     .perform();
-
+            Thread.sleep(2000);
             checkButtonIconClose();
         } catch (NoSuchElementException e) {
             Allure.step("Trade button is missing on the Widget");

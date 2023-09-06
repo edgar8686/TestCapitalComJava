@@ -1,8 +1,8 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.manage_elements.EducatedMove;
-import org.example.manage_elements.ElementsCheck;
+import org.example.manage_elements.EducatedMainPageElements;
+import org.example.manage_elements.PageCheckElements;
 import org.example.move_page.MovePage;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,9 +13,9 @@ import settings.TestListener;
 
 @ExtendWith(TestListener.class)
 public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
-    EducatedMove smoke = new EducatedMove(getDriver());
-    MovePage move = new EducatedMove(getDriver());
-    ElementsCheck locators = new ElementsCheck(getDriver());
+    EducatedMainPageElements smoke = new EducatedMainPageElements(getDriver());
+    MovePage move = new EducatedMainPageElements(getDriver());
+    PageCheckElements locators = new PageCheckElements(getDriver());
 
     @ParameterizedTest
     @Owner("Edgar Nurmagomedov")
