@@ -130,7 +130,7 @@ public abstract class SeleniumConfiguration {
                 absoluteUrl = baseUrl;
                 getDriver().navigate().to(absoluteUrl);
                 Allure.step("Language: " + languages + " Countries: " + countries);
-                actions.moveToElement(platformElements.getHdrIcon())
+                actions.moveToElement(country.getHdrIcon())
                         .pause(Duration.ofSeconds(1))
                         .click(country.getDropDownCountry())
                         .pause(Duration.ofSeconds(1))
@@ -144,7 +144,7 @@ public abstract class SeleniumConfiguration {
                 absoluteUrl = baseUrl + languages;
                 getDriver().navigate().to(absoluteUrl);
                 Allure.step("Language: " + languages + " Countries: " + countries);
-                actions.moveToElement(platformElements.getHdrIcon())
+                actions.moveToElement(country.getHdrIcon())
                         .pause(Duration.ofSeconds(1))
                         .click(country.getDropDownCountry())
                         .pause(Duration.ofSeconds(1))
@@ -158,7 +158,7 @@ public abstract class SeleniumConfiguration {
                 absoluteUrl = baseUrl + languages;
                 getDriver().navigate().to(absoluteUrl);
                 Allure.step("Language: " + languages + " Countries: " + countries);
-                actions.moveToElement(platformElements.getHdrIcon())
+                actions.moveToElement(country.getHdrIcon())
                         .pause(Duration.ofSeconds(1))
                         .click(country.getDropDownCountry())
                         .pause(Duration.ofSeconds(1))
@@ -172,7 +172,7 @@ public abstract class SeleniumConfiguration {
                 absoluteUrl = baseUrl + languages;
                 getDriver().navigate().to(absoluteUrl);
                 Allure.step("Language: " + languages + " Countries: " + countries);
-                actions.moveToElement(platformElements.getHdrIcon())
+                actions.moveToElement(country.getHdrIcon())
                         .pause(Duration.ofSeconds(1))
                         .click(country.getDropDownCountry())
                         .pause(Duration.ofSeconds(1))
@@ -189,7 +189,7 @@ public abstract class SeleniumConfiguration {
                 absoluteUrl = baseUrl + languages;
                 getDriver().navigate().to(absoluteUrl);
                 Allure.step("Language: " + languages + " Countries: " + countries);
-                actions.moveToElement(platformElements.getHdrIcon())
+                actions.moveToElement(country.getHdrIcon())
                         .pause(Duration.ofSeconds(1))
                         .click(country.getDropDownCountry())
                         .pause(Duration.ofSeconds(1))
@@ -203,7 +203,7 @@ public abstract class SeleniumConfiguration {
                 absoluteUrl = baseUrl + languages;
                 getDriver().navigate().to(absoluteUrl);
                 Allure.step("Language: " + languages + " Countries: " + countries);
-                actions.moveToElement(platformElements.getHdrIcon())
+                actions.moveToElement(country.getHdrIcon())
                         .pause(Duration.ofSeconds(1))
                         .click(country.getDropDownCountry())
                         .pause(Duration.ofSeconds(1))
@@ -217,7 +217,7 @@ public abstract class SeleniumConfiguration {
                 absoluteUrl = baseUrl + languages;
                 getDriver().navigate().to(absoluteUrl);
                 Allure.step("Language: " + languages + " Countries: " + countries);
-                actions.moveToElement(platformElements.getHdrIcon())
+                actions.moveToElement(country.getHdrIcon())
                         .pause(Duration.ofSeconds(1))
                         .click(country.getDropDownCountry())
                         .pause(Duration.ofSeconds(1))
@@ -347,20 +347,20 @@ public abstract class SeleniumConfiguration {
         Allure.step("Element: " + randomElement);
 
         if (randomElement == elementsCheck.getTesla()) {
-            elementPlatform = elementsCheck.getElementPlatformTesla();
-            elementPlatform2 = elementsCheck.getElementActiveTesla();
+            elementPlatform = platformElements.getElementPlatformTesla();
+            elementPlatform2 = platformElements.getElementActiveTesla();
         } else if (randomElement == elementsCheck.getNvidia()) {
-            elementPlatform = elementsCheck.getElementPlatformNvidia();
-            elementPlatform2 = elementsCheck.getElementActiveNvidia();
+            elementPlatform = platformElements.getElementPlatformNvidia();
+            elementPlatform2 = platformElements.getElementActiveNvidia();
         } else if (randomElement == elementsCheck.getAmc()) {
-            elementPlatform = elementsCheck.getElementPlatformAmc();
-            elementPlatform2 = elementsCheck.getElementActiveAmc();
+            elementPlatform = platformElements.getElementPlatformAmc();
+            elementPlatform2 = platformElements.getElementActiveAmc();
         } else if (randomElement == elementsCheck.getAmd()) {
-            elementPlatform = elementsCheck.getElementPlatformAmd();
-            elementPlatform2 = elementsCheck.getElementActiveAmd();
+            elementPlatform = platformElements.getElementPlatformAmd();
+            elementPlatform2 = platformElements.getElementActiveAmd();
         } else if (randomElement == elementsCheck.getApple()) {
-            elementPlatform = elementsCheck.getElementPlatformApple();
-            elementPlatform2 = elementsCheck.getElementActiveApple();
+            elementPlatform = platformElements.getElementPlatformApple();
+            elementPlatform2 = platformElements.getElementActiveApple();
         }
     }
 
@@ -379,7 +379,7 @@ public abstract class SeleniumConfiguration {
             actions.moveToElement(clickElement)
                     .click(clickElement)
                     .perform();
-            Thread.sleep(2000);
+            Thread.sleep(3000);
             checkButtonIconClose();
         } catch (NoSuchElementException e) {
             Allure.step("Trade button is missing on the Widget");

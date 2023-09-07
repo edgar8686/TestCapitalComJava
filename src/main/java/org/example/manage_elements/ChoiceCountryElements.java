@@ -10,6 +10,8 @@ public class ChoiceCountryElements extends AbstractPage {
     private WebElement dropDownCountry;
     @FindBy(css = "input[class='fieldDropdown__control js-countriesSearchInput js-fieldDropdownFilterSearch']")
     private WebElement searchCountry;
+    @FindBy(css = ".licLangSw__btn.gI.gCenter.gXs.js-licLangSwBtn.js-countries")
+    private WebElement hdrIcon;
     @FindBy(css = ".licLangSw__countries.grid.gXs.js-countriesList")
     private WebElement countryList;
     @FindBy(css = "a[data-country='gb']")
@@ -68,5 +70,9 @@ public class ChoiceCountryElements extends AbstractPage {
 
     public WebElement getCountryHk() {
         return countryHk;
+    }
+
+    public WebElement getHdrIcon() {
+        return hdrIcon;
     }
 }

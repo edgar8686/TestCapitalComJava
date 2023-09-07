@@ -81,7 +81,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
         randomElement();
         scrollAndClickElement(getRandomElement(), locators.getWidget());
 
-        Assertions.assertAll("Failed: Trade element is not active (Auth)",
+        Assertions.assertAll("Failed: Trade element is not active on the platform (Auth)",
                 () ->
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"), "Platform is not displayed"),
                 () ->
