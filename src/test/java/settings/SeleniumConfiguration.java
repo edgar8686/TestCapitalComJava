@@ -297,7 +297,7 @@ public abstract class SeleniumConfiguration {
         elementsCheck.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
         educatedMove.fluentWaitLocators(elementsCheck.getButtonSignUpContinueIncluded());
         elementsCheck.getButtonSignUpContinueIncluded().click();
-        //Thread.sleep(5000);
+        Thread.sleep(5000);
         checkButtonIconClose();
     }
 
@@ -374,12 +374,12 @@ public abstract class SeleniumConfiguration {
             actions.scrollToElement(scrollToElement)
                     .perform();
 
-            educatedMove.fluentWaitLocators(clickElement);
+            Thread.sleep(1000);
 
             actions.moveToElement(clickElement)
                     .click(clickElement)
                     .perform();
-            Thread.sleep(3000);
+            Thread.sleep(2000);
             checkButtonIconClose();
         } catch (NoSuchElementException e) {
             Allure.step("Trade button is missing on the Widget");
