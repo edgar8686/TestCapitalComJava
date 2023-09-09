@@ -19,25 +19,25 @@ public class PlatformTradingViewElements extends AbstractPage {
     private WebElement ok;
     //-----------------------------------------------------------------------------------
     //Elements platform
-    @FindBy(xpath = "//*[text()=' Tesla ']")
+    @FindBy(xpath = "//*[text()=' Tesla Inc (Extended Hours) ']")
     private WebElement elementPlatformTesla;
-    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='Tesla']")
+    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='Tesla Inc (Extended Hours)']")
     private WebElement elementActiveTesla;
-    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='AMC']")
+    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='AMC Entertainment Holdings Inc (Extended Hours)']")
     private WebElement elementActiveAmc;
-    @FindBy(xpath = "//*[text()=' AMC ']")
+    @FindBy(xpath = "//*[text()=' AMC Entertainment Holdings Inc (Extended Hours) ']")
     private WebElement elementPlatformAmc;
-    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='Nvidia']")
+    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='NVIDIA Corp (Extended Hours)']")
     private WebElement elementActiveNvidia;
-    @FindBy(xpath = "//*[text()=' Nvidia ']")
+    @FindBy(xpath = "//*[text()=' NVIDIA Corp (Extended Hours) ']")
     private WebElement elementPlatformNvidia;
-    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='AMD']")
+    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='Advanced Micro Devices Inc (Extended Hours)']")
     private WebElement elementActiveAmd;
-    @FindBy(xpath = "//*[text()=' AMD ']")
+    @FindBy(xpath = "//*[text()=' Advanced Micro Devices Inc (Extended Hours) ']")
     private WebElement elementPlatformAmd;
-    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='Apple']")
+    @FindBy(xpath = "//div[@class='state-item-button active selected']//div[text()='Apple Inc (Extended Hours)']")
     private WebElement elementActiveApple;
-    @FindBy(xpath = "//*[text()=' Apple ']")
+    @FindBy(xpath = "//*[text()=' Apple Inc (Extended Hours) ']")
     private WebElement elementPlatformApple;
     public PlatformTradingViewElements(WebDriver driver) {
         super(driver);

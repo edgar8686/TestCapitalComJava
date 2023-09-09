@@ -41,6 +41,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
 
         randomElement();
         scrollAndClickElement(getRandomElement(), locators.getWidget());
+        Thread.sleep(1000);
         Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form (UnReg)",
                 () ->
                         Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
