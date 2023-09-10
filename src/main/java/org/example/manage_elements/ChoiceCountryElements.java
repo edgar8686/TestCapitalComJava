@@ -28,7 +28,7 @@ public class ChoiceCountryElements extends AbstractPage {
     private WebElement countryPl;
     @FindBy(css = "a[data-country='hk']")
     private WebElement countryHk;
-    @FindBy(css = "a[data-country='zh']")
+    @FindBy(css = "a[data-country='tw']")
     private WebElement countryZh;
 
     public ChoiceCountryElements(WebDriver driver) {
