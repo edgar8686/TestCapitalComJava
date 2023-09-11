@@ -30,6 +30,8 @@ public class ChoiceCountryElements extends AbstractPage {
     private WebElement countryHk;
     @FindBy(css = "a[data-country='tw']")
     private WebElement countryZh;
+    @FindBy(css = "a[data-country='ae']")
+    private WebElement countryAe;
 
     public ChoiceCountryElements(WebDriver driver) {
         super(driver);
@@ -77,6 +79,10 @@ public class ChoiceCountryElements extends AbstractPage {
 
     public WebElement getCountryZh() {
         return countryZh;
+    }
+
+    public WebElement getCountryAe() {
+        return countryAe;
     }
 
     public WebElement getHdrIcon() {

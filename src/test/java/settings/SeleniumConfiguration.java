@@ -241,6 +241,20 @@ public abstract class SeleniumConfiguration {
                 educatedMove.fluentWaitLocators(country.getCountryZh());
                 country.getCountryZh().click();
                 break;
+            case "ar":
+                absoluteUrl = baseUrl + languages;
+                getDriver().navigate().to(absoluteUrl);
+                Allure.step("Language: " + languages + " Countries: " + countries);
+                actions.moveToElement(country.getHdrIcon())
+                        .pause(Duration.ofSeconds(1))
+                        .click(country.getDropDownCountry())
+                        .pause(Duration.ofSeconds(1))
+                        .perform();
+
+                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryAe());
+                educatedMove.fluentWaitLocators(country.getCountryAe());
+                country.getCountryAe().click();
+                break;
             default:
                 Allure.step("Language: " + languages + " Countries: " + countries);
                 throw new NoSuchElementException("No such language or country was found");
