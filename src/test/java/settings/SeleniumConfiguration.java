@@ -3,10 +3,8 @@ package settings;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
-import org.example.manage_elements.ChoiceCountryElements;
-import org.example.manage_elements.EducatedMainPageElements;
-import org.example.manage_elements.PageCheckElements;
-import org.example.manage_elements.PlatformTradingViewElements;
+import org.example.manage_elements.*;
+import org.example.move_page.MovePage;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -34,6 +32,8 @@ public abstract class SeleniumConfiguration {
     private PageCheckElements elementsCheck = new PageCheckElements(getDriver());
     private PlatformTradingViewElements platformElements = new PlatformTradingViewElements(getDriver());
     private ChoiceCountryElements country = new ChoiceCountryElements(getDriver());
+    private LogInFormElements logIn = new LogInFormElements(getDriver());
+    private MovePage move = new EducatedMainPageElements(getDriver());
     private WebElement randomElement;
     private WebElement elementPlatform;
     private WebElement elementPlatform2;
@@ -426,5 +426,29 @@ public abstract class SeleniumConfiguration {
 
     public WebElement getElementPlatform2() {
         return elementPlatform2;
+    }
+
+    public EducatedMainPageElements getEducatedMove() {
+        return educatedMove;
+    }
+
+    public PageCheckElements getElementsCheck() {
+        return elementsCheck;
+    }
+
+    public PlatformTradingViewElements getPlatformElements() {
+        return platformElements;
+    }
+
+    public ChoiceCountryElements getCountry() {
+        return country;
+    }
+
+    public LogInFormElements getLogIn() {
+        return logIn;
+    }
+
+    public MovePage getMove() {
+        return move;
     }
 }
