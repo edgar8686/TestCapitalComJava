@@ -11,10 +11,11 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import settings.MyExecutionCondition;
 import settings.SeleniumConfiguration;
 import settings.TestListener;
 
-@ExtendWith(TestListener.class)
+@ExtendWith({TestListener.class, MyExecutionCondition.class})
 public class TradeOnWidgetTest extends SeleniumConfiguration {
     @ParameterizedTest
     @Tag("us_11_02_07")
@@ -27,6 +28,8 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void tradeUnReg(String languages, String countries) throws InterruptedException {
         deleteCookies();
+       //String currentMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
+        //System.out.println("Текущий метод: " + currentMethodName);
         precondition(languages, countries);
 
         acceptAllCookies();
