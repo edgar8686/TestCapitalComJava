@@ -4,6 +4,7 @@ package settings;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
 import org.example.manage_elements.*;
+import org.example.move_page.MovePage;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -32,6 +33,8 @@ public abstract class SeleniumConfiguration {
     private PlatformTradingViewElements platformElements = new PlatformTradingViewElements(getDriver());
     private ChoiceCountryElements country = new ChoiceCountryElements(getDriver());
     private LogInFormElements logIn = new LogInFormElements(getDriver());
+    private MovePage move = new EducatedMainPageElements(getDriver());
+
     private WebElement randomElement;
     private WebElement elementPlatform;
     private WebElement elementPlatform2;
@@ -49,8 +52,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        optionsChrome.addArguments("--headless");
-        optionsChrome.setHeadless(true);
+        // optionsChrome.addArguments("--headless");
+        //optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -444,5 +447,8 @@ public abstract class SeleniumConfiguration {
 
     public LogInFormElements getLogIn() {
         return logIn;
+    }
+    public MovePage getMove() {
+        return move;
     }
 }

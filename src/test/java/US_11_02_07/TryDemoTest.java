@@ -11,15 +11,16 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import settings.MyExecutionCondition;
 import settings.SeleniumConfiguration;
 import settings.TestListener;
 
-@ExtendWith(TestListener.class)
+@ExtendWith({TestListener.class, MyExecutionCondition.class})
 public class TryDemoTest extends SeleniumConfiguration {
-    EducatedMainPageElements smoke = new EducatedMainPageElements(getDriver());
-    MovePage move = new EducatedMainPageElements(getDriver());
-    PageCheckElements locators = new PageCheckElements(getDriver());
-    LogInFormElements logIn = new LogInFormElements(getDriver());
+    //EducatedMainPageElements smoke = new EducatedMainPageElements(getDriver());
+   // MovePage move = new EducatedMainPageElements(getDriver());
+    //PageCheckElements locators = new PageCheckElements(getDriver());
+    //LogInFormElements logIn = new LogInFormElements(getDriver());
 
     @ParameterizedTest
     @Tag("us_11_02_07")
@@ -36,23 +37,23 @@ public class TryDemoTest extends SeleniumConfiguration {
 
         acceptAllCookies();
         checkWindow();
-        move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
+        getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
         checkWindow();
 
-        locators.tryDemoClick();
+        getElementsCheck().tryDemoClick();
         Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form (UnReg)",
                 () ->
-                        Assertions.assertTrue(locators.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
+                        Assertions.assertTrue(getElementsCheck().getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLinkLogin().isDisplayed(), "Login link is not displayed"),
+                        Assertions.assertTrue(getElementsCheck().getLinkLogin().isDisplayed(), "Login link is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getInputSignUpEmail().isDisplayed(), "SignUp Email input is not displayed"),
+                        Assertions.assertTrue(getElementsCheck().getInputSignUpEmail().isDisplayed(), "SignUp Email input is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getInputSignUpPassword().isDisplayed(),"SignUp Password input is not displayed"),
+                        Assertions.assertTrue(getElementsCheck().getInputSignUpPassword().isDisplayed(),"SignUp Password input is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getButtonSignUpContinue().isDisplayed(), "SignUp Continue button is not displayed"),
+                        Assertions.assertTrue(getElementsCheck().getButtonSignUpContinue().isDisplayed(), "SignUp Continue button is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLinkPrivate().isDisplayed(), "Private link is not displayed")
+                        Assertions.assertTrue(getElementsCheck().getLinkPrivate().isDisplayed(), "Private link is not displayed")
         );
 
     }
@@ -75,17 +76,17 @@ public class TryDemoTest extends SeleniumConfiguration {
         authorization();
 
         postAuthorization();
-        move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
+        getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
-        locators.tryDemoClick();
+        getElementsCheck().tryDemoClick();
 
         Assertions.assertAll("Failed: Trade element is not opened (Auth)",
                 () ->
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"),"Platform title is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getAccountDemo().isDisplayed(),"Demo button is not displayed"),
+                        Assertions.assertTrue(getElementsCheck().getAccountDemo().isDisplayed(),"Demo button is not displayed"),
                 () ->
-                        Assertions.assertTrue(locators.getLogo().isDisplayed(),"Logo is not displayed")
+                        Assertions.assertTrue(getElementsCheck().getLogo().isDisplayed(),"Logo is not displayed")
         );
 
     }
@@ -111,25 +112,25 @@ public class TryDemoTest extends SeleniumConfiguration {
         Thread.sleep(5000);
         postAuthorization();
 
-        move.clickPage(smoke.getEducated(), smoke.getEtfTrading());
+        getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
-        locators.tryDemoClick();
+        getElementsCheck().tryDemoClick();
 
         Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'Login' form (UnAuth)",
                 () ->
-                        Assertions.assertTrue(logIn.getNameLogIn().isDisplayed(), "Login is not displayed"),
+                        Assertions.assertTrue(getLogIn().getNameLogIn().isDisplayed(), "Login is not displayed"),
                 () ->
-                        Assertions.assertTrue(logIn.getLinkSignUp().isDisplayed(), "Link SignUp is not displayed"),
+                        Assertions.assertTrue(getLogIn().getLinkSignUp().isDisplayed(), "Link SignUp is not displayed"),
                 () ->
-                        Assertions.assertTrue(logIn.getInputEmail().isDisplayed(), "Email input is not displayed"),
+                        Assertions.assertTrue(getLogIn().getInputEmail().isDisplayed(), "Email input is not displayed"),
                 () ->
-                        Assertions.assertTrue(logIn.getInputPassword().isDisplayed(), "Password input is not displayed"),
+                        Assertions.assertTrue(getLogIn().getInputPassword().isDisplayed(), "Password input is not displayed"),
                 () ->
-                        Assertions.assertTrue(logIn.getLinkForgotPassword().isDisplayed(), "Password forgot link is not displayed"),
+                        Assertions.assertTrue(getLogIn().getLinkForgotPassword().isDisplayed(), "Password forgot link is not displayed"),
                 () ->
-                        Assertions.assertTrue(logIn.getButtonContinue().isDisplayed(), "Continue button is not displayed"),
+                        Assertions.assertTrue(getLogIn().getButtonContinue().isDisplayed(), "Continue button is not displayed"),
                 () ->
-                        Assertions.assertTrue(logIn.getCheckBox().isDisplayed(), "CheckBox is not displayed")
+                        Assertions.assertTrue(getLogIn().getCheckBox().isDisplayed(), "CheckBox is not displayed")
         );
 
     }
