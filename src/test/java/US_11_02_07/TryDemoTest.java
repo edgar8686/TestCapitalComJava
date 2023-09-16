@@ -11,10 +11,11 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import settings.MyExecutionCondition;
 import settings.SeleniumConfiguration;
 import settings.TestListener;
 
-@ExtendWith(TestListener.class)
+@ExtendWith({TestListener.class, MyExecutionCondition.class})
 public class TryDemoTest extends SeleniumConfiguration {
     //EducatedMainPageElements smoke = new EducatedMainPageElements(getDriver());
    // MovePage move = new EducatedMainPageElements(getDriver());

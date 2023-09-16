@@ -36,19 +36,15 @@ public class EducatedMainPageElements extends AbstractPage implements MovePage<E
     @Step("Step: Educated move")
     public EducatedMainPageElements clickPage(WebElement main, WebElement page) {
         Allure.step("Move to ETF trading");
-        try {
-            fluentWaitLocators(main);
-            new Actions(getDriver())
-                    .pause(Duration.ofSeconds(1))
-                    .moveToElement(main)
-                    .pause(Duration.ofSeconds(1))
-                    .perform();
-            fluentWaitLocators(page);
-            page.click();
-            return this;
-        } catch (NoSuchElementException e) {
-            throw new TestAbortedException("Test Skipped: ETF trading not found. For tests on language the page Education->ETF trading doesn't exist on production");
-        }
+        fluentWaitLocators(main);
+        new Actions(getDriver())
+                .pause(Duration.ofSeconds(1))
+                .moveToElement(main)
+                .pause(Duration.ofSeconds(1))
+                .perform();
+        fluentWaitLocators(page);
+        page.click();
+        return this;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
