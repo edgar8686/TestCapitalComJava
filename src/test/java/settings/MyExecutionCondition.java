@@ -22,7 +22,7 @@ public class MyExecutionCondition implements ExecutionCondition {
         String testName = context.getDisplayName();
         //System.out.println("condition = " + testName);
 
-        String filePath = "C:\\Users\\edgar\\Selenium_project\\src\\test\\resources\\Precondition.csv";
+        String filePath = "src\\test\\resources\\Precondition.csv";
         // List<String[]> list = MyUtils.readCSVFile(filePath);
         String line;
         String cvsSplitBy = ",";
