@@ -34,7 +34,7 @@ public abstract class SeleniumConfiguration {
     private ChoiceCountryElements country = new ChoiceCountryElements(getDriver());
     private LogInFormElements logIn = new LogInFormElements(getDriver());
     private MovePage move = new EducatedMainPageElements(getDriver());
-
+    private SignUpFormElements signUp = new SignUpFormElements(getDriver());
     private WebElement randomElement;
     private WebElement elementPlatform;
     private WebElement elementPlatform2;
@@ -321,11 +321,11 @@ public abstract class SeleniumConfiguration {
         educatedMove.fluentWaitLocators(elementsCheck.getTrade());
         elementsCheck.getTrade().click();
         Thread.sleep(1000);
-        elementsCheck.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
+        signUp.getInputSignUpEmail().sendKeys("aqa.tomelo.an@gmail.com");
         Thread.sleep(1000);
-        elementsCheck.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
-        educatedMove.fluentWaitLocators(elementsCheck.getButtonSignUpContinueIncluded());
-        elementsCheck.getButtonSignUpContinueIncluded().click();
+        signUp.getInputSignUpPassword().sendKeys("iT9Vgqi6d$fiZ*Z");
+        educatedMove.fluentWaitLocators(signUp.getButtonSignUpContinueIncluded());
+        signUp.getButtonSignUpContinueIncluded().click();
         // Thread.sleep(5000);
         checkButtonIconClose();
     }
@@ -450,5 +450,9 @@ public abstract class SeleniumConfiguration {
     }
     public MovePage getMove() {
         return move;
+    }
+
+    public SignUpFormElements getSignUp() {
+        return signUp;
     }
 }

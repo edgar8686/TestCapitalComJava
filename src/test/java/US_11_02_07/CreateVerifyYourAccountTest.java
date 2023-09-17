@@ -32,17 +32,17 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
         scrollAndClickElement(getElementsCheck().getCreateVerifyYourAccount(), getElementsCheck().getCreateVerifyYourAccount());
         Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form (UnReg)",
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
+                        Assertions.assertTrue(getSignUp().getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getLinkLogin().isDisplayed(), "Login link is not displayed"),
+                        Assertions.assertTrue(getSignUp().getLinkLogin().isDisplayed(), "Login link is not displayed"),
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getInputSignUpEmail().isDisplayed(), "SignUp Email input is not displayed"),
+                        Assertions.assertTrue(getSignUp().getInputSignUpEmail().isDisplayed(), "SignUp Email input is not displayed"),
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getInputSignUpPassword().isDisplayed(),"SignUp Password input is not displayed"),
+                        Assertions.assertTrue(getSignUp().getInputSignUpPassword().isDisplayed(),"SignUp Password input is not displayed"),
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getButtonSignUpContinue().isDisplayed(), "SignUp Continue button is not displayed"),
+                        Assertions.assertTrue(getSignUp().getButtonSignUpContinue().isDisplayed(), "SignUp Continue button is not displayed"),
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getLinkPrivate().isDisplayed(), "Private link is not displayed")
+                        Assertions.assertTrue(getSignUp().getLinkPrivate().isDisplayed(), "Private link is not displayed")
         );
 
     }
@@ -72,7 +72,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
                 () ->
                         Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"), "Platform title is not displayed"),
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getLogo().isDisplayed(), "Logo is not displayed")
+                        Assertions.assertTrue(getPlatformElements().getLogo().isDisplayed(), "Logo is not displayed")
         );
     }
 
@@ -102,17 +102,17 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
         scrollAndClickElement(getElementsCheck().getCreateVerifyYourAccount(), getElementsCheck().getCreateVerifyYourAccount());
         Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form (UnAuth)",
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
+                        Assertions.assertTrue(getSignUp().getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getLinkLogin().isDisplayed(), "Login link is not displayed"),
+                        Assertions.assertTrue(getSignUp().getLinkLogin().isDisplayed(), "Login link is not displayed"),
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getInputSignUpEmail().isDisplayed(), "SignUp Email input is not displayed"),
+                        Assertions.assertTrue(getSignUp().getInputSignUpEmail().isDisplayed(), "SignUp Email input is not displayed"),
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getInputSignUpPassword().isDisplayed(),"SignUp Password input is not displayed"),
+                        Assertions.assertTrue(getSignUp().getInputSignUpPassword().isDisplayed(),"SignUp Password input is not displayed"),
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getButtonSignUpContinue().isDisplayed(), "SignUp Continue button is not displayed"),
+                        Assertions.assertTrue(getSignUp().getButtonSignUpContinue().isDisplayed(), "SignUp Continue button is not displayed"),
                 () ->
-                        Assertions.assertTrue(getElementsCheck().getLinkPrivate().isDisplayed(), "Private link is not displayed")
+                        Assertions.assertTrue(getSignUp().getLinkPrivate().isDisplayed(), "Private link is not displayed")
         );
 
     }

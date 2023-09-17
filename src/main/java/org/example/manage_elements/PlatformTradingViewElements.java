@@ -39,6 +39,13 @@ public class PlatformTradingViewElements extends AbstractPage {
     private WebElement elementActiveApple;
     @FindBy(xpath = "//*[text()=' Apple Inc (Extended Hours) ']")
     private WebElement elementPlatformApple;
+    //Auth check
+    @FindBy(css = "object[class='logo__icon']")
+    private WebElement logo;
+    @FindBy(css = ".logo")
+    private WebElement logo2;
+    @FindBy(xpath = "//div[@class='account__mode account__mode_demo']")
+    private WebElement accountDemo;
     public PlatformTradingViewElements(WebDriver driver) {
         super(driver);
     }
@@ -97,5 +104,17 @@ public class PlatformTradingViewElements extends AbstractPage {
 
     public WebElement getElementPlatformApple() {
         return elementPlatformApple;
+    }
+
+    public WebElement getLogo() {
+        return logo;
+    }
+
+    public WebElement getLogo2() {
+        return logo2;
+    }
+
+    public WebElement getAccountDemo() {
+        return accountDemo;
     }
 }
