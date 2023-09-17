@@ -1,10 +1,6 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.manage_elements.EducatedMainPageElements;
-import org.example.manage_elements.LogInFormElements;
-import org.example.manage_elements.PageCheckElements;
-import org.example.move_page.MovePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;

@@ -1,9 +1,6 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.example.manage_elements.EducatedMainPageElements;
-import org.example.manage_elements.PageCheckElements;
-import org.example.move_page.MovePage;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
