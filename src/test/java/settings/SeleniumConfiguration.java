@@ -372,7 +372,7 @@ public abstract class SeleniumConfiguration {
 
         int randomIndex = random.nextInt(elements.size());
         randomElement = elements.get(randomIndex);
-        System.out.println(randomElement);
+
         Allure.step("Element: " + randomElement);
 
         if (randomElement == elementsCheck.getTesla()) {
