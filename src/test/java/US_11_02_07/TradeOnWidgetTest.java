@@ -35,22 +35,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
 
         randomElement();
         scrollAndClickElement(getRandomElement(), getElementsCheck().getWidget());
-        Thread.sleep(1000);
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form (UnReg)",
-                () ->
-                        Assertions.assertTrue(getSignUp().getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
-                () ->
-                        Assertions.assertTrue(getSignUp().getLinkLogin().isDisplayed(), "Login link is not displayed"),
-                () ->
-                        Assertions.assertTrue(getSignUp().getInputSignUpEmail().isDisplayed(), "SignUp Email input is not displayed"),
-                () ->
-                        Assertions.assertTrue(getSignUp().getInputSignUpPassword().isDisplayed(),"SignUp Password input is not displayed"),
-                () ->
-                        Assertions.assertTrue(getSignUp().getButtonSignUpContinue().isDisplayed(), "SignUp Continue button is not displayed"),
-                () ->
-                        Assertions.assertTrue(getSignUp().getLinkPrivate().isDisplayed(), "Private link is not displayed")
-        );
-
+        getAssertClass().assertSignUpForm();
     }
 
     @ParameterizedTest
@@ -86,7 +71,6 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
                 () ->
                         Assertions.assertTrue(getElementPlatform2().isDisplayed(), "Trade active element is not displayed")
         );
-
     }
 
     @ParameterizedTest
@@ -114,22 +98,6 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
 
         randomElement();
         scrollAndClickElement(getRandomElement(), getElementsCheck().getWidget());
-
-        Assertions.assertAll("Failed: Opened a 'SignUp' form instead of a 'LogIn' form (UnAuth)",
-                () ->
-                        Assertions.assertTrue(getLogIn().getNameLogIn().isDisplayed(), "Login is not displayed"),
-                () ->
-                        Assertions.assertTrue(getLogIn().getLinkSignUp().isDisplayed(), "Link SignUp is not displayed"),
-                () ->
-                        Assertions.assertTrue(getLogIn().getInputEmail().isDisplayed(), "Email input is not displayed"),
-                () ->
-                        Assertions.assertTrue(getLogIn().getInputPassword().isDisplayed(), "Password input is not displayed"),
-                () ->
-                        Assertions.assertTrue(getLogIn().getLinkForgotPassword().isDisplayed(), "Password forgot link is not displayed"),
-                () ->
-                        Assertions.assertTrue(getLogIn().getButtonContinue().isDisplayed(), "Continue button is not displayed"),
-                () ->
-                        Assertions.assertTrue(getLogIn().getCheckBox().isDisplayed(), "CheckBox is not displayed")
-        );
+        getAssertClass().assertLogInForm();
     }
 }

@@ -56,4 +56,14 @@ public class AssertClass extends AbstractPage {
                         Assertions.assertTrue(platformElements.getLogo().isDisplayed(), "Logo is not displayed")
         );
     }
+    public void assertPlatforfDemo() {
+        Assertions.assertAll("Failed: Trade element is not opened (Auth)",
+                () ->
+                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"), "Platform title is not displayed"),
+                () ->
+                        Assertions.assertTrue(platformElements.getAccountDemo().isDisplayed(), "Demo button is not displayed"),
+                () ->
+                        Assertions.assertTrue(platformElements.getLogo().isDisplayed(), "Logo is not displayed")
+        );
+    }
 }
