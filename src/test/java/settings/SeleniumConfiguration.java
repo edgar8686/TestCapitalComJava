@@ -3,6 +3,7 @@ package settings;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
+import org.example.assert_class.AssertClass;
 import org.example.manage_elements.*;
 import org.example.move_page.MovePage;
 import org.junit.jupiter.api.*;
@@ -35,6 +36,7 @@ public abstract class SeleniumConfiguration {
     private LogInFormElements logIn = new LogInFormElements(getDriver());
     private MovePage move = new EducatedMainPageElements(getDriver());
     private SignUpFormElements signUp = new SignUpFormElements(getDriver());
+    private AssertClass assertClass = new AssertClass(getDriver());
     private WebElement randomElement;
     private WebElement elementPlatform;
     private WebElement elementPlatform2;
@@ -52,8 +54,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-         optionsChrome.addArguments("--headless");
-        optionsChrome.setHeadless(true);
+        //optionsChrome.addArguments("--headless");
+        //optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -448,11 +450,16 @@ public abstract class SeleniumConfiguration {
     public LogInFormElements getLogIn() {
         return logIn;
     }
+
     public MovePage getMove() {
         return move;
     }
 
     public SignUpFormElements getSignUp() {
         return signUp;
+    }
+
+    public AssertClass getAssertClass() {
+        return assertClass;
     }
 }
