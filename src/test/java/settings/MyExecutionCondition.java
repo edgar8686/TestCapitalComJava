@@ -131,7 +131,6 @@ public class MyExecutionCondition implements ExecutionCondition {
                 return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
             }
         }
-
         return ConditionEvaluationResult.enabled("The parameters are valid for this test: " + testName);
     }
 
