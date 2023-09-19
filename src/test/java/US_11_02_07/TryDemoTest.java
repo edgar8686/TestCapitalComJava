@@ -56,16 +56,7 @@ public class TryDemoTest extends SeleniumConfiguration {
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
         getElementsCheck().tryDemoClick();
-
-        Assertions.assertAll("Failed: Trade element is not opened (Auth)",
-                () ->
-                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"), "Platform title is not displayed"),
-                () ->
-                        Assertions.assertTrue(getPlatformElements().getAccountDemo().isDisplayed(), "Demo button is not displayed"),
-                () ->
-                        Assertions.assertTrue(getPlatformElements().getLogo().isDisplayed(), "Logo is not displayed")
-        );
-
+        getAssertClass().assertPlatformDemo();
     }
 
     @ParameterizedTest
