@@ -3,6 +3,7 @@ package settings;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
+import org.example.assert_class.AssertClass;
 import org.example.manage_elements.*;
 import org.example.move_page.MovePage;
 import org.junit.jupiter.api.*;
@@ -24,21 +25,16 @@ import java.util.Random;
 
 public abstract class SeleniumConfiguration {
     private static WebDriver driver;
-    static String baseUrl = "https://capital.com/";
-    static String absoluteUrl;
-    ArrayList<WebElement> elements = new ArrayList<>();
+    private static String baseUrl = "https://capital.com/";
+    private static String absoluteUrl;
     static final Dimension windowSize = new Dimension(1800, 800);
     private EducatedMainPageElements educatedMove = new EducatedMainPageElements(getDriver());
     private PageCheckElements elementsCheck = new PageCheckElements(getDriver());
     private PlatformTradingViewElements platformElements = new PlatformTradingViewElements(getDriver());
     private ChoiceCountryElements country = new ChoiceCountryElements(getDriver());
-    private LogInFormElements logIn = new LogInFormElements(getDriver());
     private MovePage move = new EducatedMainPageElements(getDriver());
+    private AssertClass assertClass = new AssertClass(getDriver());
     private SignUpFormElements signUp = new SignUpFormElements(getDriver());
-    private WebElement randomElement;
-    private WebElement elementPlatform;
-    private WebElement elementPlatform2;
-
 
     @BeforeAll
     @Epics({@Epic("US_11_Education 11-02-07_ETF_trading")})
@@ -52,8 +48,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-         optionsChrome.addArguments("--headless");
-        optionsChrome.setHeadless(true);
+        //optionsChrome.addArguments("--headless");
+        //optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -360,39 +356,6 @@ public abstract class SeleniumConfiguration {
     //SelenideElement element = myPage.getDynamicElement("my-dynamic-element");
     //element.click();
     //}
-    @Step("Step: random selection of an element on the Widget")
-    public void randomElement() {
-        Random random = new Random();
-
-        elements.add(elementsCheck.getTesla());
-        elements.add(elementsCheck.getNvidia());
-        elements.add(elementsCheck.getAmd());
-        elements.add(elementsCheck.getAmc());
-        elements.add(elementsCheck.getApple());
-
-        int randomIndex = random.nextInt(elements.size());
-        randomElement = elements.get(randomIndex);
-
-        Allure.step("Element: " + randomElement);
-
-        if (randomElement == elementsCheck.getTesla()) {
-            elementPlatform = platformElements.getElementPlatformTesla();
-            elementPlatform2 = platformElements.getElementActiveTesla();
-        } else if (randomElement == elementsCheck.getNvidia()) {
-            elementPlatform = platformElements.getElementPlatformNvidia();
-            elementPlatform2 = platformElements.getElementActiveNvidia();
-        } else if (randomElement == elementsCheck.getAmc()) {
-            elementPlatform = platformElements.getElementPlatformAmc();
-            elementPlatform2 = platformElements.getElementActiveAmc();
-        } else if (randomElement == elementsCheck.getAmd()) {
-            elementPlatform = platformElements.getElementPlatformAmd();
-            elementPlatform2 = platformElements.getElementActiveAmd();
-        } else if (randomElement == elementsCheck.getApple()) {
-            elementPlatform = platformElements.getElementPlatformApple();
-            elementPlatform2 = platformElements.getElementActiveApple();
-        }
-    }
-
     @Step("Step: scroll and click element")
     public void scrollAndClickElement(WebElement clickElement, WebElement scrollToElement) throws InterruptedException {
         try {
@@ -417,18 +380,6 @@ public abstract class SeleniumConfiguration {
         }
     }
 
-    public WebElement getRandomElement() {
-        return randomElement;
-    }
-
-    public WebElement getElementPlatform() {
-        return elementPlatform;
-    }
-
-    public WebElement getElementPlatform2() {
-        return elementPlatform2;
-    }
-
     public EducatedMainPageElements getEducatedMove() {
         return educatedMove;
     }
@@ -437,22 +388,11 @@ public abstract class SeleniumConfiguration {
         return elementsCheck;
     }
 
-    public PlatformTradingViewElements getPlatformElements() {
-        return platformElements;
-    }
-
-    public ChoiceCountryElements getCountry() {
-        return country;
-    }
-
-    public LogInFormElements getLogIn() {
-        return logIn;
-    }
     public MovePage getMove() {
         return move;
     }
 
-    public SignUpFormElements getSignUp() {
-        return signUp;
+    public AssertClass getAssertClass() {
+        return assertClass;
     }
 }

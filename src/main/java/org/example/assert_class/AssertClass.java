@@ -97,8 +97,6 @@ public class AssertClass extends AbstractPage {
         );
     }
 
-
-
     @Step("Step: random selection of an element on the Widget")
     public void randomElementMethod() {
         Random random = new Random();
