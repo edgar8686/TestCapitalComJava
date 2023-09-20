@@ -30,6 +30,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
         checkWindow();
 
         scrollAndClickElement(getElementsCheck().getCreateVerifyYourAccount(), getElementsCheck().getCreateVerifyYourAccount());
+
         getAssertClass().assertSignUpForm();
     }
 
@@ -54,6 +55,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
         scrollAndClickElement(getElementsCheck().getCreateVerifyYourAccount(), getElementsCheck().getCreateVerifyYourAccount());
+
         getAssertClass().assertPlatformPage();
     }
 
@@ -81,6 +83,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
         scrollAndClickElement(getElementsCheck().getCreateVerifyYourAccount(), getElementsCheck().getCreateVerifyYourAccount());
+
         getAssertClass().assertSignUpForm();
     }
 }

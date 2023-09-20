@@ -60,7 +60,6 @@ public class SignUpTest extends SeleniumConfiguration {
         postAuthorization();
 
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
-
         getElementsCheck().signUpClick();
 
         getAssertClass().assertSignUpForm();

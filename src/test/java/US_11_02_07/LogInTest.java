@@ -61,6 +61,7 @@ public class LogInTest extends SeleniumConfiguration {
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
         getElementsCheck().logInClick();
+
         getAssertClass().assertLogInForm();
     }
 }

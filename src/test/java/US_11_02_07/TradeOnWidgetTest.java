@@ -1,7 +1,6 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,8 +32,9 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
         checkWindow();
 
-        randomElement();
-        scrollAndClickElement(getRandomElement(), getElementsCheck().getWidget());
+        getAssertClass().randomElementMethod();
+        scrollAndClickElement(getAssertClass().getRandomElement(), getElementsCheck().getWidget());
+
         getAssertClass().assertSignUpForm();
     }
 
@@ -58,19 +58,10 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
         postAuthorization();
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
-        randomElement();
-        scrollAndClickElement(getRandomElement(), getElementsCheck().getWidget());
+        getAssertClass().randomElementMethod();
+        scrollAndClickElement(getAssertClass().getRandomElement(), getElementsCheck().getWidget());
 
-        Assertions.assertAll("Failed: Trade element is not active on the platform (Auth)",
-                () ->
-                        Assertions.assertTrue(getDriver().getTitle().endsWith("| Capital.com"), "Platform is not displayed"),
-                () ->
-                        Assertions.assertTrue(getPlatformElements().getLogo2().isDisplayed(), "Logo is not displayed"),
-                () ->
-                        Assertions.assertTrue(getElementPlatform().isDisplayed(), "Trade element is not displayed"),
-                () ->
-                        Assertions.assertTrue(getElementPlatform2().isDisplayed(), "Trade active element is not displayed")
-        );
+        getAssertClass().assertPlatformInstrument();
     }
 
     @ParameterizedTest
@@ -96,8 +87,9 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
 
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
-        randomElement();
-        scrollAndClickElement(getRandomElement(), getElementsCheck().getWidget());
+        getAssertClass().randomElementMethod();
+        scrollAndClickElement(getAssertClass().getRandomElement(), getElementsCheck().getWidget());
+
         getAssertClass().assertLogInForm();
     }
 }

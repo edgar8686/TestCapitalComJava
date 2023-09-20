@@ -32,6 +32,7 @@ public class TryDemoTest extends SeleniumConfiguration {
         checkWindow();
 
         getElementsCheck().tryDemoClick();
+
         getAssertClass().assertSignUpForm();
     }
 
@@ -56,6 +57,7 @@ public class TryDemoTest extends SeleniumConfiguration {
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
         getElementsCheck().tryDemoClick();
+
         getAssertClass().assertPlatformDemo();
     }
 
@@ -83,6 +85,7 @@ public class TryDemoTest extends SeleniumConfiguration {
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
         getElementsCheck().tryDemoClick();
+
         getAssertClass().assertLogInForm();
     }
 }

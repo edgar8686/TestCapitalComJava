@@ -32,6 +32,7 @@ public class StartTradingTest extends SeleniumConfiguration {
         checkWindow();
 
         getElementsCheck().startTradingClick();
+
         getAssertClass().assertSignUpForm();
     }
 
@@ -56,6 +57,7 @@ public class StartTradingTest extends SeleniumConfiguration {
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
         getElementsCheck().startTradingClick();
+
         getAssertClass().assertPlatformPage();
     }
 
@@ -83,6 +85,7 @@ public class StartTradingTest extends SeleniumConfiguration {
         getMove().clickPage(getEducatedMove().getEducated(), getEducatedMove().getEtfTrading());
 
         getElementsCheck().startTradingClick();
+
         getAssertClass().assertLogInForm();
     }
 }
