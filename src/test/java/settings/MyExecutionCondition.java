@@ -1,12 +1,9 @@
 package settings;
 
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
-import org.example.utils.MyUtils;
+
 import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExecutionCondition;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import org.opentest4j.TestAbortedException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
