@@ -29,6 +29,8 @@ public class PageCheckElements extends AbstractPage {
     private WebElement apple;
     @FindBy(css = ".cc-box.grid.gSm.brickSm.mostTraded.js-mostTraded.js-analyticsVisible")
     private WebElement widget;
+    @FindBy(css = ".button-main.rounded-lg.__cp_b.ln-auto.js-analyticsClick[data-type='b_vert_s2_166']")
+    private WebElement createAccount;
 
 
     public PageCheckElements logInClick() {
@@ -100,6 +102,10 @@ public class PageCheckElements extends AbstractPage {
 
     public WebElement getWidget() {
         return widget;
+    }
+
+    public WebElement getCreateAccount() {
+        return createAccount;
     }
 }
 

@@ -3,10 +3,7 @@ package org.example.assert_class;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.example.abstractClass.AbstractPage;
-import org.example.manage_elements.LogInFormElements;
-import org.example.manage_elements.PageCheckElements;
-import org.example.manage_elements.PlatformTradingViewElements;
-import org.example.manage_elements.SignUpFormElements;
+import org.example.manage_elements.*;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +20,8 @@ public class AssertClass extends AbstractPage {
     private SignUpFormElements signUp = new SignUpFormElements(getDriver());
     private PlatformTradingViewElements platformElements = new PlatformTradingViewElements(getDriver());
     private PageCheckElements checkElements = new PageCheckElements(getDriver());
+    private SignUpPageElements signUpPage = new SignUpPageElements(getDriver());
+    private LoginPageElements loginPage = new LoginPageElements(getDriver());
 
     public AssertClass(WebDriver driver) {
         super(driver);
@@ -46,9 +45,27 @@ public class AssertClass extends AbstractPage {
                         Assertions.assertTrue(logIn.getCheckBox().isDisplayed(), "CheckBox is not displayed")
         );
     }
+    public void assertLogInPage() {
+        Assertions.assertAll("Failed: Opened a 'SignUp' form page instead of a 'Login' form page",
+                () ->
+                        Assertions.assertTrue(loginPage.getLoginNamePage().isDisplayed(), "Login is not displayed"),
+                () ->
+                        Assertions.assertTrue(loginPage.getSignUpLinkPage().isDisplayed(), "Link SignUp is not displayed"),
+                () ->
+                        Assertions.assertTrue(loginPage.getInputEmailPageLogin().isDisplayed(), "Email input is not displayed"),
+                () ->
+                        Assertions.assertTrue(loginPage.getInputPasswordPageLogin().isDisplayed(), "Password input is not displayed"),
+                () ->
+                        Assertions.assertTrue(loginPage.getForgotPasswordPageLogin().isDisplayed(), "Password forgot link is not displayed"),
+                () ->
+                        Assertions.assertTrue(loginPage.getForgotPasswordPageLogin().isDisplayed(), "Continue button is not displayed"),
+                () ->
+                        Assertions.assertTrue(loginPage.getCheckBoxPageLogin().isDisplayed(), "CheckBox is not displayed")
+        );
+    }
 
     public void assertSignUpForm() {
-        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form",
+        Assertions.assertAll("Failed: Opened a 'Login' form page instead of a 'SignUp' form page",
                 () ->
                         Assertions.assertTrue(signUp.getNameSignUp().isDisplayed(), "Name SignUp field is not displayed"),
                 () ->
@@ -61,6 +78,23 @@ public class AssertClass extends AbstractPage {
                         Assertions.assertTrue(signUp.getButtonSignUpContinue().isDisplayed(), "SignUp Continue button is not displayed"),
                 () ->
                         Assertions.assertTrue(signUp.getLinkPrivate().isDisplayed(), "Private link is not displayed")
+        );
+    }
+
+    public void assertSignUpPage() {
+        Assertions.assertAll("Failed: Opened a 'Login' form instead of a 'SignUp' form",
+                () ->
+                        Assertions.assertTrue(signUpPage.getSignUpPageName().isDisplayed(), "Name SignUp field is not displayed"),
+                () ->
+                        Assertions.assertTrue(signUpPage.getLinkLoginPage().isDisplayed(), "Login link is not displayed"),
+                () ->
+                        Assertions.assertTrue(signUpPage.getInputEmailPage().isDisplayed(), "SignUp Email input is not displayed"),
+                () ->
+                        Assertions.assertTrue(signUpPage.getInputPasswordPage().isDisplayed(), "SignUp Password input is not displayed"),
+                () ->
+                        Assertions.assertTrue(signUpPage.getButtonContinuePage().isDisplayed(), "SignUp Continue button is not displayed"),
+                () ->
+                        Assertions.assertTrue(signUpPage.getLinkPrivatePage().isDisplayed(), "Private link is not displayed")
         );
     }
 
