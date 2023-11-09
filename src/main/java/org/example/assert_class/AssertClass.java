@@ -58,7 +58,7 @@ public class AssertClass extends AbstractPage {
                 () ->
                         Assertions.assertTrue(loginPage.getForgotPasswordPageLogin().isDisplayed(), "Password forgot link is not displayed"),
                 () ->
-                        Assertions.assertTrue(loginPage.getForgotPasswordPageLogin().isDisplayed(), "Continue button is not displayed"),
+                        Assertions.assertTrue(loginPage.getButtonContinuePageLogin().isDisplayed(), "Continue button is not displayed"),
                 () ->
                         Assertions.assertTrue(loginPage.getCheckBoxPageLogin().isDisplayed(), "CheckBox is not displayed")
         );

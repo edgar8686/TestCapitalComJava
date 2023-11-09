@@ -50,7 +50,7 @@ public class MyExecutionCondition implements ExecutionCondition {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+//условия для первого листа
         if (list2.get(0).equalsIgnoreCase("en") && list2.get(1).equalsIgnoreCase("gb")) {
             if (testName.equalsIgnoreCase("TC_11-02-07_05 (UnReg)")) {
                 return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
@@ -63,6 +63,12 @@ public class MyExecutionCondition implements ExecutionCondition {
             } else if (testName.equalsIgnoreCase("TC_11-02-07_07 (Auth)")) {
                 return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
             } else if (testName.equalsIgnoreCase("TC_11-02-07_07 (UnAuth)")) {
+                return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
+            } else if (testName.equalsIgnoreCase("TC_11-02-07_08 (UnAuth)")) {
+                return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
+            } else if (testName.equalsIgnoreCase("TC_11-02-07_08 (Auth)")) {
+                return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
+            } else if (testName.equalsIgnoreCase("TC_11-02-07_08 (UnReg)")) {
                 return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
             }
         } else if (list2.get(0).equalsIgnoreCase("nl") && list2.get(1).equalsIgnoreCase("nl")) {
@@ -104,6 +110,12 @@ public class MyExecutionCondition implements ExecutionCondition {
                 return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
             } else if (testName.equalsIgnoreCase("TC_11-02-07_07 (UnAuth)")) {
                 return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
+            } else if (testName.equalsIgnoreCase("TC_11-02-07_08 (UnAuth)")) {
+                return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
+            } else if (testName.equalsIgnoreCase("TC_11-02-07_08 (Auth)")) {
+                return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
+            } else if (testName.equalsIgnoreCase("TC_11-02-07_08 (UnReg)")) {
+                return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
             }
         } else if (list2.get(0).equalsIgnoreCase("fr") && list2.get(1).equalsIgnoreCase("fr")) {
             if (testName.equalsIgnoreCase("TC_11-02-07_06 (UnReg)")) {
@@ -143,6 +155,12 @@ public class MyExecutionCondition implements ExecutionCondition {
             } else if (testName.equalsIgnoreCase("TC_11-02-07_07 (Auth)")) {
                 return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
             } else if (testName.equalsIgnoreCase("TC_11-02-07_07 (UnAuth)")) {
+                return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
+            } else if (testName.equalsIgnoreCase("TC_11-02-07_08 (UnAuth)")) {
+                return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
+            } else if (testName.equalsIgnoreCase("TC_11-02-07_08 (Auth)")) {
+                return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
+            } else if (testName.equalsIgnoreCase("TC_11-02-07_08 (UnReg)")) {
                 return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
             }
         }

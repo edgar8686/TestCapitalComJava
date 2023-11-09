@@ -31,6 +31,8 @@ public class PageCheckElements extends AbstractPage {
     private WebElement widget;
     @FindBy(css = ".button-main.rounded-lg.__cp_b.ln-auto.js-analyticsClick[data-type='b_vert_s2_166']")
     private WebElement createAccount;
+    @FindBy(css = "a[data-type='b_hor_s1_167']")
+    private WebElement freeDemoAccount;
 
 
     public PageCheckElements logInClick() {
@@ -66,12 +68,15 @@ public class PageCheckElements extends AbstractPage {
     public WebElement getSignUp() {
         return signUp;
     }
+
     public WebElement getLogIn() {
         return logIn;
     }
+
     public WebElement getTrade() {
         return signUp;
     }
+
     public PageCheckElements(WebDriver driver) {
         super(driver);
     }
@@ -106,6 +111,9 @@ public class PageCheckElements extends AbstractPage {
 
     public WebElement getCreateAccount() {
         return createAccount;
+    }
+    public WebElement getFreeDemoAccount() {
+        return freeDemoAccount;
     }
 }
 
