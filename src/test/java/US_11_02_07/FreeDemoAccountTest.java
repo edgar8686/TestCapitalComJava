@@ -56,7 +56,7 @@ public class FreeDemoAccountTest extends SeleniumConfiguration {
 
         scrollAndClickElement(getElementsCheck().getFreeDemoAccount(), getElementsCheck().getFreeDemoAccount());
 
-        getAssertClass().assertPlatformPage();
+        getAssertClass().assertPlatformDemo();
     }
     @ParameterizedTest
     @Tag("us_11_02_07")
