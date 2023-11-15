@@ -33,6 +33,8 @@ public class PageCheckElements extends AbstractPage {
     private WebElement createAccount;
     @FindBy(css = "a[data-type='b_hor_s1_167']")
     private WebElement freeDemoAccount;
+    @FindBy(css = ".button-main.rounded-lg.__cp_b.ln-auto.js-analyticsClick")
+    private WebElement freeTrial;
 
 
     public PageCheckElements logInClick() {
@@ -114,6 +116,10 @@ public class PageCheckElements extends AbstractPage {
     }
     public WebElement getFreeDemoAccount() {
         return freeDemoAccount;
+    }
+
+    public WebElement getFreeTrial() {
+        return freeTrial;
     }
 }
 
