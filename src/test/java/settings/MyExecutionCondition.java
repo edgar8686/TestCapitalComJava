@@ -50,6 +50,7 @@ public class MyExecutionCondition implements ExecutionCondition {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 //условия для первого листа
         if (list2.get(0).equalsIgnoreCase("en") && list2.get(1).equalsIgnoreCase("gb")) {
             if (testName.equalsIgnoreCase("TC_11-02-07_05 (UnReg)")) {
@@ -236,5 +237,6 @@ public class MyExecutionCondition implements ExecutionCondition {
         }
         return ConditionEvaluationResult.enabled("The parameters are valid for this test: " + testName);
     }
+
 
 }
