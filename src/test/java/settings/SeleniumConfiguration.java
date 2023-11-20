@@ -39,7 +39,7 @@ public abstract class SeleniumConfiguration {
     @BeforeAll
     @Epics({@Epic("US_11_Education 11-02-07_ETF_trading")})
     @Features({@Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]"), @Feature("Role: Auth / TS_11.02.07 | Education > Menu Item [ETF trading]"), @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [ETF trading]")})
-    @Stories({@Story("TC_11.02.07_06 | Testing button [Create & verify your account]"), @Story("TC_11.02.07_01 | Testing button [LogIn]"), @Story("TC_11.02.07_02 | Testing button [SignUp]"), @Story("TC_11.02.07_03 | Testing button [StartTrading]"), @Story("TC_11.02.07_05 | Testing button [Trade] on Widget 'Most Traded'"), @Story("TC_11.02.07_04 | Testing button [TryDemo]"), @Story("TC_11.01.01_07 | Testing button [Create account]"), @Story("TC_11.01.01_08 | Testing button [Free demo account]"), @Story("TC_11.01.01_09 | Testing button [Free Trial]")})
+    @Stories({@Story("TC_11.02.07_06 | Testing button [Create & verify your account]"), @Story("TC_11.02.07_01 | Testing button [LogIn]"), @Story("TC_11.02.07_02 | Testing button [SignUp]"), @Story("TC_11.02.07_03 | Testing button [StartTrading]"), @Story("TC_11.02.07_05 | Testing button [Trade] on Widget 'Most Traded'"), @Story("TC_11.02.07_04 | Testing button [TryDemo]"), @Story("TC_11.01.01_07 | Testing button [Create account]"), @Story("TC_11.01.01_08 | Testing button [Free demo account]"), @Story("TC_11.01.01_09 | Testing button [Free Trial]"), @Story("TC_11.01.01_10 | Testing button [Practice for free]")})
     @Tags({@Tag("us_11_02_07")})
     static void init() throws MalformedURLException {
 
