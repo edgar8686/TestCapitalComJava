@@ -37,7 +37,7 @@ dependencies {
     runtimeOnly 'org.aspectj:aspectjweaver:1.9.19'
 }
 
-test {
+tasks.test {
     useJUnitPlatform()
     //Управление браузерами одной командой
     systemProperty 'browser', System.getProperty('browser', 'chrome')

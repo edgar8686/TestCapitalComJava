@@ -17,6 +17,7 @@ public class MyExecutionCondition implements ExecutionCondition {
     public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
 
         String testName = context.getDisplayName();
+        String country = getCountryFromCSV(testName, context);
         //System.out.println("condition = " + testName);
 
         String filePath = "src\\test\\resources\\Precondition.csv";
@@ -50,8 +51,13 @@ public class MyExecutionCondition implements ExecutionCondition {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        if (country.equalsIgnoreCase("es") && country.equalsIgnoreCase("es")) {
+            if (testName.equalsIgnoreCase("TC_11-02-07_07 (UnReg)")) {
+                return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
+            }
+        }
 
-//условия для первого листа
+        //условия для первого листа
         if (list2.get(0).equalsIgnoreCase("en") && list2.get(1).equalsIgnoreCase("gb")) {
             if (testName.equalsIgnoreCase("TC_11-02-07_05 (UnReg)")) {
                 return ConditionEvaluationResult.disabled("Test Skipped: ETF trading not found. For tests on language " + list2.get(0) + " and on Country " + list2.get(1) + " the page Education->ETF trading doesn't exist on production");
@@ -238,5 +244,8 @@ public class MyExecutionCondition implements ExecutionCondition {
         return ConditionEvaluationResult.enabled("The parameters are valid for this test: " + testName);
     }
 
+    private String getCountryFromCSV(String testName, ExtensionContext context) {
+        return testName = context.getDisplayName();
 
+    }
 }
