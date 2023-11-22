@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import settings.MyExecutionCondition;
 import settings.SeleniumConfiguration;
 import settings.TestListener;
+import settings.Name;
 
 @ExtendWith({TestListener.class, MyExecutionCondition.class})
 public class LogInTest extends SeleniumConfiguration {
@@ -19,6 +20,7 @@ public class LogInTest extends SeleniumConfiguration {
     @Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_01 | Testing button [LogIn]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [LogIn]")
+    @Name(displayName = "TC_11-02-07_01 (UnReg)")
     @DisplayName("TC_11-02-07_01 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void logInUnReg(String languages, String countries) throws InterruptedException {
@@ -42,6 +44,7 @@ public class LogInTest extends SeleniumConfiguration {
     @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_01 | Testing button [LogIn]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [LogIn]")
+    @Name(displayName = "TC_11-02-07_01 (UnAuth)")
     @DisplayName("TC_11-02-07_01 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void logInUnAuth(String languages, String countries) throws InterruptedException {

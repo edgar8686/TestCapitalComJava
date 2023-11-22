@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import settings.MyExecutionCondition;
 import settings.SeleniumConfiguration;
 import settings.TestListener;
+import settings.Name;
 
 @ExtendWith({TestListener.class, MyExecutionCondition.class})
 public class TradeOnWidgetTest extends SeleniumConfiguration {
@@ -19,6 +20,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
     @Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_05 | Testing button [Trade] on Widget 'Most Traded'")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Trade] on Widget 'Most Traded'")
+    @Name(displayName = "TC_11-02-07_05 (UnAuth)")
     @DisplayName("TC_11-02-07_05 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void tradeUnReg(String languages, String countries) throws InterruptedException {
@@ -45,6 +47,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
     @Feature("Role: Auth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_05 | Testing button [Trade] on Widget 'Most Traded'")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Trade] on Widget 'Most Traded'")
+    @Name(displayName = "TC_11-02-07_05 (Auth)")
     @DisplayName("TC_11-02-07_05 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void tradeAuth(String languages, String countries) throws InterruptedException {
@@ -71,6 +74,7 @@ public class TradeOnWidgetTest extends SeleniumConfiguration {
     @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_05 | Testing button [Trade] on Widget 'Most Traded'")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Trade] on Widget 'Most Traded'")
+    @Name(displayName = "TC_11-02-07_05 (UnAuth)")
     @DisplayName("TC_11-02-07_05 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void tradeUnAuth(String languages, String countries) throws InterruptedException {

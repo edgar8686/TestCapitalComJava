@@ -9,9 +9,11 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import settings.MyExecutionCondition;
 import settings.SeleniumConfiguration;
 import settings.TestListener;
+import settings.Name;
 
 @ExtendWith({TestListener.class, MyExecutionCondition.class})
 public class CreateAccountTest extends SeleniumConfiguration {
+
     @ParameterizedTest
     @Tag("us_11_02_07")
     @Owner("Edgar Nurmagomedov")
@@ -19,6 +21,7 @@ public class CreateAccountTest extends SeleniumConfiguration {
     @Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.01.01_07 | Testing button [Create account]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Create account]")
+    @Name(displayName = "TC_11-02-07_07 (UnReg)")
     @DisplayName("TC_11-02-07_07 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void createAccountUnReg(String languages, String countries) throws InterruptedException {
@@ -42,6 +45,7 @@ public class CreateAccountTest extends SeleniumConfiguration {
     @Feature("Role: Auth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_07 | Testing button [Create account]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Create account]")
+    @Name(displayName = "TC_11-02-07_07 (Auth)")
     @DisplayName("TC_11-02-07_07 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void createAccountAuth(String languages, String countries) throws InterruptedException {
@@ -67,6 +71,7 @@ public class CreateAccountTest extends SeleniumConfiguration {
     @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_07 | Testing button [Create account]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Create account]")
+    @Name(displayName = "TC_11-02-07_07 (UnAuth)")
     @DisplayName("TC_11-02-07_07 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void createAccountUnAuth(String languages, String countries) throws InterruptedException {

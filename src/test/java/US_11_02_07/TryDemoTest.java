@@ -1,7 +1,6 @@
 package US_11_02_07;
 
 import io.qameta.allure.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import settings.MyExecutionCondition;
 import settings.SeleniumConfiguration;
 import settings.TestListener;
+import settings.Name;
 
 @ExtendWith({TestListener.class, MyExecutionCondition.class})
 public class TryDemoTest extends SeleniumConfiguration {
@@ -20,6 +20,7 @@ public class TryDemoTest extends SeleniumConfiguration {
     @Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_04 | Testing button [TryDemo]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [TryDemo]")
+    @Name(displayName = "TC_11-02-07_04 (UnReg)")
     @DisplayName("TC_11-02-07_04 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void tryDemoUnReg(String languages, String countries) throws InterruptedException {
@@ -43,6 +44,7 @@ public class TryDemoTest extends SeleniumConfiguration {
     @Feature("Role: Auth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_04 | Testing button [TryDemo]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [TryDemo]")
+    @Name(displayName = "TC_11-02-07_04 (Auth)")
     @DisplayName("TC_11-02-07_04 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void tryDemoAuth(String languages, String countries) throws InterruptedException {
@@ -68,6 +70,7 @@ public class TryDemoTest extends SeleniumConfiguration {
     @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_04 | Testing button [TryDemo]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [TryDemo]")
+    @Name(displayName = "TC_11-02-07_04 (UnAuth)")
     @DisplayName("TC_11-02-07_04 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void tryDemoUnAuth(String languages, String countries) throws InterruptedException {

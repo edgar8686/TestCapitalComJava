@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import settings.MyExecutionCondition;
 import settings.SeleniumConfiguration;
 import settings.TestListener;
+import settings.Name;
 
 @ExtendWith({TestListener.class, MyExecutionCondition.class})
 public class FreeDemoAccountTest extends SeleniumConfiguration {
@@ -19,9 +20,10 @@ public class FreeDemoAccountTest extends SeleniumConfiguration {
     @Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.01.01_08 | Testing button [Free demo account]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [CFree demo account]")
+    @Name(displayName = "TC_11-02-07_08 (UnReg)")
     @DisplayName("TC_11-02-07_08 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void createAccountUnReg(String languages, String countries) throws InterruptedException {
+    void freeDemoAccountUnReg(String languages, String countries) throws InterruptedException {
         deleteCookies();
         precondition(languages, countries);
 
@@ -41,9 +43,10 @@ public class FreeDemoAccountTest extends SeleniumConfiguration {
     @Feature("Role: Auth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_08 | Testing button [Free demo account]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Free demo account]")
+    @Name(displayName = "TC_11-02-07_08 (Auth)")
     @DisplayName("TC_11-02-07_08 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void createAccountAuth(String languages, String countries) throws InterruptedException {
+    void freeDemoAccountAuth(String languages, String countries) throws InterruptedException {
         deleteCookies();
         precondition(languages, countries);
 
@@ -65,9 +68,10 @@ public class FreeDemoAccountTest extends SeleniumConfiguration {
     @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [Free demo account]")
     @Story("TC_11.02.07_08 | Testing button [Create account]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Free demo account]")
+    @Name(displayName = "TC_11-02-07_08 (UnAuth)")
     @DisplayName("TC_11-02-07_08 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void createAccountUnAuth(String languages, String countries) throws InterruptedException {
+    void freeDemoAccountUnAuth(String languages, String countries) throws InterruptedException {
         deleteCookies();
         precondition(languages, countries);
 

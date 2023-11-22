@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import settings.MyExecutionCondition;
 import settings.SeleniumConfiguration;
 import settings.TestListener;
+import settings.Name;
 
 @ExtendWith({TestListener.class, MyExecutionCondition.class})
 public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
@@ -18,6 +19,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
     @Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_06 | Testing button [Create & verify your account]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Create & verify your account]")
+    @Name(displayName = "TC_11-02-07_06 (UnReg)")
     @DisplayName("TC_11-02-07_06 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void createVerifyYourAccountUnReg(String languages, String countries) throws InterruptedException {
@@ -41,6 +43,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
     @Feature("Role: Auth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_06 | Testing button [Create & verify your account]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Create & verify your account]")
+    @Name(displayName = "TC_11-02-07_06 (Auth)")
     @DisplayName("TC_11-02-07_06 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void createVerifyYourAccountAuth(String languages, String countries) throws InterruptedException {
@@ -66,6 +69,7 @@ public class CreateVerifyYourAccountTest extends SeleniumConfiguration {
     @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_06 | Testing button [Create & verify your account]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Create & verify your account]")
+    @Name(displayName = "TC_11-02-07_06 (UnAuth)")
     @DisplayName("TC_11-02-07_06 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
     void createVerifyYourAccountUnAuth(String languages, String countries) throws InterruptedException {

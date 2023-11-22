@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import settings.MyExecutionCondition;
 import settings.SeleniumConfiguration;
 import settings.TestListener;
+import settings.Name;
 
 @ExtendWith({TestListener.class, MyExecutionCondition.class})
 public class PracticeForFreeTest extends SeleniumConfiguration {
@@ -19,9 +20,10 @@ public class PracticeForFreeTest extends SeleniumConfiguration {
     @Feature("Role: UnReg / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.01.01_10 | Testing button [Practice for free]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Practice for free]")
+    @Name(displayName = "TC_11-02-07_10 (UnReg)")
     @DisplayName("TC_11-02-07_10 (UnReg)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void createAccountUnReg(String languages, String countries) throws InterruptedException {
+    void practiceForFreeUnReg(String languages, String countries) throws InterruptedException {
         deleteCookies();
         precondition(languages, countries);
 
@@ -41,9 +43,10 @@ public class PracticeForFreeTest extends SeleniumConfiguration {
     @Feature("Role: Auth / TS_11.02.07 | Education > Menu Item [ETF trading]")
     @Story("TC_11.02.07_10 | Testing button [Practice for free]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [FPractice for free]")
+    @Name(displayName = "TC_11-02-07_10 (Auth)")
     @DisplayName("TC_11-02-07_10 (Auth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void createAccountAuth(String languages, String countries) throws InterruptedException {
+    void practiceForFreeAuth(String languages, String countries) throws InterruptedException {
         deleteCookies();
         precondition(languages, countries);
 
@@ -56,18 +59,19 @@ public class PracticeForFreeTest extends SeleniumConfiguration {
 
         scrollAndClickElement(getElementsCheck().getFreeDemoAccount(), getElementsCheck().getFreeDemoAccount());
 
-        getAssertClass().assertPlatformPage();
+        getAssertClass().assertPlatformDemo();
     }
     @ParameterizedTest
     @Tag("us_11_02_07")
     @Owner("Edgar Nurmagomedov")
     @Epic("US_11_Education 11-02-07_ETF_trading")
     @Feature("Role: UnAuth / TS_11.02.07 | Education > Menu Item [ETF trading]")
-    @Story("TC_11.02.07_09 | Testing button [Free Trial]")
+    @Story("TC_11.02.07_10 | Testing button [Free Trial]")
     @Description("Check: Education > Menu Item [ETF trading] > Test button [Free Trial]")
-    @DisplayName("TC_11-02-07_09 (UnAuth)")
+    @Name(displayName = "TC_11-02-07_10 (UnAuth)")
+    @DisplayName("TC_11-02-07_10 (UnAuth)")
     @CsvFileSource(files = "src/test/resources/Precondition.csv", numLinesToSkip = 1)
-    void createAccountUnAuth(String languages, String countries) throws InterruptedException {
+    void practiceForFreeUnAuth(String languages, String countries) throws InterruptedException {
         deleteCookies();
         precondition(languages, countries);
 
