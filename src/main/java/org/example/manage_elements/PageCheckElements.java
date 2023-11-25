@@ -3,7 +3,10 @@ package org.example.manage_elements;
 import org.example.abstractClass.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 public class PageCheckElements extends AbstractPage {
     //LogIn Trade buttons
@@ -31,8 +34,9 @@ public class PageCheckElements extends AbstractPage {
     private WebElement widget;
     @FindBy(css = ".button-main.rounded-lg.__cp_b.ln-auto.js-analyticsClick[data-type='b_vert_s2_166']")
     private WebElement createAccount;
-    @FindBy(css = "a[data-type='b_hor_s1_167']")
+    @FindBy(css = ".button-main.rounded-lg.__cp_b.ln-auto.js-analyticsClick[data-type='b_hor_s1_167']")
     private WebElement freeDemoAccount;
+    private List<WebElement> freeDemoAccount2;
     @FindBy(css = ".button-main.rounded-lg.__cp_b.ln-auto.js-analyticsClick")
     private WebElement freeTrial;
 
@@ -114,6 +118,7 @@ public class PageCheckElements extends AbstractPage {
     public WebElement getCreateAccount() {
         return createAccount;
     }
+
     public WebElement getFreeDemoAccount() {
         return freeDemoAccount;
     }
