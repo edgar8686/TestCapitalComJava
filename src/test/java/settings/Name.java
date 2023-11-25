@@ -7,7 +7,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Test
 @ExtendWith(MyExecutionCondition.class)
 public @interface Name {
     String displayName() default "";
