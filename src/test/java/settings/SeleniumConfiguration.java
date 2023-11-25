@@ -20,8 +20,6 @@ import org.opentest4j.AssertionFailedError;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Random;
 
 public abstract class SeleniumConfiguration {
     private static WebDriver driver;
@@ -251,6 +249,30 @@ public abstract class SeleniumConfiguration {
                 ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryAe());
                 educatedMove.fluentWaitLocators(country.getCountryAe());
                 country.getCountryAe().click();
+                break;
+            case "it":
+                absoluteUrl = baseUrl + languages;
+                getDriver().navigate().to(absoluteUrl);
+                Allure.step("Language: " + languages + " Countries: " + countries);
+                actions.moveToElement(country.getHdrIcon())
+                        .pause(Duration.ofSeconds(1))
+                        .click(country.getDropDownCountry())
+                        .pause(Duration.ofSeconds(1))
+                        .perform();
+
+                if (countries.equalsIgnoreCase("gb")) {
+                    ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryGb());
+                    educatedMove.fluentWaitLocators(country.getCountryGb());
+                    country.getCountryGb().click();
+                } else if (countries.equalsIgnoreCase("ae")) {
+                    ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryAe());
+                    educatedMove.fluentWaitLocators(country.getCountryAe());
+                    country.getCountryAe().click();
+                } else if (countries.equalsIgnoreCase("de")) {
+                    ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", country.getCountryDe());
+                    educatedMove.fluentWaitLocators(country.getCountryDe());
+                    country.getCountryDe().click();
+                }
                 break;
             default:
                 Allure.step("Language: " + languages + " Countries: " + countries);
