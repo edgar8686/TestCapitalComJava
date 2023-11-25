@@ -35,7 +35,7 @@ public class MyExecutionCondition implements ExecutionCondition {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             // Прочитать и проигнорировать первую строку (заголовки)
-            br.readLine();
+            // br.readLine();
 
             // Прочитать данные со второй строки
             if ((line = br.readLine()) != null) {
