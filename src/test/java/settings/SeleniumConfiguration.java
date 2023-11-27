@@ -23,16 +23,16 @@ import java.time.Duration;
 
 public abstract class SeleniumConfiguration {
     private static WebDriver driver;
-    private static String baseUrl = "https://capital.com/";
+    private final static String baseUrl = "https://capital.com/";
     private static String absoluteUrl;
     static final Dimension windowSize = new Dimension(1800, 800);
-    private EducatedMainPageElements educatedMove = new EducatedMainPageElements(getDriver());
-    private PageCheckElements elementsCheck = new PageCheckElements(getDriver());
-    private PlatformTradingViewElements platformElements = new PlatformTradingViewElements(getDriver());
-    private ChoiceCountryElements country = new ChoiceCountryElements(getDriver());
-    private MovePage move = new EducatedMainPageElements(getDriver());
-    private AssertClass assertClass = new AssertClass(getDriver());
-    private SignUpFormElements signUp = new SignUpFormElements(getDriver());
+    private final EducatedMainPageElements educatedMove = new EducatedMainPageElements(getDriver());
+    private final PageCheckElements elementsCheck = new PageCheckElements(getDriver());
+    private final PlatformTradingViewElements platformElements = new PlatformTradingViewElements(getDriver());
+    private final ChoiceCountryElements country = new ChoiceCountryElements(getDriver());
+    private final MovePage move = new EducatedMainPageElements(getDriver());
+    private final AssertClass assertClass = new AssertClass(getDriver());
+    private final SignUpFormElements signUp = new SignUpFormElements(getDriver());
 
     @BeforeAll
     @Epics({@Epic("US_11_Education 11-02-07_ETF_trading")})
@@ -46,8 +46,8 @@ public abstract class SeleniumConfiguration {
         //options.setPlatformName("Windows 10");
         //options.setBrowserVersion("114");
         //options.addArguments("--incognito");
-        //optionsChrome.addArguments("--headless");
-        //optionsChrome.setHeadless(true);
+        optionsChrome.addArguments("--headless");
+        optionsChrome.setHeadless(true);
         //options.addArguments("start-maximized");
         //options.addArguments("--remote-allow-origins=*");
         optionsChrome.addArguments("--lang=en");
@@ -120,7 +120,25 @@ public abstract class SeleniumConfiguration {
     @Step("Step precondition: choice language and country")
     public void precondition(String languages, String countries) {
         Actions actions = new Actions(getDriver());
-        switch (languages.toLowerCase()) {
+        if (languages.equalsIgnoreCase("en")) {
+            absoluteUrl = baseUrl;
+        } else {
+            absoluteUrl = baseUrl + languages;
+        }
+        getDriver().navigate().to(absoluteUrl);
+        Allure.step("Language: " + languages + " Countries: " + countries);
+
+        actions.moveToElement(country.getHdrIcon())
+                .pause(Duration.ofSeconds(1))
+                .click(country.getDropDownCountry())
+                .pause(Duration.ofSeconds(1))
+                .perform();
+
+        WebElement targetCountryElement = getTargetCountryElement(languages, countries);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", targetCountryElement);
+        educatedMove.fluentWaitLocators(targetCountryElement);
+        targetCountryElement.click();
+        /*switch (languages.toLowerCase()) {
             case "en":
                 absoluteUrl = baseUrl;
                 getDriver().navigate().to(absoluteUrl);
@@ -278,6 +296,41 @@ public abstract class SeleniumConfiguration {
                 Allure.step("Language: " + languages + " Countries: " + countries);
                 throw new NoSuchElementException("No such language or country was found");
         }
+
+         */
+    }
+
+    private WebElement getTargetCountryElement(String languages, String countries) {
+        switch (languages.toLowerCase()) {
+            case "gb":
+                return country.getCountryGb();
+            case "hu":
+                return country.getCountryHu();
+            case "de":
+                return country.getCountryDe();
+            case "es":
+                return country.getCountryEs();
+            case "fr":
+                return country.getCountryFr();
+            case "pl":
+                return country.getCountryPl();
+            case "cn":
+                return country.getCountryHk();
+            case "zh":
+                return country.getCountryZh();
+            case "ar":
+                return country.getCountryAe();
+            case "it":
+                if (countries.equalsIgnoreCase("gb")) {
+                    return country.getCountryGb();
+                } else if (countries.equalsIgnoreCase("ae")) {
+                    return country.getCountryAe();
+                } else if (countries.equalsIgnoreCase("de")) {
+                    return country.getCountryDe();
+                }
+                break;
+        }
+        throw new NoSuchElementException("No such country was found: " + country);
     }
 
     @Step("Step: Accept all cookies")
@@ -290,10 +343,7 @@ public abstract class SeleniumConfiguration {
                 System.out.println("All cookies accepted");
                 Allure.step("Cookies accepted");
             }
-        } catch (TimeoutException a) {
-            System.out.println("All cookies have been accepted");
-            Allure.step("Cookies have been accepted");
-        } catch (NoSuchElementException e) {
+        } catch (TimeoutException | NoSuchElementException e) {
             System.out.println("All cookies have been accepted");
             Allure.step("Cookies have been accepted");
         }
