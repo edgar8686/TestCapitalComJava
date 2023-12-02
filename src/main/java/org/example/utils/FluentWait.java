@@ -16,7 +16,7 @@ public class FluentWait extends AbstractPage {
     public void fluentWaitLocators(ExpectedCondition<WebElement> conditions) {
         Wait<WebDriver> wait = new org.openqa.selenium.support.ui.FluentWait<>(getDriver())
                 .withTimeout(Duration.ofSeconds(2))
-                .pollingEvery(Duration.ofSeconds(15))
+                .pollingEvery(Duration.ofSeconds(20))
                 .ignoring(NoSuchElementException.class);
         wait.until(conditions);
     }

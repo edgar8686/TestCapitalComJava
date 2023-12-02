@@ -170,6 +170,8 @@ public abstract class SeleniumConfiguration {
                     return country.getCountryAe();
                 } else if (countries.equalsIgnoreCase("de")) {
                     return country.getCountryDe();
+                } else if (countries.equalsIgnoreCase("au")) {
+                    return country.getCountryDe();
                 }
                 break;
         }
@@ -180,7 +182,7 @@ public abstract class SeleniumConfiguration {
     public void acceptAllCookies() throws InterruptedException {
         try {
             //Thread.sleep(5000);
-            fluentWait.fluentWaitLocators(ExpectedConditions.elementToBeClickable(educatedMove.getCookie()));
+            fluentWait.fluentWaitLocators(ExpectedConditions.visibilityOf(educatedMove.getCookie()));
             if (educatedMove.getCookie().isDisplayed()) {
                 educatedMove.getCookie().click();
                 System.out.println("All cookies accepted");
@@ -278,6 +280,7 @@ public abstract class SeleniumConfiguration {
             Allure.step("Element click: " + clickElement);
             //((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", scrollToElement);
             //fluentWait.fluentWaitLocators(ExpectedConditions.presenceOfElementLocated(By.xpath(scrollToElement)));
+            Thread.sleep(2000);
             Actions actions = new Actions(getDriver());
             actions.scrollToElement(scrollToElement)
                     .perform();
