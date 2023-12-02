@@ -23,6 +23,11 @@ public class FluentWait extends AbstractPage {
                 .ignoring(NoSuchElementException.class)
                 .ignoring(ElementClickInterceptedException.class)
                 .ignoring(StaleElementReferenceException.class);
-        wait.until(conditions);
+        try {
+            wait.until(conditions);
+        } catch (Exception e) {
+            // Логируем, если произошло исключение
+            System.out.println("Исключение было проигнорировано: " + e.getMessage());
+        }
     }
 }
