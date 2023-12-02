@@ -21,9 +21,7 @@ public class FluentWait extends AbstractPage {
         Wait<WebDriver> wait = new org.openqa.selenium.support.ui.FluentWait<>(getDriver())
                 .pollingEvery(Duration.ofSeconds(2))
                 .withTimeout(Duration.ofSeconds(10))
-                .ignoring(NoSuchElementException.class)
-                .ignoring(ElementClickInterceptedException.class)
-                .ignoring(StaleElementReferenceException.class);
+                .ignoring(NoSuchElementException.class, ElementClickInterceptedException.class);
         try {
             wait.until(conditions);
         } catch (Exception e) {
