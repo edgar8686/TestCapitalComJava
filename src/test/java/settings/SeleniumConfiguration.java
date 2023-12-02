@@ -100,7 +100,7 @@ public abstract class SeleniumConfiguration {
         }
 
         driver.manage().window().setSize(windowSize);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterAll
@@ -182,7 +182,7 @@ public abstract class SeleniumConfiguration {
     public void acceptAllCookies() throws InterruptedException {
         try {
             //Thread.sleep(5000);
-            fluentWait.fluentWaitLocators(ExpectedConditions.visibilityOf(educatedMove.getCookie()));
+            fluentWait.fluentWaitLocators(ExpectedConditions.elementToBeClickable(educatedMove.getCookie()));
             if (educatedMove.getCookie().isDisplayed()) {
                 educatedMove.getCookie().click();
                 System.out.println("All cookies accepted");
