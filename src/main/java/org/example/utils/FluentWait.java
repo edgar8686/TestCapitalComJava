@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.StaleElementReferenceException;
 
 import java.time.Duration;
 
@@ -25,7 +24,6 @@ public class FluentWait extends AbstractPage {
         try {
             wait.until(conditions);
         } catch (Exception e) {
-            // Логируем, если произошло исключение
             Allure.step("Исключение было проигнорировано: " + e.getMessage());
         }
     }

@@ -181,7 +181,7 @@ public abstract class SeleniumConfiguration {
     @Step("Step: Accept all cookies")
     public void acceptAllCookies() throws InterruptedException {
         try {
-            //Thread.sleep(5000);
+            Thread.sleep(5000);
             fluentWait.fluentWaitLocators(ExpectedConditions.elementToBeClickable(educatedMove.getCookie()));
             if (educatedMove.getCookie().isDisplayed()) {
                 educatedMove.getCookie().click();
