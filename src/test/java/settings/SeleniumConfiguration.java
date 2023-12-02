@@ -100,7 +100,7 @@ public abstract class SeleniumConfiguration {
         }
 
         driver.manage().window().setSize(windowSize);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @AfterAll
