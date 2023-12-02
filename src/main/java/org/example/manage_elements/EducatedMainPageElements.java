@@ -4,17 +4,16 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.example.abstractClass.AbstractPage;
 import org.example.move_page.MovePage;
+import org.example.utils.FluentWait;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.opentest4j.TestAbortedException;
 
 import java.time.Duration;
 
 public class EducatedMainPageElements extends AbstractPage implements MovePage<EducatedMainPageElements> {
+    final FluentWait fluentWait = new FluentWait(getDriver());
     @FindBy(css = "a[data-type='nav_id96']")
     private WebElement educated;
     @FindBy(xpath = "//a[contains(@data-type,'nav_id243')]")
@@ -36,29 +35,32 @@ public class EducatedMainPageElements extends AbstractPage implements MovePage<E
     @Step("Step: Educated move")
     public EducatedMainPageElements clickPage(WebElement main, WebElement page) {
         Allure.step("Move to ETF trading");
-        fluentWaitLocators(main);
+        fluentWait.fluentWaitLocators(ExpectedConditions.elementToBeClickable(main));
         new Actions(getDriver())
                 .pause(Duration.ofSeconds(1))
                 .moveToElement(main)
                 .pause(Duration.ofSeconds(1))
                 .perform();
-        fluentWaitLocators(page);
+        fluentWait.fluentWaitLocators(ExpectedConditions.visibilityOf(main));
         page.click();
         return this;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------
-    public void fluentWaitLocators(WebElement webElement) {
+  /*  public void fluentWaitLocators(WebElement webElement) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(Duration.ofSeconds(1))
                 .pollingEvery(Duration.ofSeconds(40))
-                .ignoring(ElementNotInteractableException.class);
+                .ignoring(NoSuchElementException.class);
+        //ElementNotInteractableException.class
         //wait.until(driver -> {
         //    return webElement;
         // });
         //wait.until(driver -> webElement.isDisplayed());
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
+
+   */
 
     public WebElement getEtfTrading() {
         return etfTrading;

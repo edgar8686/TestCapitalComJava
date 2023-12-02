@@ -15,13 +15,13 @@ public class AssertClass extends AbstractPage {
     private WebElement elementPlatform;
     private WebElement elementPlatform2;
     private WebElement randomElement;
-    private ArrayList<WebElement> elements = new ArrayList<>();
-    private LogInFormElements logIn = new LogInFormElements(getDriver());
-    private SignUpFormElements signUp = new SignUpFormElements(getDriver());
-    private PlatformTradingViewElements platformElements = new PlatformTradingViewElements(getDriver());
-    private PageCheckElements checkElements = new PageCheckElements(getDriver());
-    private SignUpPageElements signUpPage = new SignUpPageElements(getDriver());
-    private LoginPageElements loginPage = new LoginPageElements(getDriver());
+    private final ArrayList<WebElement> elements = new ArrayList<>();
+    private final LogInFormElements logIn = new LogInFormElements(getDriver());
+    private final SignUpFormElements signUp = new SignUpFormElements(getDriver());
+    private final PlatformTradingViewElements platformElements = new PlatformTradingViewElements(getDriver());
+    private final PageCheckElements checkElements = new PageCheckElements(getDriver());
+    private final SignUpPageElements signUpPage = new SignUpPageElements(getDriver());
+    private final LoginPageElements loginPage = new LoginPageElements(getDriver());
 
     public AssertClass(WebDriver driver) {
         super(driver);

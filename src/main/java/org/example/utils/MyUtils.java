@@ -3,22 +3,27 @@ package org.example.utils;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.example.abstractClass.AbstractPage;
+import org.openqa.selenium.*;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.sql.DriverManager.getDriver;
+
 public class MyUtils {
-    public static List<String[]> readCSVFile(String filePath) throws IOException, CsvException {
+    public static List<String[]> readCSVFile(String filePath) {
         List<String[]> dataList = new ArrayList<>();
         String line;
         String cvsSplitBy = ",";

@@ -1,14 +1,17 @@
 package org.example.manage_elements;
 
 import org.example.abstractClass.AbstractPage;
+import org.example.utils.FluentWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
 public class PageCheckElements extends AbstractPage {
+    private final FluentWait fluentWait = new FluentWait(getDriver());
     //LogIn Trade buttons
     @FindBy(css = "#wg_loginBtn")
     private WebElement logIn;
@@ -43,28 +46,28 @@ public class PageCheckElements extends AbstractPage {
 
     public PageCheckElements logInClick() {
         new EducatedMainPageElements(getDriver())
-                .fluentWaitLocators(logIn);
+                .fluentWait.fluentWaitLocators(ExpectedConditions.elementToBeClickable(logIn));
         logIn.click();
         return this;
     }
 
     public PageCheckElements signUpClick() {
         new EducatedMainPageElements(getDriver())
-                .fluentWaitLocators(signUp);
+                .fluentWait.fluentWaitLocators(ExpectedConditions.elementToBeClickable(signUp));
         signUp.click();
         return this;
     }
 
     public PageCheckElements startTradingClick() {
         new EducatedMainPageElements(getDriver())
-                .fluentWaitLocators(startTrading);
+                .fluentWait.fluentWaitLocators(ExpectedConditions.elementToBeClickable(startTrading));
         startTrading.click();
         return this;
     }
 
-    public PageCheckElements tryDemoClick() throws InterruptedException {
+    public PageCheckElements tryDemoClick() {
         EducatedMainPageElements move = new EducatedMainPageElements(getDriver());
-        move.fluentWaitLocators(tryDemo);
+        move.fluentWait.fluentWaitLocators(ExpectedConditions.elementToBeClickable(logIn));
         tryDemo.click();
         //Thread.sleep(2000);
         //move.fluentWaitLocators(getAccountDemo());
