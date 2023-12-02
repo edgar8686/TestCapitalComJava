@@ -19,7 +19,7 @@ public class FluentWait extends AbstractPage {
     public void fluentWaitLocators(ExpectedCondition<WebElement> conditions) {
         Wait<WebDriver> wait = new org.openqa.selenium.support.ui.FluentWait<>(getDriver())
                 .pollingEvery(Duration.ofSeconds(2))
-                .withTimeout(Duration.ofSeconds(20))
+                .withTimeout(Duration.ofSeconds(10))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(ElementClickInterceptedException.class)
                 .ignoring(StaleElementReferenceException.class);
