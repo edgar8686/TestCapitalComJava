@@ -1,5 +1,6 @@
 package org.example.utils;
 
+import io.qameta.allure.Allure;
 import org.example.abstractClass.AbstractPage;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -27,7 +28,7 @@ public class FluentWait extends AbstractPage {
             wait.until(conditions);
         } catch (Exception e) {
             // Логируем, если произошло исключение
-            System.out.println("Исключение было проигнорировано: " + e.getMessage());
+            Allure.step("Исключение было проигнорировано: " + e.getMessage());
         }
     }
 }
