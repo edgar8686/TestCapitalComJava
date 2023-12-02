@@ -182,8 +182,9 @@ public abstract class SeleniumConfiguration {
     public void acceptAllCookies() throws InterruptedException {
         try {
             //Thread.sleep(5000);
-            fluentWait.fluentWaitLocators(ExpectedConditions.elementToBeClickable(educatedMove.getCookie()));
+            // fluentWait.fluentWaitLocators(ExpectedConditions.elementToBeClickable(educatedMove.getCookie()));
             if (educatedMove.getCookie().isDisplayed()) {
+                fluentWait.fluentWaitLocators(ExpectedConditions.elementToBeClickable(educatedMove.getCookie()));
                 educatedMove.getCookie().click();
                 System.out.println("All cookies accepted");
                 Allure.step("Cookies accepted");
